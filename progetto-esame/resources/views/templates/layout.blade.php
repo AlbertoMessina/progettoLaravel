@@ -5,47 +5,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <meta name="csrf-token" content='{{csrf_token()}}'>
     <title>@yield('title','BigMuscle')</title>
-
     <script src="https://kit.fontawesome.com/267061b199.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href = '/css/app.css'>
-
-
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <div id="custom-back-ground">
-         <a class="navbar-brand text-bold" href="/">Big Muscle</a>
+     <div>
+       <nav class="navbar navbar-expand-md navbar-dark bg-dark nav-row">
+         <div id="image-background">
+            <a class="navbar-brand text-bold" href="/">Big Muscle</a>
+         </div>
+         <div id="section-header">
+            <label id="pageSectionName" class= "text-bold text-white">
+            @yield('user','UserName') @yield('arrow' , '->') @yield('webSection','Dashboard')
+            <label>
+         </div>
+         <div id="logoutContainer">
+            <button class="btn btn-danger">LogOut </button>
+         </div>
+       </nav>
+   </div>
+<div class="row">
+   <div class="side">
+       <h2>Menu</h2>
+       <div class="list-group list-group-menu">
+        <a href="/profile/" class="list-group-item list-group-item-action mb-1 navigation">Profile</a>
+        <a href="/exercise/" class="list-group-item list-group-item-action mb-1 navigation">Exercise</a>
+        <a href="#" class="list-group-item list-group-item-action navigation">Classes</a>
       </div>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="/exercise/">exercise</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<main role="main" class="container">
+   </div>
+<div class="main">
 
 <!-- content su cio verranno inettati i contenuti della pagina. -->
  @yield('content')
 
-</main><!-- /.container -->
-@section('footer')
+</div><!-- /.container -->
+</div>
+<!-- Footer -->
+<div class="footer">
+  <h2>Footer</h2>
+  @section('footer')
+</div>
+
 <!-- Bootstrap , Jquery e popper -->
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"

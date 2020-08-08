@@ -4,18 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SmallModal extends Component
+class ShowModal extends Component
 {
+   public $modalTitle;
    public $modalId;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($modalId)
+    public function __construct($modalTitle ='show Modal' , $modalId = 'showModalid' )
     {
-        $this->modalId = $modalId;
-        //
+      $this->modalTitle = $modalTitle;
+      $this->modalId = $modalId;
     }
 
     /**
@@ -25,6 +26,6 @@ class SmallModal extends Component
      */
     public function render()
     {
-        return view('components.small-modal');
+        return view('components.show-modal');
     }
 }

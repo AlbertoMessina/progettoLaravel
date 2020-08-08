@@ -1,29 +1,29 @@
 @extends('templates.layout')
-
+@section('webSection' , 'Exercise')
 @section('content')
 {{--Tabella esercizi--}}
+<li class="list-group-item table-header">
+   <div class="header-container" style="background-color: lightgrey">
+      <div class ="width-25">
+         Nome
+      </div>
+      <div class ="width-25">
+         Difficulty
+      </div>
+      <div class ="width-25">
+         Customid
+      </div>
+      <div  class ="width-25 d-flex justify-content-end">
+      <a class="btn btn-secondary mr-2 " id="addLink" href="#exerciseModal" role = "button" >Add custom</a>
+      </div>
+</div>
+</li>
 <div class= "ul-container">
-   <li class="list-group-item table-header ">
-      <div class="header-container" style="background-color: lightgrey">
-         <div class ="width-25">
-            Nome
-         </div>
-         <div class ="width-25">
-            Difficulty
-         </div>
-         <div class ="width-25">
-            Customid
-         </div>
-         <div  class ="width-25 d-flex justify-content-end">
-         <a class="btn btn-secondary mr-2 " id="addLink" href="#exerciseModal" role = "button" >Add custom</a>
-         </div>
-   </div >
-   </li>
-   <ul class="list-group list-group-item ul-border" id='ulTable'>
+   <ul class="list-group list-group-item ul-border" id='exerciseTable'>
    @foreach ($exercise as $exercise)
    <li class="list-group-item list-group-item-border-li">
       <div class="container_internal">
-         <div class ="width-25 exercise-name"  data-id='{{$exercise->id}}' data-name = '{{$exercise->name}}'>
+         <div class ="width-25 exercise-name"   data-url='{{$exercise->img_path}}' data-id='{{$exercise->id}}' data-name = '{{$exercise->name}}'>
             {{$exercise->name}}
          </div>
          <div class ="width-25 exercise-difficulty" data-difficulty = '{{$exercise->difficulty}}'>
@@ -39,21 +39,23 @@
             @endif
             <a class="btn btn-primary  ml-2 show" role = "button"><i class='far fa-eye'></i></a>
          </div>
-   </div >
+   </div>
    </li>
    @endforeach
 </ul>
 </div>
+{{--Modals--}}
+
 {{--Modal new exerise--}}
 @include('/modalWindows/exerciseModal/newExercise')
 {{--End modal--}}
 
 {{--Modal Alter--}}
 @include('/modalWindows/exerciseModal/updateExercise')
-{{--End Modal--}}
+{{--delete Modal--}}
 @include('/modalWindows/exerciseModal/deleteExercise')
-{{--Modal add photo--}}
-
+{{--show --}}
+@include('/modalWindows/exerciseModal/showExercise')
 @endsection
 
 @section('script')
@@ -76,7 +78,7 @@ $(document).ready(function(){
 
    }
    //ajax call input
- if(name !='' && difficulty !='' && difficulty >5 && difficulty < 0){
+ if(name !='' && difficulty !='' && difficulty <= 5 && difficulty > 0){
       jQuery.ajax({
          url:'{{route('exercise.save')}}',
          type:"POST",
@@ -88,7 +90,7 @@ $(document).ready(function(){
          },
          success:function(data){
 
-            var id = data.insertedId;
+            let id = data.insertedId;
             // Ho l'id della roba inserita
             //add elem to table
             var newIl = '<li class="list-group-item list-group-item-border-li">' +
@@ -140,7 +142,7 @@ $('ul').on('click', '.edit', function(ele){
       var name = data.exercise[0].name;
       var difficulty = data.exercise[0].difficulty;
       var info = data.exercise[0].description;
-      $('#alterExerciseForm').data('id' , id);
+      //$('#alterExerciseForm').data('id' , id);
 
       $('#update-name').val(name);
       $('#update-difficulty').val( difficulty);
@@ -155,28 +157,40 @@ $('ul').on('click', '.edit', function(ele){
    });
    setTimeout(function(){ $('#exercise_update_modal').modal(); }, 200);
 });
-//record update
+//recordupdate
 $('#exercise_update').on('click', function(ele){
    //get value from input
-   var name = $('#update-name').val();
-   var difficulty = $('#update-difficulty').val();
-   var info = $('#update-info').val();
+
+   let name = $('#update-name').val();
+   let difficulty = $('#update-difficulty').val();
+   let info = $('#update-info').val();
+   let file = $('#update-image')[0].files[0];
+   let fd = new FormData();
+   let toke = $('meta[name="csrf-token"]').attr('content')
+   alert( toke);
+   fd.append('name' , name);
+   fd.append('file', file);
+   fd.append('difficulty', difficulty);
+   fd.append('info', info);
+
    if(info == null || info == ''){
          info ="No description";
    }
    if(name !='' && difficulty !='' && difficulty <= 5 && difficulty > 0 ){
    //get id for ajax call
    var id = $('#updateId').data('id');
+   $.ajaxSetup({
+   headers: {
+     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   }
+});
    jQuery.ajax({
       url:'{{route('exercise.updateExercise')}}',
-      type:"post",
-      data:{
-         "_token": "{{csrf_token()}}",
-         id: id,
-         name: name,
-         difficulty: difficulty,
-         info: info,
-      },
+      method:"post",
+      data: fd,
+      cache: false,
+      processData: false,
+      contentType: false,
       success:function(data){
          var li = $('#liTarget').data('li');
          li.find('.exercise-name').html(name);
@@ -229,8 +243,32 @@ $('#exercise_delete').on('click', function(ele){
 //end record delete
 
 $('ul').on('click', '.show', function(ele){
-
-   alert("show");
+   var id = $(this).closest('li').find('.exercise-name').data('id');
+   jQuery.ajax({
+      url:'{{route('exercise.getRecord')}}',
+      type:"GET",
+      data:{
+         "_token": "{{csrf_token()}}",
+         id: id,
+      },
+      success:function(data){;
+      var name = data.exercise[0].name;
+      var info = data.exercise[0].description;
+      var url = data.exercise[0].img_path;
+      //$('#alterExerciseForm').data('id' , id);
+      if(url == "none"){
+         url ="/images/defaultImage.jpg";
+      }
+      $('#imgExercise').attr("src", url);
+      $('#show-name').html(name);
+      $('#show-info').html(info);
+      },
+      error:function(){
+         alert("Please reload page, noob programmer");
+         $('#exercise_update_modal').modal('toggle');
+      },
+   });
+   setTimeout(function(){$("#exercise_show_modal").modal(); }, 600);
 
 });
 

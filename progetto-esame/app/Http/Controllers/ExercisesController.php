@@ -21,6 +21,7 @@ class ExercisesController extends Controller
       $exercise-> name = $req ->name;
       $exercise-> description = $req->description;
       $exercise-> difficulty = $req->difficulty;
+      $exercise-> img_path= "none";
       $exercise-> custom_id = 1;
       $saved = $exercise->save();
 
@@ -42,6 +43,7 @@ class ExercisesController extends Controller
       }
 
  public function update(Request $request){
+   
           $id = $request->input('id');
           $exercise = Exercise::find($id);
           $exercise->name = $request->input('name');

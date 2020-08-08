@@ -1,7 +1,12 @@
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row, .navbar {
+    flex-direction: column;
+  }
+ }
+}
 body{
-
-   padding-top:70px;
-
+   height: 100%;
 }
 /* CSS FOR Width */
 .width-25{
@@ -18,7 +23,77 @@ body{
    height: 50%;
 }
 
+/*Default page layout*/
+/* Sidebar/left column */
+.side {
+  flex: 15%;
+  background-color: #bbbbbb;
+  padding: 20px;
+  padding-top: 10px;
+}
+/* Main column */
+.main {
+  flex: 85%;
+  background-color: white;
+  padding: 20px;
+  padding-top: 10px;
+  height: calc(100vh - 142px);
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+    padding-right:  0px;
+  margin-bottom: 0px;
+  text-align: center;
+  background: #ddd;
+}
+
+#image-background{
+   background-image: url(/images/bigMuscle.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   padding-left: 20px;
+   flex : 15%;
+}
+
+#section-header{
+   flex : 78%;
+}
+
+#logoutContainer{
+   justify-content: flex-end;
+   flex : 3%;
+}
+.list-group-menu{
+   overflow: inherit !important;
+}
+
+a.navigation:hover, a.navigation:active {
+   background: lightgrey;
+   border: solid 1px;
+   border-radius: 10px;
+}
 /* CSS utility */
+
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+
+.nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+
+.column{
+
+   flex-direction: column;
+}
+
 .a-i-center{
    display: flex;
    align-items: center;
@@ -27,10 +102,9 @@ body{
 .j-c-center{
    display: flex;
    justify-content: center;
-
 }
 
-/* CSS for the table  */
+/* CSS for the list  */
 
 .container_internal{
    display: flex;
@@ -41,30 +115,33 @@ body{
 .container_external{
    display: flex;
    justify-content: space-between;
+}
+.ul-container{
+
+   height: calc(100vh - 220px);
 
 }
+
 .list-group{
-    max-height: 70vh;
+    max-height: 100%;
     overflow-y:scroll;
     overflow-x:hidden;
     padding:0;
-
 }
 
 .list-group-item{
     background-color: #FAFAFA;
-
 }
 .list-group-item-border-li{
    border-bottom: 1px solid #707070;
 }
 
+
 .table-header{
    border-style: solid;
-   border-width: 2px;
+   border-width: 1px;
    border-color: #505050;
    padding: 0px 0px 0px 0px;
-
 }
 
 .header-container{
@@ -77,33 +154,71 @@ body{
 
 .ul-border{
    border-style: solid;
-   border-width: 2px;
+   border-width: 1px;
    border-color: #505050;
    border-bottom: 0px;
 }
-#customNav{
-   height: 30em;
-   overflow: scroll;
-}
-
-#custom-back-ground{
-
-   background-image: url(/images/bigMuscle.png);
-   background-size: contain;
-   background-repeat: no-repeat;
-}
 
 .text-bold{
-
    font-weight: 700;
    text-shadow: 1px 2px 3px black;
-
 }
 
-#genericModalContent{
+/*CSS Exercise page*/
 
+#exerciseTable{
+
+   display:block;
+
+}
+/*CSS For Modal Window*/
+#genericModalContent{
    border-style: solid;
    border-width: 2px;
    border-color:black;
+}
 
+.modal-header-text{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.imgExercise{
+   height: auto;
+   max-width: 100%;
+   max-height: 100%;
+}
+
+.infoContainer{
+   margin-top: 5px;
+}
+
+.modal-lg{
+   max-width: 60%;
+}
+
+/*CSS for UserProfile*/
+.profileInfo{
+   display: flex;
+   height: 45%;
+   margin: 0px;
+}
+.userPhoto{
+   flex : 15%;
+   background-color: yellow;
+   padding: 10px;
+   max-width: auto;
+   max-height: auto;
+}
+
+.userInfo{
+flex:80%;
+background-color: red;
+}
+.classProfile{
+      height: 55%;
+      background-color:pink;
+      padding-top: 10px;
+      margin: 0px;
 }
