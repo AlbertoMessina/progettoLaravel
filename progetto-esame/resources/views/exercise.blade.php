@@ -1,27 +1,33 @@
 @extends('templates.layout')
 @section('webSection' , 'Exercise')
+@section('home', '/dashboard')
+@section('css')
+<link rel="stylesheet" href="{{asset('css/exercise.css')}}">
+@stop
+@section('logButton')
+<div id="logout-container" class="log-containers">
+   <button class="btn btn-danger "><label class="hide-meta  text-size-small pr-2">Log Out</label><span class="fas fa-sign-out-alt"></span></button>
+</div>
+@stop
 @section('content')
 {{--Tabella esercizi--}}
-<li class="list-group-item table-header">
-   <div class="header-container" style="background-color: lightgrey">
-      <div class ="width-25">
-         Nome
-      </div>
-      <div class ="width-25">
-         Difficulty
-      </div>
-      <div class ="width-25">
-         Customid
-      </div>
-      <div  class ="width-25 d-flex justify-content-end">
-      <a class="btn btn-secondary mr-2 " id="addLink" href="#exerciseModal" role = "button" >Add custom</a>
-      </div>
-</div>
-</li>
-<div class= "ul-container">
-   <ul class="list-group list-group-item ul-border" id='exerciseTable'>
+<div class= "table-container">
+<ul class="list-group list-group-item" id='exerciseTable'>
+   <li class="list-group-item table-header">
+      <div class="header-container" style="background-color: lightgrey">
+         <div class ="width-25">
+            NAME
+         </div>
+         <div class ="width-25">
+            DIFFICULTY
+         </div>
+         <div  class ="width-25 d-flex justify-content-end">
+         <a class="btn btn-secondary mr-2 " id="addLink" href="#exerciseModal" role = "button" ><span class="fas fa-plus add-exercise"> </span></a>
+         </div>
+   </div>
+   </li>
    @foreach ($exercise as $exercise)
-   <li class="list-group-item list-group-item-border-li">
+   <li class="list-group-item ">
       <div class="container_internal">
          <div class ="width-25 exercise-name"   data-url='{{$exercise->img_path}}' data-id='{{$exercise->id}}' data-name = '{{$exercise->name}}'>
             {{$exercise->name}}
@@ -29,21 +35,18 @@
          <div class ="width-25 exercise-difficulty" data-difficulty = '{{$exercise->difficulty}}'>
             {{$exercise->difficulty}}
          </div>
-         <div class ="width-25 exercise-custom">
-            {{$exercise->custom_id}}
-         </div>
-         <div  class ="width-25 d-flex justify-content-end">
+         <div  class ="width-25 button-container">
             @if($exercise->custom_id != 0)
-               <a class="btn btn-danger delete" role="button" data><i class='fas fa-times'></i></a>
-               <a class="btn btn-success ml-2 edit" role"button"><i class='far fa-edit'></i></a>
+               <a class="btn ml-2 delete icon" role="button" data><span class='fas fa-trash trash-exercise'></a>
+               <a class="btn ml-2 edit icon" role"button"><span class='far fa-edit edit-execise'></span></a>
             @endif
-            <a class="btn btn-primary  ml-2 show" role = "button"><i class='far fa-eye'></i></a>
+            <a class="btn ml-2 show icon" role = "button"><span class='far fa-eye show-exercise'></span></a>
          </div>
    </div>
    </li>
    @endforeach
 </ul>
-</div>
+
 {{--Modals--}}
 
 {{--Modal new exerise--}}
@@ -61,7 +64,11 @@
 @section('script')
 
 <script>
+/*TEXT PER IL SIGN IN */
+$("#loginContainer").hide();
+/*TEXT PER IL SING IN*/
 $(document).ready(function(){
+
    //apertura modale
   $('#addLink').click(function(){
     $('#exerciseModal').modal();
@@ -89,11 +96,11 @@ $(document).ready(function(){
             difficulty: difficulty,
          },
          success:function(data){
-
+            alert('inserimento riuscito')
             let id = data.insertedId;
             // Ho l'id della roba inserita
             //add elem to table
-            var newIl = '<li class="list-group-item list-group-item-border-li">' +
+            let newIl = '<li class="list-group-item ">' +
                '<div class="container_internal">'+
                   '<div  class ="width-25 exercise-name"  data-id='+id+ ' data-name = '+name+'>'+
                       name +
@@ -101,21 +108,17 @@ $(document).ready(function(){
                   '<div class ="width-25 exercise-difficulty  data-difficulty = '+ difficulty+ '" >' +
                       difficulty +
                   '</div>' +
-                  '<div class ="width-25">' +
-                     1 +
-                  '</div>'+
-                  '<div  class ="width-25 d-flex justify-content-end">' +
-                        '<a class="btn btn-danger delete" role="button">'+
-                        '<i class="fas fa-times"></i>' + "</a>" +
-                        '<a class="btn btn-success ml-2" role"button">' +
-                        '<i class="far fa-edit edit"></i>' + '</a>'+
-                        '<a class="btn btn-primary ml-2 show" role = "button">'+
-                        '<i class="far fa-eye"></i>'+'</a>'+
+                  '<div  class ="width-25  button-container">' +
+                        '<a class="btn ml-2 delete icon" role="button">'+
+                        '<span class="fas fa-trash trash-exercise"></span>' + "</a>" +
+                        '<a class="btn ml-2 edit icon" role"button">' +
+                        '<span class="far fa-edit edit-execise"></span>' + '</a>'+
+                        '<a class="btn ml-2 show icon" role = "button">'+
+                        '<span class="far fa-eye show-exercise"></span>'+'</a>'+
                   '</div>'+
             '</div >'+
             '</li>';
-
-            $("#ulTable").prepend(newIl);
+            $("#exerciseTable li:first-child").after(newIl);
             $("#exerciseModal").modal('toggle');
             //append del child
 
@@ -228,6 +231,7 @@ $('#exercise_delete').on('click', function(ele){
          id: id,
       },
       success:function(data){
+              
          var li =$('#deleteli').data('li');
          li.remove();
          $('#exercise_modal_delete').modal('toggle');

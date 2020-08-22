@@ -1,18 +1,29 @@
 @extends('templates.layout')
 @section('webSection' , 'Your Profile')
-@section('content')
-<div style = "height: calc(100vh - 160px)">
-   <div class=" profileInfo" >
-      <div class="userPhoto" >
-         <img class="p-3" src="/images/unknow.jpg"> </img>
-      </div>
-      <div class="userInfo" >
-         <label class="p-5">Some fucnin test </label>
-      </div>
-   </div>
-   <div class=" classProfile">
-      <h1>Daily class workout </h1>
-      <label>Qua vanno le miniature delle classi per cui si ha un allemaneto gioranta </label>
-   </div>
+@section('logButton')
+<div id="logout-container" class="log-containers">
+   <button class="btn btn-danger "><label class="hide-meta  text-size-small pr-2">Log Out</label><span class="fas fa-sign-out-alt"></span></button>
 </div>
+@stop
+@section('content')
+<div class="row-special user-profile">
+   <div class="profile-info" >
+      <div id="user-photo-container" >
+         <img id="user-photo" class="img-thumbnail img-fluid" src="/images/unknow.jpg"> </img>
+      </div>
+
+   </div>
+
+</div>
+@stop
+
+@section('script')
+<script>
+/*TEXT PER IL SIGN IN */
+$("#loginContainer").hide();
+/*TEXT PER IL SING IN*/
+$(document).ready(function(){
+
+});
+</script>
 @stop
