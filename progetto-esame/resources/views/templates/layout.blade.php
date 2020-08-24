@@ -39,13 +39,13 @@
       </div>
        <div class="navigation-menu">
           <div class="side-menu-item">
-             <a href="/profile/" class="p-2 text-white"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
+             <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
           </div>
           <div class="side-menu-item">
-             <a href="/exercise/" class="p-2 text-white"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
+             <a href="/exercise/" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
           </div>
           <div class="side-menu-item">
-             <a href="#" class="p-2 text-white"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">CLASSES</span></a>
+             <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">CLASSES</span></a>
           </div>
       </div>
    </div>
@@ -69,7 +69,7 @@
    <!--END MOBILE MENU-->
 <div class="main">
 <!-- content su cio verranno inettati i contenuti della pagina. -->
-      <div class="main-content-container">
+      <div class="main-content-container main-content">
          <div id="section-header">
             <div id="pageSectionName" class="py-1 pl-4 text-bold text-white">
                <span class="text-uppercase text-size-medium"> @yield('user','UserName') @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
@@ -89,8 +89,8 @@
   src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <script src="{{asset('js/mainLayout.js')}}"> </script>
 @section('script')

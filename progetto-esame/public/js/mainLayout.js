@@ -8,9 +8,10 @@ $('.menu-collapse').click( function(){
    let sideMenuItem = $('.side-menu-item');
    let button = $(this);
    let userIcon = $('.fa-user');
+   let sideMenuLink = $('.side-menu-link');
+
       if(!button.hasClass('collapsed')){
       //open menu
-
       side.css("flex","10%");
       navigationMenu.css("padding-left", "10px");
       main.css("flex","85%");
@@ -19,6 +20,7 @@ $('.menu-collapse').click( function(){
       sideMenu.addClass('j-c-between');
       sideMenu.removeClass('justify-content-center');
       sideMenuItem.removeClass('center-centered');
+      sideMenuLink.css("width","100%");
       userIcon.removeClass('ml-2');
       button.addClass('collapsed');
 
@@ -30,6 +32,7 @@ $('.menu-collapse').click( function(){
       sideMenu.removeClass('j-c-between');
       sideMenu.addClass('justify-content-center');
       sideMenuItem.addClass('center-centered')
+      sideMenuLink.css("width","auto");
       userIcon.addClass('ml-2');
    //resize div
       side.css("flex","1%");
@@ -55,3 +58,6 @@ $('.mobile-menu-button').click(function()
 
    }
  });
+
+ //utilities
+ $('[data-toggle="tooltip"]').tooltip();
