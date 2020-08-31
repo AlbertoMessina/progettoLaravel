@@ -6,7 +6,7 @@
       <div class="modal-header modal-header-text">
 
         <h4 class="modal-title font-weight-bold">{{ $modalTitle }}</h4>
-     
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,9 +16,7 @@
       {{ $slot }}
 
       </div>
-      <div class="modal-footer j-c-center">
-        <button id="{{$modalSubmitButton}}" class="btn btn-success btn-unique">{{$modalButton}}</button>
-      </div>
+
 
     </div>
   </div>

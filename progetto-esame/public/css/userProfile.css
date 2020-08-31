@@ -1,0 +1,28 @@
+/*CSS for UserProfile*/
+.user-profile{
+   width:100%;
+   height: calc(100vh - 200px);
+}
+.profile-info{
+   display:flex;
+   margin: 0px;
+   padding:10px;
+}
+
+#user-photo{
+   object-fit: scale-down;
+   max-width: 200px;
+   max-height: 200px;
+   border-radius: 50%;
+}
+
+.user-info{
+   flex:87%;
+   background-color: #bbbbbb;
+}
+
+.asd{
+   overflow-wrap: break-word;
+word-wrap: break-word;
+hyphens: auto;
+}

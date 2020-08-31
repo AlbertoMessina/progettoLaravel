@@ -16,7 +16,7 @@
    justify-content: space-between;
 }
 .table-container{
-   height: calc(100vh - 310px);
+   height: calc(100vh - 235px);
    padding:10px;
 }
 
@@ -35,18 +35,14 @@
 }
 
 .table-header{
-   padding: 0px 0px 0px 0px;
-   border-bottom: 1px solid #0000008c;
-}
-
-.header-container{
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 5px 5px 5px 5px;
+   padding: .20rem 1.2rem;
+   border-bottom: 1px solid #0000008c;
+   background-color: lightgrey;
    font-weight: bold;
 }
-
 
 .trash-exercise{
    color: red;

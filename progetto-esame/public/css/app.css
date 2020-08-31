@@ -320,32 +320,7 @@ a.navigation:hover, a.navigation:active {
    max-width: 60%;
 }
 
-/*CSS for UserProfile*/
-.user-profile{
-   width:100%;
-   height: calc(100vh - 200px);
-}
-.profile-info{
-   flex: 10%;
-   margin: 0px;
-}
 
-#user-photo{
-   object-fit: scale-down;
-   max-width: 200px;
-   max-height: 200px;
-}
-
-.user-info{
-   flex:87%;
-   background-color: #bbbbbb;
-}
-
-.asd{
-   overflow-wrap: break-word;
-word-wrap: break-word;
-hyphens: auto;
-}
 
 /******CSS UTILITY ******/
 .text-size-small{

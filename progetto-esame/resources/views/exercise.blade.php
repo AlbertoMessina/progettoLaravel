@@ -16,7 +16,7 @@
 <div class= "table-container  ">
 <ul class="list-group list-group-item light-border" id='exerciseTable'>
    <li class="list-group-item table-header">
-      <div class="header-container" style="background-color: lightgrey">
+
          <div class ="width-25">
             NAME
          </div>
@@ -26,7 +26,7 @@
          <div  class ="width-25 d-flex justify-content-end">
          <a class="btn btn-secondary mr-2 " id="addLink" href="#exerciseModal"   data-toggle="tooltip" data-placement="left" title="Add new" role="button" role = "button" ><span class="fas fa-plus add-exercise"> </span></a>
          </div>
-   </div>
+
    </li>
 
    @foreach ($exercise as $exercise)
@@ -68,7 +68,7 @@
 @endsection
 
 @section('script')
-
+<script src="{{asset('js/snackbar.js')}}"> </script>
 <script>
 /*TEXT PER IL SIGN IN */
 $("#loginContainer").hide();
@@ -80,27 +80,35 @@ $(document).ready(function(){
     $('#exerciseModal').modal();
   });
  //record creation
-  $('#exercise_create').click(function(){
-     event.preventDefault();
-   var name = $('#exercise-name').val();
-   var difficulty = $('#exercise-difficulty').val();
-   var info = $('#exercise-info').val();
+  $('#exerciseForm').submit(function(ele){
+
+   ele.preventDefault();
+   let name = $('#exercise-name').val();
+   let difficulty = $('#exercise-difficulty').val();
+   let info = $('#exercise-info').val();
+
+   //form data
+   let form = document.getElementById('exerciseForm');
+   let fd = new FormData(form);
    if(info == null || info == ''){
 
          info ="No description";
 
    }
-   //ajax call input
+
  if(name !='' && difficulty !='' && difficulty <= 5 && difficulty > 0){
+    $.ajaxSetup({
+          headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+    });
       jQuery.ajax({
          url:'{{route('exercise.save')}}',
          type:"POST",
-         data:{
-            "_token": "{{csrf_token()}}",
-            name: name,
-            description: info,
-            difficulty: difficulty,
-         },
+         data: fd,
+         contentType: false,
+         processData: false,
+         cache: false,
          success:function(data){
             //insert
             let id = data.insertedId;
@@ -146,11 +154,15 @@ $('ul').on('click', '.edit', function(ele){
    var id = $(this).closest('li').find('.exercise-name').data('id');
    var li = $(this).closest('li');
       //chiamata ajax per prendere i valori
+   $.ajaxSetup({
+         headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
    jQuery.ajax({
       url:'{{route('exercise.getRecord')}}',
       type:"GET",
       data:{
-         "_token": "{{csrf_token()}}",
          id: id,
       },
       success:function(data){
@@ -173,42 +185,35 @@ $('ul').on('click', '.edit', function(ele){
    });
    setTimeout(function(){ $('#exercise_update_modal').modal(); }, 200);
 });
+//WORKPOINT
 //ExerciseUpdate
-$('#exercise_update').on('click', function(ele){
+$('#updateExerciseForm').on('submit', function(ele){
+   ele.preventDefault();
    //get value from input
    let name = $('#update-name').val();
-   let difficulty = $('#update-difficulty').val();
    let info = $('#update-info').val();
-   let file = $('#update-image')[0].files[0];
-
-   /*Form data
-   let fd = new FormData();
-   let toke = $('meta[name="csrf-token"]').attr('content')
-   alert( toke);
-   fd.append('name' , name);
-   fd.append('file', file);
-   fd.append('difficulty', difficulty);
-   fd.append('info', info);
-    */
+   let difficulty= $('#update-difficulty').val();
    if(info == null || info == ''){
          info ="No description";
    }
    if(name !='' && difficulty !='' && difficulty <= 5 && difficulty > 0 ){
    //get id for ajax call
    var id = $('#updateId').data('id');
-
+   let form = document.getElementById('updateExerciseForm');
+   let fd = new FormData(form);
+   fd.append('update_id',id);
+   $.ajaxSetup({
+         headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
    jQuery.ajax({
       url:'{{route('exercise.updateExercise')}}',
-      method:"post",
-      data:{
-            "_token": "{{csrf_token()}}",
-            id: id,
-            name: name,
-            difficulty: difficulty,
-            info:info,
-      },
+      method:"POST",
+      data:fd,
+      contentType: false,
+      processData: false,
       cache: false,
-
       success:function(data){
          var li = $('#liTarget').data('li');
          //set new value input
@@ -222,7 +227,8 @@ $('#exercise_update').on('click', function(ele){
       },
       error:function(){
          operationFailedShow();
-
+         // modal close
+         $('#exercise_update_modal').modal('toggle');
 
       },
    });
@@ -245,13 +251,14 @@ $('#exercise_delete').on('click', function(ele){
 
    var id = $('#deletedId').data('id');
    //ajax call
+   $.ajaxSetup({
+         headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
   jQuery.ajax({
-      url:'{{route('exercise.delete')}}',
+      url:'exercise/delete/'+ id,
       type:"DELETE",
-      data:{
-         "_token": "{{csrf_token()}}",
-         id: id,
-      },
       success:function(data){
 
          var li =$('#deleteli').data('li');
@@ -269,22 +276,31 @@ $('#exercise_delete').on('click', function(ele){
 
 //end record delete
 
+// SHOW MODAL
 $('ul').on('click', '.show', function(ele){
    var id = $(this).closest('li').find('.exercise-name').data('id');
+   $.ajaxSetup({
+         headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
    jQuery.ajax({
       url:'{{route('exercise.getRecord')}}',
       type:"GET",
       data:{
-         "_token": "{{csrf_token()}}",
          id: id,
       },
-      success:function(data){;
-      let name = data.exercise[0].name;
-      let info = data.exercise[0].description;
-      let url = data.exercise[0].img_path;
-      //$('#alterExerciseForm').data('id' , id);
-      if(url == "none"){
-         url ="/images/defaultImage.jpg";
+      success:function(data){
+
+      let exercise = data.exercise[0]
+      let name = exercise.name;
+      let info = exercise.description;
+      let url = exercise.img_path;
+      if((url.search('http')) === -1){
+         url = 'storage/'+ url;
+      }
+      if(url.search('none') !== -1 ){
+         url ="storage/images/default.png";
       }
       $('#imgExercise').attr("src", url);
       $('#show-name').html(name);
@@ -301,21 +317,7 @@ $('ul').on('click', '.show', function(ele){
 
 });
 
-function operationSuccessShow(){
-      let snackbar = $('.snackbar');
-      snackbar.addClass("operationSuccess");
-      $('.snackbar i').addClass('fas fa-check mr-1');
-      $('.snackbar span').text('Operation Success')
-      setTimeout(function(){snackbar.removeClass("operationSuccess")}, 2500);
-}
 
-function operationFailedShow(){
-      let snackbar = $('.snackbar');
-      snackbar.addClass("operationFailed");
-      $('.snackbar i').addClass('fas fa-exclamation-triangle mr-1');
-      $('.snackbar span').text('Operation Failed');
-      setTimeout(function(){snackbar.removeClass("operationFailed")}, 2500);
-}
 </script>
 
 @endsection
