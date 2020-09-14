@@ -6,11 +6,7 @@
 <link rel="stylesheet" href="{{asset('css/scrollbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 @stop
-@section('logButton')
-<div id="logout-container" class="log-containers">
-   <button class="btn btn-danger "><label class="hide-meta  text-size-small pr-2">Log Out</label><span class="fas fa-sign-out-alt"></span></button>
-</div>
-@stop
+
 @section('content')
 {{--Tabella esercizi--}}
 <div class= "table-container  ">
@@ -53,19 +49,21 @@
    @endforeach
 </ul>
 <div class="snackbar"><i></i><span>Operation snackbar</span></div>
-{{--Modals--}}
+<!--Modals-->
 
-{{--Modal new exerise--}}
+<!--Modal new exerise-->
 @include('/modalWindows/exerciseModal/newExercise')
-{{--End modal--}}
+<!--End modal-->
 
-{{--Modal Alter--}}
+<!--Modal Alter-->
 @include('/modalWindows/exerciseModal/updateExercise')
-{{--delete Modal--}}
+<!--delete Modal-->
 @include('/modalWindows/exerciseModal/deleteExercise')
-{{--show --}}
+<!--show -->
 @include('/modalWindows/exerciseModal/showExercise')
+
 @endsection
+
 
 @section('script')
 <script src="{{asset('js/snackbar.js')}}"> </script>
@@ -77,7 +75,8 @@ $(document).ready(function(){
 
    //apertura modale
   $('#addLink').click(function(){
-    $('#exerciseModal').modal();
+  $('#exerciseModal').modal();
+
   });
  //record creation
   $('#exerciseForm').submit(function(ele){
@@ -278,6 +277,9 @@ $('#exercise_delete').on('click', function(ele){
 
 // SHOW MODAL
 $('ul').on('click', '.show', function(ele){
+   //carousel flush
+   $('.carousel-indicators-exercise').html('');
+   $('.carousel-inner-exercise').html('');
    var id = $(this).closest('li').find('.exercise-name').data('id');
    $.ajaxSetup({
          headers: {
@@ -292,28 +294,53 @@ $('ul').on('click', '.show', function(ele){
       },
       success:function(data){
 
-      let exercise = data.exercise[0]
-      let name = exercise.name;
-      let info = exercise.description;
-      let url = exercise.img_path;
-      if((url.search('http')) === -1){
-         url = 'storage/'+ url;
-      }
-      if(url.search('none') !== -1 ){
-         url ="storage/images/default.png";
-      }
-      $('#imgExercise').attr("src", url);
-      $('#show-name').html(name);
-      $('#show-info').html(info);
-      },
-      error:function(){
-         alert("Please reload page, noob programmer");
-         $('#exercise_show_modal').modal('toggle');
-      },
-   });
-   setTimeout(function(){$("#exercise_show_modal").modal(); }, 600);
+         let exercise = data.exercise[0]
+         let name = exercise.name;
+         let info = exercise.description;
+         let url = exercise.img_path;
+         if((url.search('http')) === -1){
+            url = 'storage/'+ url;
+         }
+         if(url.search('none') !== -1 ){
+            url ="storage/images/default.png";
+         }
 
-});
+         //carousel Fill
+         $('.carousel-indicators-exercise').append(
+             '<li data-target="#carouselShowExercise" data-slide-to="0" class="active">' + '</li>'
+         );
+         $('.carousel-inner-exercise').append(
+            '<div class="carousel-item active">' +
+              '<img src="' + url + '" class="d-block  img-exercise" alt="...">' +
+            '</div>'
+         );
+         $('.carousel-inner-exercise').append(
+            '<div class="carousel-item ">' +
+              '<img src= "storage/images/default.png " class="d-block img-exercise" alt="...">' +
+            '</div>'
+         );
+
+         $('.carousel-indicators-exercise').append(
+             '<li data-target="#carouselShowExercise" data-slide-to="1" >' + '</li>'
+         );
+         $('.show-right-title').text(' > ' + name);
+         $('#show-info').html(info);
+         },
+         error:function(){
+            alert("Please reload page, noob programmer");
+            $('#exercise_show_modal').modal('toggle');
+         },
+      });
+      setTimeout(function(){$("#exercise_show_modal").modal(); }, 600);
+
+   });
+
+   //Show modal
+   $('#update-image').change(function(){
+      $('.show-img').css('visibility' , 'visible');
+   });
+
+
 
 });
 

@@ -1,8 +1,8 @@
 
 <div class="modal fade" id="{{ $modalId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div  id="genericModalContent" class="modal-content ">
+  <div class="modal-dialog {{ $modalDialogClass }}" role="document">
+    <div class="modal-content">
       <div class="modal-header modal-header-text">
 
         <h4 class="modal-title font-weight-bold">{{ $modalTitle }}</h4>
@@ -11,7 +11,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
+      <div class="modal-body">
 
       {{ $slot }}
 

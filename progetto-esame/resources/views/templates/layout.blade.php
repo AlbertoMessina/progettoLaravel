@@ -11,6 +11,7 @@
     <!--CSS IMPORT -->
     <link rel="stylesheet" href = '/css/app.css'>
    <link rel="stylesheet" href="{{asset('css/mobileMenu.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/social.CSS')}}">
     @yield('css' , "")
   </head>
   <body>
@@ -24,8 +25,9 @@
                <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')><label class="hide-meta">Big Muscle </label></a>
             </div>
           </div>
-
-         @yield('logButton')
+          <div id="logout-container" class="log-containers">
+             <a class="btn btn-danger" href="/"><label class="hide-meta  text-size-small text-white label-link  pr-2">Log Out</label><span class="fas fa-sign-out-alt label-link"></span></a>
+          </div>
        </nav>
    </div>
 <div class="row view">
@@ -78,12 +80,10 @@
        @yield('content')
       </div>
 </div>
+
+</div>
 <!-- Footer -->
-</div>
-<div class="footer">
-  <h1 class="text-size-big">Footer</h1>
-  @section('footer')
-</div>
+@include('/partial/footer')
 <!-- Bootstrap , Jquery e popper -->
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"

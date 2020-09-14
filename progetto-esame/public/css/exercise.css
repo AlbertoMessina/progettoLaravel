@@ -69,3 +69,71 @@
    justify-content: flex-end;
    align-items: center;
 }
+
+.img-exercise{
+   width: 420px;
+   height: 460px;
+}
+
+
+/*Carousel*/
+.carousel-show-container{
+   display:flex;
+   justify-content: center;
+   padding-bottom: 20px;
+
+}
+.carousel-show-exercise{
+
+   min-width: 300px;
+   min-height: 300px;
+   max-width: 500px;
+   max-height: 500px;
+}
+
+/*New Exercise Modal*/
+.new-modal-dialog{
+
+}
+.form-label{
+   width: 100%;
+   text-align:start;
+   padding-left: 10px;
+   border-bottom: 1px solid #bbb;
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+   text-transform: uppercase;
+}
+.form-label span{
+   background:#fff;
+   padding: 0  5px;
+
+}
+
+.multiple-img-upload{
+   display: flex;
+
+}
+/*showExerciseModal */
+.show-right-title{
+   float:right;
+   margin-bottom:0;
+   font-weight: bold;
+}
+
+.infoLabel{
+    width: 100%;
+    text-align:center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.infoLabel span{
+      background:#fff;
+      padding: 0  10px;
+}
+
+
+
+/**** Modal css ****/
