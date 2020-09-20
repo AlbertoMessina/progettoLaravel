@@ -9,12 +9,12 @@
 
         <div class="form-group mb-5">
           <label class="form-label" data-error="wrong" data-success="right" for="exercise-name"><span>Exercise name</span></label>
-          <input type="text" id="exercise-name" name='exercise_name' class="form-control">
+          <input type="text" id="exercise-name" name='exercise_name' class="form-control" required>
         </div>
 
         <div class="form-group mb-5">
           <label class="form-label" data-error="wrong" data-success="right" for="difficulty"><span>Difficulty (between 1 and 5)</span></label>
-          <input type="number" id="exercise-difficulty" name='exercise_difficulty' class="form-control form-control-sm validate" min="1" max ="5">
+          <input type="number" id="exercise-difficulty" name='exercise_difficulty' class="form-control form-control-sm validate" min="1" max ="5" required>
         </div>
 
         <div class="form-group">

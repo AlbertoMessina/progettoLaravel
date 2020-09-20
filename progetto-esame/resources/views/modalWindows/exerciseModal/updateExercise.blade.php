@@ -8,12 +8,12 @@
        <div style="display:none" id='updateId'></div>
         <div class="form-group mb-5">
           <label  class="form-label" data-error="wrong" data-success="right" for="exercise-name"><span>Exercise name</span></label>
-          <input type="text" id="update-name"  name="update_name" class="form-control">
+          <input type="text" id="update-name"  name="update_name" class="form-control" required>
         </div>
 
         <div class="form-group mb-5">
           <label  class="form-label" data-error="wrong" data-success="right" for="difficulty"><span>Difficulty (betwenn 1 and 5)</span></label>
-          <input type="number" id="update-difficulty" name="update_difficulty" class="form-control form-control-sm validate" min="1" max ="5">
+          <input type="number" id="update-difficulty" name="update_difficulty" class="form-control form-control-sm validate" min="1" max ="5" required>
         </div>
          <div class="form-group mb-5">
             <label  class="form-label" data-error="wrong" data-success="right" for="loadImg"><span>LoadImage</span></label>

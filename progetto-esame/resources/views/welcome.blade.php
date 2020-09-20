@@ -42,7 +42,12 @@
       </div>
       <div class="welcome-card">
          <div class="card-info-container">
-
+            <div class="card-text-container">
+               <h2>WELCOME ATLETE<H2>
+               <p>Start like a pro!</p>
+               <p>Find your trusted coach and get started</p>
+               <p>Get advice from the best experts in the sector</p>             
+            </div>
          </div>
          <div class="img-container">
             <div class="positioning">
@@ -69,20 +74,30 @@
       <div class="welcome-card mt-2">
          <div class="img-container">
             <div class="positioning-2">
-
+            <h2>WELCOME ATLETE<H2>
+               <p>Start like a pro!</p>
+               <p>Find your trusted coach and get started</p>
+               <p>Get advice from the best experts in the sector</p>
             </div>
             <img src="/images/personaltrainer.jpg"/>
          </div>
          <div class="card-info-container">
-
-         </div>
+            <div class="card-text-container">
+                  <h2>WELCOME COACH<H2>
+                  <p>Start like a pro!</p>
+                  <p>Find your trusted atlete and get started</p>
+                  <p>Menage your class and your work</p>
+                  <p>See what you can do </p>
+            </div>
+            </div>
       </div>
-   <div class='blanck-space'>
+   
    </div>
-   </div>
-   <!-- Footer -->
+ 
+ 
 </div>
-
+<div class='blanck-space'>
+   </div>
 <!-- Footer -->
 @include('/partial/footer')
 

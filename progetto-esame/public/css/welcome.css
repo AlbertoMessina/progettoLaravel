@@ -1,6 +1,3 @@
-* {
-  margin: 0;
-}
 
 html, body {
   height: 100%;
@@ -12,9 +9,9 @@ html, body {
     display: flex;
     flex-direction: column;
     height: auto;
-    margin-bottom: 30px;
     background: #d6d6d6;
     border-radius: 5px;
+    margin-bottom: 150px;
 }
 
 .welcome-card{
@@ -42,7 +39,21 @@ html, body {
     width: 40%;
     height: 500px;
     right: 20px;
-    background-color: #c3c2c2;
+    background-color: #FFF;
+}
+.card-text-container{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   top: 100px;
+}
+.card-text-container p{
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 30px;
+      
 }
 .positioning{
    position: absolute;
@@ -53,7 +64,7 @@ html, body {
    height: 70%;
    right: 15px;
    bottom: 22px;
-   background-color: #e6e6e6c7;
+   background-color: #b3b3b3d9;
    box-shadow: 1px 1px 30px rgb(255 255 255 / 30%);
    border-radius: 8px;
    padding: 4px;
@@ -63,7 +74,7 @@ html, body {
 /*front image*/
 .positioning-2{
    position: absolute;
-   display: flex;
+   display: none;
    justify-content: center;
    align-items: center;
    width: 50%;
@@ -131,9 +142,12 @@ html, body {
    margin-bottom: 3rem;
 }
 
+.page{
+   background: #d6d6d6;
+}
 
 /*FOOTER */
-.footer, .page-wrap:after {
+.footer {
   height: 150px;
 }
 
@@ -141,7 +155,7 @@ html, body {
    display: block;
 }
 
-.page- {
+.page-wrap {
   min-height: 100%;
   /* equal to footer height */
   margin-bottom: -150px;
@@ -150,7 +164,14 @@ html, body {
   content: "";
   display: block;
 }
+.hide-text{
+   display: block;
+}
 
+.blanck-space{
+   width: 100%;
+   min-height:30px;
+}
 /*TEST*/
 
 @media screen and (max-width: 700px) {
@@ -211,7 +232,25 @@ html, body {
    .form-group{
       margin-bottom: 1rem;
    }
+
+   .card-text-container{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      top: 15px;
+   }
+   .card-text-container p{
+         font-size: 1.1rem;
+         font-weight: bold;
+         margin-top: 5px;
+         
+   }
 /*FOOTER*/
+   .footer{
+      height:85px !important;
+   }
    .page-wrap {
      min-height: 100%;
      /* equal to footer height */
