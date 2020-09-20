@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/267061b199.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!--CSS IMPORT -->
-    <link rel="stylesheet" href = '/css/app.css'>
+    <link rel="stylesheet" href = '/css/main.css'>
     <link rel="stylesheet" href='/css/welcome.CSS'>
     <link rel="stylesheet" href='/css/social.CSS'>
     @yield('css' , "")
