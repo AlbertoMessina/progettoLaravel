@@ -25,7 +25,7 @@
             </div>
          </div>
           <div id="login-container" class="log-containers">
-             <a class="btn btn-success" href="/profile"><label class="hide-meta text-size-small label-link text-white pr-2">Sign In</label><span class="fas fa-sign-in-alt label-link"></span></a>
+             <a class="btn btn-success" href="{{route('admin.users.index')}}"><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
           </div>
        </nav>
    </div>

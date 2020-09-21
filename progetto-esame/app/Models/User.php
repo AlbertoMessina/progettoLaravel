@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-
+namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -36,4 +35,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /** 
+    *users belong to many roles
+    *the user can have many roles and the roles can have many user
+    */
+    public function roles(){
+        return $this->belongsToMany('app\Models\Role');
+    }
 }

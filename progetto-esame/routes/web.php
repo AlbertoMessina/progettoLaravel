@@ -22,3 +22,9 @@ Route::get('/profile' , 'UserController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/users', 'UsersController');
+});
