@@ -5,6 +5,11 @@
 
 /* Table css */
 
+
+#addLink{ 
+   float: right;
+}
+
 .container_internal{
    display: flex;
    justify-content: space-between;
@@ -94,10 +99,7 @@
    max-height: 500px;
 }
 
-/*New Exercise Modal*/
-.new-modal-dialog{
 
-}
 .form-label{
    width: 100%;
    text-align:start;
@@ -115,7 +117,7 @@
 
 .multiple-img-upload{
    display: flex;
-
+   flex-direction: column;
 }
 /*showExerciseModal */
 .show-right-title{
@@ -124,7 +126,7 @@
    font-weight: bold;
 }
 
-.infoLabel{
+.info-label{
     width: 100%;
     text-align:center;
     border-bottom: 1px solid #000;
@@ -132,10 +134,18 @@
     margin: 10px 0 20px;
 }
 
-.infoLabel span{
+.info-label span{
       background:#fff;
       padding: 0  10px;
 }
+#showInfo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background:rgb(226, 226, 226);
+}
+
 
 
 

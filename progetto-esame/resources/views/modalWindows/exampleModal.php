@@ -1,15 +1,15 @@
 <!-- The Modal -->
-<div  id="{{ $modalId }}" class="modal">
+<div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
-    <div class="modal-header modal-header-text">
+    <div class="modal-header">
 
-    <h4 class="modal-title font-weight-bold">{{ $modalTitle }}</h4>
+      <h2>Esempio MODALE</h2>
       <span class="close" onclick="closeModal(this)">&times;</span>
     </div>
     <div class="modal-body">
-      {{ $slot }} 
+  
     </div>
 
   </div>

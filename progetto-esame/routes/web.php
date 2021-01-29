@@ -19,12 +19,20 @@ Route::get('/', function () {
 
 Route::get('/profile' , 'UserController@index');
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/users', 'UsersController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+/*Exercise Route*/
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/users', 'UsersController');
-});
+Route::get('/exercise','ExercisesController@index')->name('exercise.list');
+Route::get('/exercise/record/{id}','ExercisesController@getRecord')->where('id','[0-9]+');
+Route::delete('/exercise/delete/{id}','ExercisesController@delete')->where('id','[0-9]+');
+Route::POST('/exercise/update','ExercisesController@update')->name('exercise.updateExercise');
+Route::post('/exercise/create' , 'ExercisesController@save')->name('exercise.save');
+

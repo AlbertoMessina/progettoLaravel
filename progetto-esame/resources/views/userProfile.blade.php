@@ -3,6 +3,9 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('css/userProfile.css')}}">
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
+<link rel="stylesheet" href="{{asset('css/menu.css')}}">
+<link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
+<script src="{{asset('js/userProfile.js')}}" defer></script>
 @stop
 @section('logButton')
 <div id="logout-container" class="log-containers">
@@ -15,19 +18,17 @@
       <div id="user-photo-container" >
          <img id="user-photo" class="img-thumbnail img-fluid" src="/images/unknow.jpg"> </img>
       </div>
-
+      <!-- Trigger/Open The Modal -->
+      <button id="myBtn">Open Modal</button>
+      <button id="myBtn2">Open Modal2</button>
    </div>
-
+   @include('/modalWindows/exampleModal')
+   @include('/modalWindows/exampleModal2')
 </div>
+
+
 @stop
 
 @section('script')
-<script>
-/*TEXT PER IL SIGN IN */
-$("#loginContainer").hide();
-/*TEXT PER IL SING IN*/
-$(document).ready(function(){
 
-});
-</script>
 @stop

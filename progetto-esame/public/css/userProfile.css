@@ -41,3 +41,40 @@
 word-wrap: break-word;
 hyphens: auto;
 }
+/*
+.modal-container{
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   width:100%;
+   height:100%;
+   background-color: rgba(0,0,0,.5);
+   display:none;
+   align-items: center;
+   justify-content: center;
+   z-index: 1000;
+}
+
+.modal-example{
+   border: 1px solid black;
+   background-color: white;
+   display: flex;
+   position: relative;
+   width: 110px !important;
+   height: 110px !important;
+   transition: all .7s;
+   overflow: auto;
+}
+
+.modal-container .show-modal{
+   display: flex;
+}
+
+
+.modal-example .show-modal{
+   width: 300px !important;
+   height: 300px !important;
+}
+
+
+*/

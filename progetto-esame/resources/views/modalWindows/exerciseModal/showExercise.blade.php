@@ -1,6 +1,6 @@
 <x-showModal class="showExerciseModal" >
 @slot('modalTitle' , 'Exercise info')
-@slot('modalId' , 'exercise_show_modal')
+@slot('modalId' , 'showExerciseModal')
 @slot('rightTitle' , "")
 
 <div class = "carousel-show-container">
@@ -23,9 +23,13 @@
    </div>
 
 </div>
-<div class="infoContainer">
-   <h6 class="infoLabel"><span>INFO</span><h6>
-   <span id="show-info"></span>
+<div class="info-container">
+   <h6 class="info-label"><span>INFO</span><h6>
+   <div id="showInfo">
+     <div id="infoText">
+
+     </div>
+   </div>
 </div>
 
 </x-showModal>

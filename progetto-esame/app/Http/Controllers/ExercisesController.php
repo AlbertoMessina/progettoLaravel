@@ -20,8 +20,8 @@ class ExercisesController extends Controller
 
    public function save(ExerciseRequest $request)
    {
-      //$this->validate($request,$this->newRecord);
-      $request->all();
+
+      $request-> all();  
       $exercise = new Exercise();
       $exercise->name = $request->exercise_name;
       if(is_null($request->exercise_info)){
@@ -35,18 +35,20 @@ class ExercisesController extends Controller
       $exercise->img_path = "none";
       $exercise->custom_id = 1;
       $saved = $exercise->save();
+      
       if ($saved) {
          if ($this->processfile($exercise->id, $request, $exercise)) {
             $exercise->save();
          }
       }
+      
       $insertedId = $exercise->id;
       return response()->json(array('success' => true, 'insertedId' => $insertedId), 200);
    }
 
-   public function getRecord(Request $request)
+   public function getRecord($id)
    {
-      $id = $request->input('id');
+      
       $queryBuilder = Exercise::where('id', $id);
       $data = $queryBuilder->get();
       return response()->json(array('success' => true, 'exercise' => $data), 200);
@@ -76,7 +78,7 @@ class ExercisesController extends Controller
       $exercise->difficulty = $request->update_difficulty;
       $this->processfile($id, $request, $exercise);
       $res = $exercise->save();
-      return $res;
+      return response()->json(array('success' => true, 'res' => $res), 200);
    }
 
    public function processFile($id, Request $request, &$exercise): bool

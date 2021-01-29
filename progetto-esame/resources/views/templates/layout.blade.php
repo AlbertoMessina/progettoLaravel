@@ -13,12 +13,19 @@
    <link rel="stylesheet" href="{{asset('css/mobileMenu.css')}}">
    <link rel="stylesheet" href="{{asset('/css/social.CSS')}}">
    @yield('css' , "")
+
+   <!-- Bootstrap , Jquery e popper -->
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   <!--javascript-->
+   <script src="{{asset('js/mainLayout.js')}}" defer> </script>
 </head>
 
 <body>
    <div>
       <nav class="navbar navbar-expand-md navbar-dark  nav-row">
-         <div class="mobile-menu-button  collapsed">
+         <div id="mobile-menu-btn" class="mobile-menu-button collapsed" onclick="showMobileMenu()">
             <button class="btn btn-small "><span class="fas fa-bars text-white"> </span> </button>
          </div>
          <div class="home-link">
@@ -32,15 +39,15 @@
       </nav>
    </div>
    <div class="row view">
-      <div class="side hide-meta">
-         <div class="side-menu j-c-between pb-2">
+      <div id="side" class="hide-meta">
+         <div id="side-menu" class="j-c-between pb-2">
             <h3 class="hide-meta collapseElement">Menu</h3>
-            <div class="menu-collapse collapsed">
+            <div id="menu-collapse-btn" class="menu-collapse" onclick="collapseMenu(this)">
                <div class="menu-btn_burger">
                </div>
             </div>
          </div>
-         <div class="navigation-menu">
+         <div id ="navigation-menu">
             <div class="side-menu-item">
                <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
             </div>
@@ -51,9 +58,11 @@
                <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">CLASSES</span></a>
             </div>
          </div>
+
       </div>
       <!-- MOBILE MENU-->
-      <div class="mobile-menu">
+     
+      <div id="mobile-menu" class="mobile-menu">
          <div class="menu-header">
             <h5>Big Muscle </h5>
          </div>
@@ -70,7 +79,7 @@
       </div>
 
       <!--END MOBILE MENU-->
-      <div class="main">
+      <div id="main">
          <!-- content su cio verranno inettati i contenuti della pagina. -->
          <div class="main-content-container main-content">
             <div id="section-header">
@@ -87,15 +96,9 @@
 
    <!-- Footer -->
    @include('/partial/footer')
-   <!-- Bootstrap , Jquery e popper -->
-   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-   <script src="{{asset('js/mainLayout.js')}}"> </script>
+   
    @section('script')
    <!--Myscript -->
    @show
 </body>
-
 </html>

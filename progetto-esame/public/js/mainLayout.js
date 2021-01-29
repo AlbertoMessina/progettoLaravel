@@ -1,63 +1,80 @@
 //collapsing menu left
-$('.menu-collapse').click( function(){
-   let collapseElement = $('.collapseElement');
-   let side = $('.side');
-   let main = $('.main');
-   let navigationMenu = $('.navigation-menu');
-   let sideMenu = $('.side-menu');
-   let sideMenuItem = $('.side-menu-item');
-   let button = $(this);
-   let userIcon = $('.fa-user');
-   let sideMenuLink = $('.side-menu-link');
+function collapseMenu(){
 
-      if(!button.hasClass('collapsed')){
-      //open menu
-      side.css("flex","10%");
-      navigationMenu.css("padding-left", "10px");
-      main.css("flex","85%");
-      //remove class and show elements
-      collapseElement.show();
-      sideMenu.addClass('j-c-between');
-      sideMenu.removeClass('justify-content-center');
-      sideMenuItem.removeClass('center-centered');
-      sideMenuLink.css("width","100%");
-      userIcon.removeClass('ml-2');
-      button.addClass('collapsed');
+   let collapseElement = document.getElementsByClassName("collapseElement");
+   let side = document.getElementById("side");
+   let main = document.getElementById("main");
+   let navigationMenu = document.getElementById("navigation-menu");
+   let sideMenu = document.getElementById("side-menu");
+   let sideMenuItem = document.getElementsByClassName("side-menu-item");
+   let button = document.getElementById("menu-collapse-btn");
+   let userIcon = document.getElementsByClassName("fa-user");
+   let sideMenuLink = document.getElementsByClassName("side-menu-link");
 
-   }
-   else{
+    if(button.classList.contains('collapsed')){
+       //open menu
+     
+       side.style.flex = "10%";
+       navigationMenu.style.paddingLeft = "10px";
+       main.style.flex ="85%";
+       //remove class and show elements
+       for(i=0; i<collapseElement.length; i++){
+         collapseElement[i].classList.remove('hide');
+         collapseElement[i].classList.add('show');
+       }
+       sideMenu.classList.remove('justify-content-center');
+       sideMenu.classList.add('j-c-between'); 
+       for(i=0; i<sideMenuItem.length; i++){
+         sideMenuItem[i].classList.remove('center-centered');
+      }
+      userIcon[0].classList.remove('ml-2');
+      
+       button.classList.remove('collapsed');
+    }
+    else{
       //close menu
-      collapseElement.hide();
-      button.removeClass('collapsed');
-      sideMenu.removeClass('j-c-between');
-      sideMenu.addClass('justify-content-center');
-      sideMenuItem.addClass('center-centered')
-      sideMenuLink.css("width","auto");
-      userIcon.addClass('ml-2');
+      for(i=0; i<collapseElement.length; i++){
+         collapseElement[i].classList.add('hide');
+         collapseElement[i].classList.remove('show');
+       }
+   
+      button.classList.add('collapsed');
+      sideMenu.classList.remove('j-c-between');
+      sideMenu.classList.add('justify-content-center');
+      for(i=0; i<sideMenuItem.length; i++){
+         sideMenuItem[i].classList.add('center-centered');
+      }
+      for(i=0;i<sideMenuLink.length; i++){
+         sideMenuLink[i].style.width = "auto";
+      }
+      
+         userIcon[0].classList.add('ml-2');
+      
    //resize div
-      side.css("flex","1%");
-      navigationMenu.css("padding-left", "5px");
-      main.css("flex","92%");
+      side.style.flex = "1%";
+      navigationMenu.style.paddingLeft ="5px";
+      main.style.flex = "92%";
    }
-});
+}
+
 // mobile menu
-$('.mobile-menu-button').click(function()
-{
-   let button = $(this);
-   let mobileMenu = $('.mobile-menu');
-   if(button.hasClass('collapsed')){
+function showMobileMenu(){
 
-   button.removeClass('collapsed');
-   mobileMenu.animate({"left":"0px"}, 1000);
-
+   let button = document.getElementById('mobile-menu-btn');
+   let mobileMenu =  document.getElementById('mobile-menu');
+   
+   if(button.classList.contains('collapsed')){
+      mobileMenu.style.left = "0px";
+ 
+  button.classList.remove('collapsed');
    }
    else{
-
-      button.addClass('collapsed');
-      mobileMenu.animate({"left":"-150px"}, 1000);
-
+      mobileMenu.style.left = "-150px";
+      button.classList.add('collapsed');
    }
- });
+ }
 
  //utilities
  $('[data-toggle="tooltip"]').tooltip();
+
+

@@ -46,9 +46,9 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapExerciseRoutes();
+        //$this->mapExerciseRoutes();
 
-        //
+        
     }
 
     /**
@@ -79,7 +79,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }
-
+/*
     protected function mapExerciseRoutes()
     {
       // prefisso della rotta così non dobbiamo mettere nella rotta il suo prefisso
@@ -87,4 +87,5 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/exercise.php'));
     }
+    */
 }
