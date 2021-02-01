@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Exercise;
+use App\Models\Photo;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExerciseRequest;
 use App\Http\Requests\ExerciseUpdateRequest;
@@ -37,9 +38,7 @@ class ExercisesController extends Controller
       $saved = $exercise->save();
       
       if ($saved) {
-         if ($this->processfile($exercise->id, $request, $exercise)) {
-            $exercise->save();
-         }
+         $this->processfile($exercise->id, $request);
       }
       
       $insertedId = $exercise->id;
@@ -81,18 +80,28 @@ class ExercisesController extends Controller
       return response()->json(array('success' => true, 'res' => $res), 200);
    }
 
-   public function processFile($id, Request $request, &$exercise): bool
+   public function processFile($id, Request $request): bool
    {
-      if (!$request->hasfile('img_path')) {
+      if (!$request->hasFile('img_path')) {
          return false;
+      } 
+      $files = $request->file('img_path');
+      $i = 0; 
+      foreach($files as $file){
+         if (!$file->isValid()) {
+            return false;
+         }
+         $photo = new Photo();         
+         $fileName = '/' . $id .'/' . $i . '.' . $file->extension();
+         $file->storeAs(env('IMG_EXERCISE_DIR'), $fileName, 'public');
+         $photo->url = env('IMG_EXERCISE_DIR') . $fileName;
+         $photo->exercise_id = $id;
+         $photo->sequence = $i;
+         $photo->description = "asd";
+         $photo->save();
+         $i++;
       }
-      $file = $request->file('img_path');
-      if (!$file->isValid()) {
-         return false;
-      }
-      $fileName = '/' . $id . '.' . $file->extension();
-      $file->storeAs(env('IMG_EXERCISE_DIR'), $fileName, 'public');
-      $exercise->img_path = env('IMG_EXERCISE_DIR') . $fileName;
+     
 
       return true;
    }

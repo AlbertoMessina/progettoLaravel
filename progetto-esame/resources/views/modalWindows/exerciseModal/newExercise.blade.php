@@ -23,7 +23,7 @@
         <div class="form-group pb-3">
             <label class="form-label" data-error="wrong" data-success="right" for="loadImg"><span>LoadImage</span></label>
           <div class="multiple-img-upload">
-              <input type="file" id="inputImgs" name="img_path" class="form-control validate" multiple/>
+              <input type="file" id="inputImgs" name="img_path[]" class="form-control validate" multiple/>
               <div style='padding:14px; margin:auto';>
                  <div id="imgThumbnailPreview">
         

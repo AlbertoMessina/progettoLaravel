@@ -18,7 +18,7 @@ class CreatePhotosTable extends Migration
             $table->unsignedBigInteger('exercise_id');
             $table->integer('sequence')->default(0);
             $table->string('url', 100);
-            $table->string('description',150);
+            $table->string('description',150)->default('loreIpsum');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade')->onUpdate('cascade');

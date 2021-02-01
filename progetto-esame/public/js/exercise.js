@@ -31,17 +31,26 @@ function recordCreation(event){
     let name = document.querySelector("#exerciseName").value;
     let difficulty = document.querySelector("#exerciseDifficulty").value;
     let info = document.querySelector("#exerciseInfo").value;
+    let imgs = document.querySelector('#inputImgs').files;
 
-    let fd = new FormData();
-    fd.append("exercise_name" , name);
+   
+    let form = document.querySelector("#exerciseForm");
+   
+    let fd = new FormData(form);
+    for (var pair of fd.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
+    console.log(fd);
+    /* fd.append("exercise_name" , name);
     fd.append("exercise_difficulty", difficulty);
     fd.append("exercise_info", info);
+    fd.append('img_path[]', imgs );
     let data = { 
         "exercise_name" : name ,
         "exercise_difficulty" : difficulty,
         "exercise_info": info
     };
-    
+    */
     //ajax call
 
     let xhttp = new XMLHttpRequest();
