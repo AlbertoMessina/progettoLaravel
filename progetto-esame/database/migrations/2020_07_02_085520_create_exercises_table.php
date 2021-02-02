@@ -17,7 +17,7 @@ class CreateExercisesTable extends Migration
            $table->id();
            $table->string('name', 128);
            $table->string('description', 300)->default("No description");
-           $table->float('difficulty');
+           $table->string('difficulty');
            $table->string('img_path', 128);
            $table->unsignedBigInteger('custom_id')->default(0);
            $table->softDeletes();

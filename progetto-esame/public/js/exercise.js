@@ -36,21 +36,17 @@ function recordCreation(event){
    
     let form = document.querySelector("#exerciseForm");
    
+    if(imgs.length > 4){
+        alert('Max 4 file');
+        return;
+    }
+
     let fd = new FormData(form);
     for (var pair of fd.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     }
     console.log(fd);
-    /* fd.append("exercise_name" , name);
-    fd.append("exercise_difficulty", difficulty);
-    fd.append("exercise_info", info);
-    fd.append('img_path[]', imgs );
-    let data = { 
-        "exercise_name" : name ,
-        "exercise_difficulty" : difficulty,
-        "exercise_info": info
-    };
-    */
+
     //ajax call
 
     let xhttp = new XMLHttpRequest();
@@ -114,7 +110,7 @@ function recordCreation(event){
             operationFailedShow();
         }
       };
-
+   
     xhttp.open('POST', "/exercise/create", true );
     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     xhttp.setRequestHeader("X-CSRF-Token", token);
@@ -207,15 +203,36 @@ function showUpdateExercise(){
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(xhttp.response);
             console.log(data);
-            let name = data.exercise[0].name;
-            let difficulty = data.exercise[0].difficulty;
-            let info = data.exercise[0].description;
+            let name = data["exercise"].exercise[0].name;            
+            let info = data["exercise"].exercise[0].description;  
+            let difficulty = data["exercise"].exercise[0].difficulty; 
             
             document.querySelector('#updateName').setAttribute('value', name);
             document.querySelector('#updateDifficulty').setAttribute('value', difficulty);
-            document.querySelector('#updateInfo').value = info;  
+            document.querySelector('#updateInfo').value = info; 
+            //SET ATTRIBUTE 
             document.querySelector('#updateId').setAttribute('data-id', id ); 
             document.querySelector('#updateli').setAttribute('li-id', li_id);          
+            
+            //SET IMG  
+            let files = data["exercise"].files;
+            let output = document.querySelector('#imgThumbnailPreviewUpdate');
+            output.innerHTML = "No image found";
+            if(files.length > 0){
+                output.innerHTML = "";
+                for(let i = 0; i< files.length; i++)
+                {
+                
+                    let file = files[i];
+                    console.log(file);
+                    let imgUrl = file.url;
+                    let imgThumbnailElem = "<div class='imgThumbContainer'><div class='IMGthumbnail' ><img  src='storage/" + imgUrl + "'" +
+                                "title='"+file.name + "'/>";
+                        
+                    output.innerHTML = output.innerHTML + imgThumbnailElem;            
+            
+                }
+            }  
             setTimeout(function(){updateExerciseModal.style.display = "block"; }, 200);
             
         }     
@@ -289,8 +306,8 @@ const showExerciseModal = document.querySelector("#showExerciseModal");
 /*  Show deleteModal   */
 function showExercise(){
     //carousel flush
-    document.querySelectorAll('.carousel-indicators-exercise').innerHTML = "";
-    document.querySelectorAll('.carousel-inner-exercise').innerHTML = "";
+    document.querySelector('.carousel-indicators-exercise').innerHTML = "";
+    document.querySelector('.carousel-inner-exercise').innerHTML = "";
     // get id for ajax call
     let li_id = this.getAttribute('data-li-reference');
     let id = document.querySelector('#'+li_id +'_name').getAttribute('data-id');
@@ -300,14 +317,53 @@ function showExercise(){
         // setting of value getting from server
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(xhttp.response);
+            let files = data["exercise"].files;
+            console.log(data);
+            if(files!=null){
+                for(let i = 0; i<files.length; i++){
+                    // LETTURA VALORI
+                    console.log(files[i].url);
+                    let imgUrl = files[i].url;
+                    //check if it's a storage or in url http
+                    if((imgUrl.search('http')) === -1){
+                        imgUrl = 'storage/'+ imgUrl;
+                     }
+                    // fare append nel carousello
+                    if(i == 0){
+                        document.querySelector('.carousel-indicators-exercise').innerHTML +='<li data-target="#carouselShowExercise" data-slide-to="'+i+'" class="active">' + '</li>';
+                        document.querySelector('.carousel-inner-exercise').innerHTML +='<div class="carousel-item active">' +
+                            '<img src="' + imgUrl + '" class="d-block  img-exercise" alt="...">' +
+                            '</div>';
+                    }
+                    else{
+                        document.querySelector('.carousel-indicators-exercise').innerHTML +='<li data-target="#carouselShowExercise" data-slide-to="'+i+'">' + '</li>';
+                        document.querySelector('.carousel-inner-exercise').innerHTML +='<div class="carousel-item ">' +
+                            '<img src="' + imgUrl + '" class="d-block  img-exercise" alt="...">' +
+                            '</div>';
+                    }
+                }
+            }
+            if(files.length == 0){
+                document.querySelector('.carousel-indicators-exercise').innerHTML +='<li data-target="#carouselShowExercise" data-slide-to="0" class="active">' + '</li>';
+                document.querySelector('.carousel-inner-exercise').innerHTML +='<div class="carousel-item active">' +
+                    '<img src="storage/images/default.png" class="d-block  img-exercise" alt="...">' +
+                    '</div>';
+            }
             
-            let name = data.exercise[0].name;
-            
-            let info = data.exercise[0].description;
-            console.log('Exercise'+ '  ' + name  + "  " + info);
-                     
+            /*
+            let url = exercise.img_path;
+            if((url.search('http')) === -1){
+               url = 'storage/'+ url;
+            }
+            if(url.search('none') !== -1 ){
+               url ="storage/images/default.png";
+            }
+
+            */
+            let name = data["exercise"].exercise[0].name;            
+            let info = data["exercise"].exercise[0].description;        
             document.querySelector('#infoText').innerHTML = info;  
-            document.querySelector('.show-right-title').innerHTML = ">"+name;
+            document.querySelector('.show-right-title').innerHTML = ">"+name;        
             setTimeout(function(){showExerciseModal.style.display = "block"; }, 200);
             
         }     

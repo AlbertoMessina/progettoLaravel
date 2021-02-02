@@ -17,7 +17,14 @@
         </div>
          <div class="form-group mb-5">
             <label  class="form-label" data-error="wrong" data-success="right" for="loadImg"><span>LoadImage</span></label>
-            <input type="file" id="updateImage" name="img_path" class="form-control validate">
+              <div class="multiple-img-upload">
+                <input type="file" id="updateImgs" name="update_img_path[]" class="form-control validate" multiple/>
+                <div style='padding:14px; margin:auto';>
+                  <div id="imgThumbnailPreviewUpdate">
+                      
+                    </div>
+                </div>
+            </div>
           </div>
           <div>
              <img id = "update-miniature-img"> </img>

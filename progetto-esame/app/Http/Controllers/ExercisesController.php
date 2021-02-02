@@ -48,8 +48,20 @@ class ExercisesController extends Controller
    public function getRecord($id)
    {
       
-      $queryBuilder = Exercise::where('id', $id);
+     /* $queryBuilder = Exercise::join('photos', 'exercises.id','=','photos.exercise_id' )
+      ->where('exercises.id', $id)->select("exercises.name","exercises.description","photos.url","photos.sequence");
       $data = $queryBuilder->get();
+      */
+      $queryBuilder = Exercise::where('id', $id);
+      $exercise = $queryBuilder->get();
+      $queryBuilder = Photo::where('exercise_id', $id)
+      ->select('sequence',"url", "description");
+      $files = $queryBuilder->get();
+
+      $data = [
+         "exercise" => $exercise,
+         "files"=> $files
+      ];
       return response()->json(array('success' => true, 'exercise' => $data), 200);
    }
 
