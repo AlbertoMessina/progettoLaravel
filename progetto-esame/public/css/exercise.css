@@ -10,12 +10,16 @@
    float: right;
 }
 
-.container_internal{
+.container-internal{
    display: flex;
-   justify-content: space-between;
+   justify-content: start;
    align-items: center;
+ 
 }
 
+.container-internal div{
+   width: 25%;
+}
 .container_external{
    display: flex;
    justify-content: space-between;
@@ -47,6 +51,10 @@
    border-bottom: 1px solid #0000008c;
    background-color: lightgrey;
    font-weight: bold;
+}
+
+.table-header div{
+   width: 25%;
 }
 
 .trash-exercise{
@@ -89,10 +97,8 @@
    display:flex;
    justify-content: center;
    padding-bottom: 20px;
-
 }
 .carousel-show-exercise{
-
    min-width: 300px;
    min-height: 300px;
    max-width: 500px;
@@ -112,6 +118,15 @@
 .form-label span{
    background:#fff;
    padding: 0  5px;
+
+}
+
+.radio-button-container{
+   display:flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 75%;
+   margin: auto;
 
 }
 

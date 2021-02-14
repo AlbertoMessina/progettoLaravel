@@ -2,6 +2,10 @@
 @slot('modalTitle' , 'Exercise info')
 @slot('modalId' , 'showExerciseModal')
 @slot('rightTitle' , "")
+<div class="info-container">
+   <h6 class="info-label"><span id= "exerciseTypeShow">TYPE</span><h6>
+ 
+</div>
 
 <div class = "carousel-show-container">
 

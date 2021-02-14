@@ -21,7 +21,6 @@ class ExercisesController extends Controller
 
    public function save(ExerciseRequest $request)
    {
-
       $request-> all();  
       $exercise = new Exercise();
       $exercise->name = $request->exercise_name;
@@ -30,17 +29,13 @@ class ExercisesController extends Controller
       }else{
          $exercise->description = $request->exercise_info;
       }
-      
-      
       $exercise->difficulty = $request->exercise_difficulty;
-      $exercise->img_path = "none";
+      $exercise->type = $request->exercise_type;
       $exercise->custom_id = 1;
-      $saved = $exercise->save();
-      
+      $saved = $exercise->save();    
       if ($saved) {
          $this->processfile($exercise->id, $request);
-      }
-      
+      } 
       $insertedId = $exercise->id;
       return response()->json(array('success' => true, 'insertedId' => $insertedId), 200);
    }
@@ -67,19 +62,13 @@ class ExercisesController extends Controller
 
    public function delete($id)
    {
+      $this->removeFile($id);
       $exercise = Exercise::find($id);
-      $img = $exercise->img_path;
-      $disk = config('filesystems.default');
       $res = Exercise::where('id', $id)->delete();
-      if ($res) {
-         if ($img && Storage::disk($disk)->exists($img)) {
-            Storage::disk($disk)->delete($img);
-         }
-      }
       return $res;
    }
 
-   public function update(ExerciseUpdateRequest $request)
+   public function update(Request $request)
    {
       $request->all();
       $id = $request->update_id;
@@ -87,7 +76,15 @@ class ExercisesController extends Controller
       $exercise->name = $request->update_name;
       $exercise->description = $request->update_info;
       $exercise->difficulty = $request->update_difficulty;
-      $this->processfile($id, $request, $exercise);
+      $exercise->type = $request->update_type;
+      if ($request->hasFile('img_path')) {
+         $count = count($request->file('img_path'));
+         if($count > 0 ){
+            $this->removeFile($id);
+            $this->processfile($id, $request);
+         }
+      }  
+     
       $res = $exercise->save();
       return response()->json(array('success' => true, 'res' => $res), 200);
    }
@@ -113,8 +110,24 @@ class ExercisesController extends Controller
          $photo->save();
          $i++;
       }
-     
-
+      
       return true;
    }
+
+   public function removeFile($id){
+      $disk = config('filesystems.default');
+      $queryBuilder = Photo::where('exercise_id', $id);
+      $photos = $queryBuilder->get();
+      foreach($photos as $photo){
+         $img = $photo->url;
+         if ($img && Storage::disk($disk)->exists($img)) {
+            Storage::disk($disk)->delete($img);
+         }
+      }
+      $queryBuilder->delete();
+      
+      Storage::deleteDirectory(env('IMG_EXERCISE_DIR').'/'.$id);
+   }
+
+ 
 }

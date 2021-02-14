@@ -35,7 +35,7 @@ $factory->define(App\Models\Exercise::class, function (Faker $faker) {
         'description' => $faker->text(250),
         'name' => $faker->name,
         'difficulty' => $faker->numberBetween($min = 1 , $max = 5),
-        'img_path' => $faker->imageUrl(640, 480 , 'sports')
+        'type'=>$faker->randomElement(['fullBody', 'lowerBody','upperBody', 'core', 'cardio']),
     ];
 });
 

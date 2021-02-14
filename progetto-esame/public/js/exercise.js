@@ -1,8 +1,6 @@
 
 //MODAL NEW EXERCISE
 
-
-
 /*  Add event listener to button    */
 const addLinkBtn = document.querySelector("#addLink");
 addLinkBtn.addEventListener("click", showNewExercise);
@@ -33,11 +31,22 @@ function recordCreation(event){
     let info = document.querySelector("#exerciseInfo").value;
     let imgs = document.querySelector('#inputImgs').files;
 
+    let type = "";
+    //radio button value
+    let radioCheck = document.querySelectorAll("input[name=exercise_type]");
+    for(let i = 0 ; i < radioCheck.length ; i++){
+        if (radioCheck[i].checked){
+            type = radioCheck[i].value;
+            break;
+        }
+    }
+
    
     let form = document.querySelector("#exerciseForm");
    
     if(imgs.length > 4){
         alert('Max 4 file');
+
         return;
     }
 
@@ -64,15 +73,17 @@ function recordCreation(event){
             let newElem = document.createElement("li");
             newElem.classList.add('list-group-item');
             newElem.setAttribute('id', 'li_'+newId );
-            newElem.classList.add("list-group-item");
-                newElem.innerHTML = '<div class="container_internal">'+
-                '<div id ="li_'+ newId+'_name"'+'class ="width-25 exercise-name"  data-id='+id+ ' data-name = '+name+'>'+
+                newElem.innerHTML = '<div class="container-internal">'+
+                '<div id ="li_'+ newId+'_name"'+'class ="exercise-name"  data-id='+id+ ' data-name = "'+name+'">'+
                  name +
                 '</div>' +
-                '<div class ="width-25 exercise-difficulty  data-difficulty = '+ difficulty+ '" >' +
+                '<div id ="li_'+ newId+'_type"'+'class ="exercise-type  data-type = "'+ type+ '" >' +
+                type +
+                '</div>' +
+                '<div id ="li_'+ newId+'_difficulty"'+'class ="exercise-difficulty  data-difficulty = "'+ difficulty+ '" >' +
                 difficulty +
                 '</div>' +
-                '<div  class ="width-25  button-container">' +
+                '<div  class ="button-container">' +
                 '<a class="btn  show" data-toggle="tooltip" data-placement="top" title="Show"  role = "button" data-li-reference ="li_'+newId+'">' +
                 '<i class="far fa-eye show-exercise icon-table">' +
                 '</i>' + '</a>' +
@@ -92,7 +103,7 @@ function recordCreation(event){
             
          
             // event listner to new button
-            //WORKPOINT
+         
             let deleteBtn = document.querySelector('#li_'+newId).querySelector('.delete');
             deleteBtn.addEventListener("click", showDeleteExercise);
 
@@ -206,10 +217,12 @@ function showUpdateExercise(){
             let name = data["exercise"].exercise[0].name;            
             let info = data["exercise"].exercise[0].description;  
             let difficulty = data["exercise"].exercise[0].difficulty; 
+            let type = data["exercise"].exercise[0].type;
             
             document.querySelector('#updateName').setAttribute('value', name);
             document.querySelector('#updateDifficulty').setAttribute('value', difficulty);
             document.querySelector('#updateInfo').value = info; 
+            document.querySelector("input[name=update_type][value=" + type + "]").setAttribute('checked', 'checked');
             //SET ATTRIBUTE 
             document.querySelector('#updateId').setAttribute('data-id', id ); 
             document.querySelector('#updateli').setAttribute('li-id', li_id);          
@@ -251,7 +264,14 @@ function updateExercise(event){
     let name = document.querySelector('#updateName').value;
     let difficulty = document.querySelector('#updateDifficulty').value;
     let info = document.querySelector('#updateInfo').value;
-
+    let type ="";
+    let radioCheck = document.querySelectorAll("input[name=update_type]");
+    for(let i = 0 ; i < radioCheck.length ; i++){
+        if (radioCheck[i].checked){
+            type = radioCheck[i].value;
+            break;
+        }
+    }
     if(info == null || info == ''){
         info ="No description";
   }
@@ -261,23 +281,30 @@ function updateExercise(event){
     let id =  document.querySelector('#updateId').getAttribute('data-id');
 
     //form data creation
-    let fd = new FormData();
+    //get form
+    let form = document.querySelector('#updateExerciseForm');
+    let fd = new FormData(form);
+    fd.append("update_id", id);
+    /*
     fd.append("update_name" , name);
     fd.append("update_difficulty", difficulty);
     fd.append("update_info", info);
-    fd.append("update_id", id);
+    
     //Ajax Call
+    */
     let xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function(){
         // setting of value getting from server
         if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse(xhttp.response);
-            console.log(data);
+           
             //change value on li
             let li_id = document.querySelector('#updateli').getAttribute('li-id');
             document.querySelector('#'+li_id + '_name').innerHTML = name;
+            document.querySelector('#'+li_id + '_name').setAttribute('data-name', name);
             document.querySelector('#'+li_id + '_difficulty').innerHTML = difficulty;
-            
+            document.querySelector('#'+li_id + '_difficulty').setAttribute = ('data-difficulty' , difficulty);
+            document.querySelector('#'+li_id + '_type').innerHTML = type;
+            document.querySelector('#'+li_id + '_type').setAttribute = ('data-type' , type);
             //show snackbar
             operationSuccessShow();
             //close modal
@@ -361,7 +388,9 @@ function showExercise(){
 
             */
             let name = data["exercise"].exercise[0].name;            
-            let info = data["exercise"].exercise[0].description;        
+            let info = data["exercise"].exercise[0].description;
+            let type = data["exercise"].exercise[0].type;  
+            document.querySelector('#exerciseTypeShow').innerHTML = "TYPE" + " -> " + type;      
             document.querySelector('#infoText').innerHTML = info;  
             document.querySelector('.show-right-title').innerHTML = ">"+name;        
             setTimeout(function(){showExerciseModal.style.display = "block"; }, 200);

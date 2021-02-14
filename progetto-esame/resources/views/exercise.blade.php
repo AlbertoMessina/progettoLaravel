@@ -19,13 +19,16 @@
    <ul class="list-group list-group-item light-border" id='exerciseTable'>
       <li class="list-group-item table-header">
 
-            <div class ="width-25">
+            <div>
                NAME
             </div>
-            <div class ="width-25">
+            <div>
+               TYPE
+            </div>
+            <div>
                DIFFICULTY
             </div>
-            <div  class ="width-25">
+            <div>
             <a class="btn btn-secondary" id="addLink" data-toggle="tooltip" data-placement="left" title="Add new" role="button"><span class="fas fa-plus add-exercise"> </span></a>
             </div>
 
@@ -33,14 +36,17 @@
 
       @foreach ($exercise as $exercise)
       <li class="list-group-item " id = 'li_{{$loop -> index}}' >
-         <div class="container_internal">
-            <div id ='li_{{$loop -> index}}_name'  class ="width-25 exercise-name"   data-url='{{$exercise->img_path}}' data-id='{{$exercise->id}}' data-name = '{{$exercise->name}}'>
+         <div class="container-internal">
+            <div id ='li_{{$loop -> index}}_name'  class ="exercise-name"   data-id='{{$exercise->id}}' data-name = '{{$exercise->name}}'>
                {{$exercise->name}}
             </div>
-            <div id ='li_{{$loop -> index}}_difficulty' class ="width-25 exercise-difficulty" data-difficulty = '{{$exercise->difficulty}}'>
+            <div id ='li_{{$loop -> index}}_type' class ="exercise-type" data-type='{{$exercise->type}}'>
+             {{$exercise->type}}
+            </div>
+            <div id ='li_{{$loop -> index}}_difficulty' class ="exercise-difficulty" data-difficulty='{{$exercise->difficulty}}'>
                {{$exercise->difficulty}}
             </div>
-            <div  class ="width-25 button-container">
+            <div  class ="button-container">
 
                <a class="btn  show " data-toggle="tooltip" data-placement="top" title="Show"  role = "button" data-li-reference ='li_{{$loop -> index}}'><i class='far fa-eye show-exercise icon-table'></i></a>
                @if($exercise->custom_id != 0)
