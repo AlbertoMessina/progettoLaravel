@@ -28,9 +28,9 @@
                   <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')><label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
-            <div id="login-container" class="log-containers">
+            <div id="login-container" class="log-containers" >
                <!--href="{{route('admin.users.index')}}"-->
-               <a class="btn btn-success" id ="logInModalBtn" ><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
+               <a class="btn btn-success" id ="logInBtn" href="{{route('login')}}" ><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
             </div>
          </nav>
       </div>
@@ -97,7 +97,7 @@
 
 
    </div>
-   @include('/modalWindows/loginModal')
+
    <div class='blanck-space'>
    </div>
    <!-- Footer -->

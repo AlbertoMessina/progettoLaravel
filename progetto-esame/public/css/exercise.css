@@ -44,7 +44,7 @@ body{
    padding: 0; /* Remove padding */
    margin: 0; /* Remove margins */
    overflow: auto;
-   height: calc(100vh - 240px);
+   height: calc(100vh - 220px);
  }
  
 .table-container li {

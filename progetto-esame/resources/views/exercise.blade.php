@@ -76,18 +76,3 @@
 @include('/modalWindows/exerciseModal/showExercise')
 
 @endsection
-
-
-@section('script')
-
-<script>
-   /*TEXT PER IL SIGN IN */
-   $("#loginContainer").hide();
-   /*TEXT PER IL SING IN*/
-
-   $(document).ready(function() {
-
-   });
-</script>
-
-@endsection

@@ -10,7 +10,6 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
    <!--CSS IMPORT -->
    <link rel="stylesheet" href='/css/main.css'>
-   <link rel="stylesheet" href="{{asset('css/mobileMenu.css')}}">
    <link rel="stylesheet" href="{{asset('/css/social.CSS')}}">
    @yield('css' , "")
 </head>
@@ -18,27 +17,15 @@
 <body>
    <div>
       <nav class="navbar navbar-expand-md navbar-dark  nav-row">
-         <div class="mobile-menu-button  collapsed">
-            <button class="btn btn-small "><span class="fas fa-bars text-white"> </span> </button>
-         </div>
          <div class="home-link">
             <div id="image-background">
                <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')> <label class="hide-meta">Big Muscle </label></a>
             </div>
          </div>
-         <div id="logout-container" class="log-containers">
-            <a class="btn btn-danger" href="/"><label class="hide-meta  text-size-small text-white label-link  pr-2">Log Out</label><span class="fas fa-sign-out-alt label-link"></span></a>
-         </div>
       </nav>
    </div>
-   <div class="row view">
-      <div class="main">
-         <!-- content su cio verranno inettati i contenuti della pagina. -->
-         <div class="main-content-container main-content">
+   <div class="row view">      
             @yield('content')
-         </div>
-      </div>
-
    </div>
 
 
@@ -52,7 +39,7 @@
    <script src="{{asset('js/mainLayout.js')}}"> </script>
    @section('script')
    <!--Myscript -->
-   @show
+   @stop
 </body>
 
 </html>

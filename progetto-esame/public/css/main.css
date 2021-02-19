@@ -13,13 +13,6 @@
       display: none;
    }
 
-.text-size-small{
-   font-size: 1rem !important;
-  }
-.text-size-medium{
-     font-size: 1.1rem !important;
-  };
-
 /*DEFAULT LAYOUT META*/
    #main{
       flex: 88%;
@@ -126,6 +119,7 @@ a, a:hover {
 }
 
 .main-content-container{
+   width: 100%;
    height: 100%;
 }
 
@@ -216,14 +210,6 @@ a.navigation:hover, a.navigation:active {
   background-color: #212529;
 }
 
-.row-special{
-   display: flex;
-   flex-wrap: wrap;
-   margin: 0px;
-}
-
-
-
 .text-bold{
    font-weight: 700;
    text-shadow: 1px 2px 3px black;
@@ -256,6 +242,10 @@ a.navigation:hover, a.navigation:active {
    max-width: 60%;
 }
 
+.form-group-element{
+   margin-bottom: 1.4em;
+   margin-top: 1.2em;
+ }
 /*SHOW-MODAL CSS*/
 .show-left-title{
    float:left;

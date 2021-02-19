@@ -26,7 +26,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+/**/
+Route::get('/login','UserController@index')->name('login');
 
 /*Exercise Route*/
 
@@ -36,3 +37,7 @@ Route::delete('/exercise/delete/{id}','ExercisesController@delete')->where('id',
 Route::POST('/exercise/update','ExercisesController@update')->name('exercise.updateExercise');
 Route::post('/exercise/create' , 'ExercisesController@save')->name('exercise.save');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

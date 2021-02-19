@@ -82,7 +82,7 @@
          <!--END MOBILE MENU-->
          <div id="main">
             <!-- content su cio verranno inettati i contenuti della pagina. -->
-            <div class="main-content-container main-content">
+            <div class="main-content-container">
                <div id="section-header">
                   <div id="pageSectionName" class="py-1 pl-4 text-bold text-white">
                      <span class="text-uppercase text-size-medium"> @yield('user','UserName') @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
@@ -98,9 +98,7 @@
       <!-- Footer -->
       @include('/partial/footer')
 
-      @section('script')
-      <!--Myscript -->
-      @shows
+   
    </div>
 </body>
 
