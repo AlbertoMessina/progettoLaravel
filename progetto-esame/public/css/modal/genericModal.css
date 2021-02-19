@@ -67,13 +67,8 @@
   .modal-body {
     padding: 2px 16px;
   }
-  /*
-  .modal-footer {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-    */
-  }
+ 
+.form-group-element{
+  margin-bottom: 1.4em;
+  margin-top: 1.2em;
+}

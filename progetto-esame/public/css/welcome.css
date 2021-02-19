@@ -119,7 +119,8 @@ html, body {
    line-height: 18px;
 }
 .presentation-title{
-   font-size: 5vh;
+   display: inline-block;
+   font-size: 2rem;
    font-weight: bold;
    text-shadow: 1px 2px 3px black;
    margin: 0;
@@ -132,7 +133,7 @@ html, body {
    height: auto;
 }
 .sign-up-form label{
-   font-size: 2vh;
+   font-size: 1.4rem;
    color:black;
    font-weight: bold;
    text-shadow: 1px 2px 3px white;
@@ -174,6 +175,21 @@ html, body {
 }
 /*TEST*/
 
+/* The Modal (background) */
+.modal-content {
+   position: relative;
+   background-color: #fefefe;
+   margin: auto;
+   padding: 0;
+   border: 1px solid #888;
+   width: 40%;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+   -webkit-animation-name: animatetop;
+   -webkit-animation-duration: 0.4s;
+   animation-name: animatetop;
+   animation-duration: 0.4s
+ }
+
 @media screen and (max-width: 700px) {
    .welcome-card img {
        max-width: 100%;
@@ -187,7 +203,7 @@ html, body {
    }
    .presentation-title{
       text-align: center;
-
+      font-size: 1.5rem;
    }
 
    .positioning-presentation{
@@ -277,6 +293,8 @@ html, body {
    }
 
 }
+
+/*Modal LogIn*/
 
 @media screen and (max-width: 350px) {
    .positioning-presentation{

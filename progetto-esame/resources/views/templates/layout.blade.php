@@ -23,82 +23,85 @@
 </head>
 
 <body>
-   <div>
-      <nav class="navbar navbar-expand-md navbar-dark  nav-row">
-         <div id="mobile-menu-btn" class="mobile-menu-button collapsed" onclick="showMobileMenu()">
-            <button class="btn btn-small "><span class="fas fa-bars text-white"> </span> </button>
-         </div>
-         <div class="home-link">
-            <div id="image-background">
-               <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')> <label class="hide-meta">Big Muscle </label></a>
+   <div style="overflow: hidden;">
+      <div>
+         <nav class="navbar navbar-expand-md navbar-dark  nav-row">
+            <div id="mobile-menu-btn" class="mobile-menu-button collapsed" onclick="showMobileMenu()">
+               <button class="btn btn-small "><span class="fas fa-bars text-white"> </span> </button>
             </div>
-         </div>
-         <div id="logout-container" class="log-containers">
-            <a class="btn btn-danger" href="/"><label class="hide-meta  text-size-small text-white label-link  pr-2">Log Out</label><span class="fas fa-sign-out-alt label-link"></span></a>
-         </div>
-      </nav>
-   </div>
-   <div class="row view">
-      <div id="side" class="hide-meta">
-         <div id="side-menu" class="j-c-between pb-2">
-            <h3 class="hide-meta collapseElement">Menu</h3>
-            <div id="menu-collapse-btn" class="menu-collapse" onclick="collapseMenu(this)">
-               <div class="menu-btn_burger">
+            <div class="home-link">
+               <div id="image-background">
+                  <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')> <label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
-         </div>
-         <div id ="navigation-menu">
-            <div class="side-menu-item">
-               <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
+            <div id="logout-container" class="log-containers">
+               <a class="btn btn-danger" href="/"><label class="hide-meta  text-size-small text-white label-link  pr-2">Log Out</label><span class="fas fa-sign-out-alt label-link"></span></a>
             </div>
-            <div class="side-menu-item">
-               <a href="/exercise/" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
-            </div>
-            <div class="side-menu-item">
-               <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">CLASSES</span></a>
-            </div>
-         </div>
-
+         </nav>
       </div>
-      <!-- MOBILE MENU-->
-     
-      <div id="mobile-menu" class="mobile-menu">
-         <div class="menu-header">
-            <h5>Big Muscle </h5>
-         </div>
-         <div class="menu-mobile-item">
-            <a href="/profile/" class="start-centered"><span class="fas fa-user icon"> </span><span class="menu-selection">PROFILE</span></a>
-         </div>
-         <div class="menu-mobile-item">
-            <a href="/exercise/" class="start-centered"><span class="fas fa-dumbbell icon"> </span><span class="menu-selection">EXERCISE</span></a>
-         </div>
-         <div class="menu-mobile-item">
-            <a href="#" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">CLASSES</span></a>
-         </div>
-
-      </div>
-
-      <!--END MOBILE MENU-->
-      <div id="main">
-         <!-- content su cio verranno inettati i contenuti della pagina. -->
-         <div class="main-content-container main-content">
-            <div id="section-header">
-               <div id="pageSectionName" class="py-1 pl-4 text-bold text-white">
-                  <span class="text-uppercase text-size-medium"> @yield('user','UserName') @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
+      <div class="row view">
+         <div id="side" class="hide-meta">
+            <div id="side-menu" class="j-c-between pb-2">
+               <h3 class="hide-meta collapseElement">Menu</h3>
+               <div id="menu-collapse-btn" class="menu-collapse" onclick="collapseMenu(this)">
+                  <div class="menu-btn_burger">
+                  </div>
                </div>
             </div>
-            @yield('content')
+            <div id="navigation-menu">
+               <div class="side-menu-item">
+                  <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
+               </div>
+               <div class="side-menu-item">
+                  <a href="/exercise/" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
+               </div>
+               <div class="side-menu-item">
+                  <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">CLASSES</span></a>
+               </div>
+            </div>
+
          </div>
+         <!-- MOBILE MENU-->
+
+         <div id="mobile-menu" class="mobile-menu">
+            <div class="menu-header">
+               <h5>Big Muscle </h5>
+            </div>
+            <div class="menu-mobile-item">
+               <a href="/profile/" class="start-centered"><span class="fas fa-user icon"> </span><span class="menu-selection">PROFILE</span></a>
+            </div>
+            <div class="menu-mobile-item">
+               <a href="/exercise/" class="start-centered"><span class="fas fa-dumbbell icon"> </span><span class="menu-selection">EXERCISE</span></a>
+            </div>
+            <div class="menu-mobile-item">
+               <a href="#" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">CLASSES</span></a>
+            </div>
+
+         </div>
+
+         <!--END MOBILE MENU-->
+         <div id="main">
+            <!-- content su cio verranno inettati i contenuti della pagina. -->
+            <div class="main-content-container main-content">
+               <div id="section-header">
+                  <div id="pageSectionName" class="py-1 pl-4 text-bold text-white">
+                     <span class="text-uppercase text-size-medium"> @yield('user','UserName') @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
+                  </div>
+               </div>
+               @yield('content')
+            </div>
+         </div>
+
       </div>
 
+
+      <!-- Footer -->
+      @include('/partial/footer')
+
+      @section('script')
+      <!--Myscript -->
+      @shows
    </div>
-
-
-   <!-- Footer -->
-   @include('/partial/footer')
-   
-   @section('script')
-   <!--Myscript -->
-   @show
 </body>
+
 </html>

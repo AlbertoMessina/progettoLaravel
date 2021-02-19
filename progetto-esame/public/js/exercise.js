@@ -71,7 +71,6 @@ function recordCreation(event){
             let newId = document.querySelector('#exerciseTable').getElementsByTagName("li").length;
                       
             let newElem = document.createElement("li");
-            newElem.classList.add('list-group-item');
             newElem.setAttribute('id', 'li_'+newId );
                 newElem.innerHTML = '<div class="container-internal">'+
                 '<div id ="li_'+ newId+'_name"'+'class ="exercise-name"  data-id='+id+ ' data-name = "'+name+'">'+
@@ -84,23 +83,24 @@ function recordCreation(event){
                 difficulty +
                 '</div>' +
                 '<div  class ="button-container">' +
-                '<a class="btn  show" data-toggle="tooltip" data-placement="top" title="Show"  role = "button" data-li-reference ="li_'+newId+'">' +
-                '<i class="far fa-eye show-exercise icon-table">' +
+                '<a class="btn  show" role = "button" data-li-reference ="li_'+newId+'">' +
+                '<i class="far fa-eye show-exercise icon-table" data-toggle="tooltip" data-placement="top" title="Show" >' +
                 '</i>' + '</a>' +
-                '<a class="btn  edit" data-toggle="tooltip" data-placement="top" title="Edit" role"button" data-li-reference ="li_'+newId+'">' +
-                '<i class="far fa-edit edit-execise icon-table">'+
+                '<a class="btn  edit" role"button" data-li-reference ="li_'+newId+'">' +
+                '<i class="far fa-edit edit-execise icon-table" data-toggle="tooltip" data-placement="top" title="Edit" >'+
                 '</i>' + '</a>' +
-                '<a class="btn  delete" data-toggle="tooltip" data-placement="top" title="Delete" role="button" data-li-reference ="li_'+newId+'">' +
-                '<i class="fas fa-trash trash-exercise icon-table">' +
+                '<a class="btn  delete"  role="button" data-li-reference ="li_'+newId+'">' +
+                '<i class="fas fa-trash trash-exercise icon-table" data-toggle="tooltip" data-placement="top" title="Delete">' +
                 '</i>' + '</a>'
                 +'</div>'+
             '</div >';
             
             //insert new exercise as first
             let referenceNode = document.querySelector("#exerciseTable li:first-child");
-            referenceNode.parentNode.insertBefore(newElem, referenceNode.nextSibling);
+            referenceNode.parentNode.insertBefore(newElem, referenceNode);    // referenceNode.nextSibling
             newExerciseModal.style.display = "none";
             
+          
          
             // event listner to new button
          
@@ -115,10 +115,12 @@ function recordCreation(event){
             operationSuccessShow();
             document.querySelector('#exerciseForm').reset();
             document.querySelector('#imgThumbnailPreview').innerHTML= "";
+
         }
         //SOLVE VALIDATION ERROR
-        if (this.readyState == 4 && this.status > 400) {
+        if (this.readyState == 4 && this.status == 422) {
             operationFailedShow();
+            alert('Operation failed validation error');
         }
       };
    

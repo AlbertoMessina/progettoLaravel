@@ -28,7 +28,7 @@
 
 </div>
 <div class="info-container">
-   <h6 class="info-label"><span>INFO</span><h6>
+   <h6 class="info-label"><span>INFO</span></h6>
    <div id="showInfo">
      <div id="infoText">
 

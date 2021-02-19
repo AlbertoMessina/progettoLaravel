@@ -15,44 +15,44 @@
 
 @section('content')
 {{--Tabella esercizi--}}
-<div class= "table-container  ">
-   <ul class="list-group list-group-item light-border" id='exerciseTable'>
-      <li class="list-group-item table-header">
+<div class="table-container  ">
+   <div class="table-header">
 
-            <div>
-               NAME
-            </div>
-            <div>
-               TYPE
-            </div>
-            <div>
-               DIFFICULTY
-            </div>
-            <div>
-            <a class="btn btn-secondary" id="addLink" data-toggle="tooltip" data-placement="left" title="Add new" role="button"><span class="fas fa-plus add-exercise"> </span></a>
-            </div>
+      <div>
+         NAME
+      </div>
+      <div>
+         TYPE
+      </div>
+      <div>
+         DIFFICULTY
+      </div>
+      <div>
+         <a class="btn btn-secondary" id="addLink" data-toggle="tooltip" data-placement="left" title="Add new" role="button"><span class="fas fa-plus add-exercise"> </span></a>
+      </div>
 
-      </li>
+   </div>
+   <ul class="light-border" id='exerciseTable'>
 
       @foreach ($exercise as $exercise)
-      <li class="list-group-item " id = 'li_{{$loop -> index}}' >
+      <li id='li_{{$loop -> index}}'>
          <div class="container-internal">
-            <div id ='li_{{$loop -> index}}_name'  class ="exercise-name"   data-id='{{$exercise->id}}' data-name = '{{$exercise->name}}'>
+            <div id='li_{{$loop -> index}}_name' class="exercise-name" data-id='{{$exercise->id}}' data-name='{{$exercise->name}}'>
                {{$exercise->name}}
             </div>
-            <div id ='li_{{$loop -> index}}_type' class ="exercise-type" data-type='{{$exercise->type}}'>
-             {{$exercise->type}}
+            <div id='li_{{$loop -> index}}_type' class="exercise-type" data-type='{{$exercise->type}}'>
+               {{$exercise->type}}
             </div>
-            <div id ='li_{{$loop -> index}}_difficulty' class ="exercise-difficulty" data-difficulty='{{$exercise->difficulty}}'>
+            <div id='li_{{$loop -> index}}_difficulty' class="exercise-difficulty" data-difficulty='{{$exercise->difficulty}}'>
                {{$exercise->difficulty}}
             </div>
-            <div  class ="button-container">
+            <div class="button-container">
 
-               <a class="btn  show " data-toggle="tooltip" data-placement="top" title="Show"  role = "button" data-li-reference ='li_{{$loop -> index}}'><i class='far fa-eye show-exercise icon-table'></i></a>
+               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-exercise icon-table' data-toggle="tooltip" data-placement="top" title="Show"></i></a>
                @if($exercise->custom_id != 0)
 
-                  <a class="btn  edit"   data-toggle="tooltip" data-placement="top" title="Edit" role="button" data-li-reference ='li_{{$loop -> index}}' ><i class='far fa-edit edit-execise icon-table'></i></a>
-                  <a class="btn  delete" data-toggle="tooltip" data-placement="top" title="Delete" role="button" data-li-reference ='li_{{$loop -> index}}' ><i class='fas fa-trash trash-exercise icon-table'></i></a>
+               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-execise icon-table' data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-exercise icon-table' data-toggle="tooltip" data-placement="top" title="Delete"></i></a>
 
                @endif
             </div>
@@ -80,16 +80,14 @@
 
 @section('script')
 
-   <script>
+<script>
    /*TEXT PER IL SIGN IN */
    $("#loginContainer").hide();
    /*TEXT PER IL SING IN*/
-   
-   $(document).ready(function(){
+
+   $(document).ready(function() {
 
    });
-
-
 </script>
 
 @endsection

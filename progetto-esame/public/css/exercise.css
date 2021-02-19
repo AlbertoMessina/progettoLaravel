@@ -5,7 +5,9 @@
 
 /* Table css */
 
-
+body{
+   overflow:hidden;
+}
 #addLink{ 
    float: right;
 }
@@ -18,42 +20,57 @@
 }
 
 .container-internal div{
+   
    width: 25%;
+   padding: .20rem 1.2rem;
 }
 .container_external{
    display: flex;
    justify-content: space-between;
 }
 .table-container{
-   height: calc(100vh - 235px);
+  
+   height: 100%;
    padding:10px;
+   
 }
 
 .light-border{
        border: 1px solid #0000008c;
 }
-.list-group{
-    max-height: 100%;
-    overflow-y:scroll;
-    overflow-x:hidden;
-    padding:0;
-}
 
-.list-group-item{
-    background-color: #FAFAFA;
-}
+.table-container ul {
+   list-style-type: none; /* Remove bullets */
+   padding: 0; /* Remove padding */
+   margin: 0; /* Remove margins */
+   overflow: auto;
+   height: calc(100vh - 240px);
+ }
+ 
+.table-container li {
+   border: 1px solid rgb(105, 105, 105); /* Add a thin border to each list item */
+   margin-top: -1px; /* Prevent double borders */
+   background-color: #f6f6f6; /* Add a grey background color */
+  
+ }
 
 .table-header{
    display: flex;
+   width:100%;
    justify-content: space-between;
    align-items: center;
-   padding: .20rem 1.2rem;
+
    border-bottom: 1px solid #0000008c;
    background-color: lightgrey;
    font-weight: bold;
 }
 
+
+.exercise-difficulty{
+   padding: .25rem 1.7rem !important;
+}
 .table-header div{
+   padding: .20rem 1.2rem;
    width: 25%;
 }
 
@@ -165,3 +182,4 @@
 
 
 /**** Modal css ****/
+
