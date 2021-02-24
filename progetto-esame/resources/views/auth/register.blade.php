@@ -14,19 +14,20 @@
         <div class="register-header">{{ __('Register') }}</div>
 
         <div class="register-form-container">
-            <form id="registrationForm" method="POST" action="{{ url('/register') }}">
+            <form id="registrationForm" role="form" method="POST" action="{{ url('/register') }}">
+                @csrf    
                 <div class="form-group-element">
                     <label class="label-input" for="name">{{ __('Name') }}</label>
                     <input id="name" name='name' class="form-control @error('name') is-invalid @enderror" required autocomplete="name" autofocus>
                     <span class="feedback" id="nameError"> 
-                         <strong> Name can't contain special element or number</strong>
+                            <strong> Name can't contain special element or number</strong>
                     </span>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                    
+                        
                 </div>
                 <div class="form-group-element ">
                     <label class="label-input" for="surname">{{ __('Surname') }}</label>
@@ -69,8 +70,8 @@
                     @enderror
                 </div>  
                 <div class="form-group-element ">
-                    <label class="label-input" for="confirmPassword">{{ __('Confirm Password') }}</label>
-                    <input id="confirmPassword" type="password" name="confirmPassword" class="form-control " required disabled>
+                    <label class="label-input" for="password_confirmation">{{ __('Confirm Password') }}</label>
+                    <input id="password_confirmation" type="password" name="password_confirmation" class="form-control " required disabled>
                     <div class="feedback" id="passwordError"> 
                          <strong> Password must mach</strong>
                     </div>

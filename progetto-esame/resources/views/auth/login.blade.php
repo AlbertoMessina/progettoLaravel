@@ -13,16 +13,17 @@
 
         <div class="login-form-container">
             <form id="logInForm" method="POST" action="{{ route('login') }}">
-                <label data-error="wrong" data-success="right" for="logInMail">{{ __('E-Mail Address') }}</label>
+                @csrf 
+                <label  for="email">{{ __('E-Mail Address') }}</label>
                 <div class="form-group-element ">
-                    <input id="email" name='mail' class="form-control @error('email') is-invalid @enderror" required autocomplete="email" autofocus>
+                    <input id="email" name='email' class="form-control @error('email') is-invalid @enderror" required autocomplete="email" autofocus>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-                <label data-error="wrong" data-success="right" for="password">{{ __('Password') }}</label>
+                <label  for="password">{{ __('Password') }}</label>
                 <div class="form-group-element ">
                     <input id="password" type="password" name="password" class="form-control  @error('password') is-invalid @enderror" required autocomplete="current-password">
                     <input type="checkbox" onclick="showPassword()">

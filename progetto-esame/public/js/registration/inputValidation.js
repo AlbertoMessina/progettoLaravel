@@ -35,7 +35,7 @@ function checkSurname() {
 }
 
 /*Check for match password*/
-const confirmPassword = document.querySelector("#confirmPassword");
+const confirmPassword = document.querySelector("#password_confirmation");
 confirmPassword.addEventListener('change', matchPassword);
 
 function matchPassword(){

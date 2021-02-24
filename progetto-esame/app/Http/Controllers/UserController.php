@@ -16,10 +16,4 @@ class UserController extends Controller
       return view('userProfile');
    }
 
-
-   /*public Function subScribe(){
-
-      return view('register');
-
-   }*/
 }

@@ -34,10 +34,6 @@
                   <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')> <label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
-            <!--<div id="logout-container" class="log-containers">
-               <a class="btn btn-danger" href="/"><label class="hide-meta  text-size-small text-white label-link  pr-2">Log Out</label><span class="fas fa-sign-out-alt label-link"></span></a>
-            </div>
-            -->
             <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -120,7 +116,7 @@
             <div class="main-content-container">
                <div id="section-header">
                   <div id="pageSectionName" class="py-1 pl-4 text-bold text-white">
-                     <span class="text-uppercase text-size-medium"> @yield('user','UserName') @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
+                     <span class="text-uppercase text-size-medium"> {{ Auth::user()->name }} @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
                   </div>
                </div>
                @yield('content')
