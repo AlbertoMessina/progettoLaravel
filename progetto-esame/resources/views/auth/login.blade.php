@@ -1,12 +1,14 @@
 @extends('templates.authLayout')
 @section('css')
 <link rel="stylesheet" href="{{asset('css/login.css')}}">
-<script src="{{asset('js/login.js')}}" defer></script>
+<link rel="stylesheet" href="{{asset('css/main.css')}}">
+<link rel="stylesheet" href="{{asset('css/social.css')}}">
+<script src="{{asset('js/componentJS/passwordStuff.js')}}" defer></script>
 @stop
 @section('home', '/')
 @section('content')
 <div class="login-container">
-    <div class="login-card">
+    <div class="div-card">
         <div class="login-header">{{ __('Login') }}</div>
 
         <div class="login-form-container">
@@ -51,6 +53,9 @@
                     {{ __('Forgot Your Password?') }}
                 </a>
                 @endif
+                <a class="btn btn-link" href="{{ route('register') }}">
+                    {{ __('Are you new, join?') }}
+                </a>
             </form>
 
         </div>

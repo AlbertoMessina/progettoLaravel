@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
 <!--Javascript import -->
 <script src="{{asset('js/exercise.js')}}" defer></script>
-<script src="{{asset('js/filePreview.js')}}" defer></script>
+<script src="{{asset('js/componentJS/filePreview.js')}}" defer></script>
 @stop
 
 @section('content')

@@ -34,9 +34,41 @@
                   <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')> <label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
-            <div id="logout-container" class="log-containers">
+            <!--<div id="logout-container" class="log-containers">
                <a class="btn btn-danger" href="/"><label class="hide-meta  text-size-small text-white label-link  pr-2">Log Out</label><span class="fas fa-sign-out-alt label-link"></span></a>
             </div>
+            -->
+            <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
          </nav>
       </div>
       <div class="row view">
@@ -49,6 +81,9 @@
                </div>
             </div>
             <div id="navigation-menu">
+            <div class="side-menu-item">
+                  <a href="/home" class="side-menu-link"><i class="fas fa-home icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">HOME</span></a>
+               </div>
                <div class="side-menu-item">
                   <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
                </div>

@@ -6,11 +6,11 @@
 }
 .social-container a{
    margin-left: 15px;
+   font-size: 0.8rem;
 }
 
 .fa {
   padding: 10px;
-  font-size: 2vh;
   width: 50px;
   text-align: center;
   text-decoration: none;
@@ -43,7 +43,6 @@
 
    .fa {
      padding: 7px;
-     font-size: 1.2vh;
      width: 30px;
      height: 20px;
      text-align: center;
@@ -58,6 +57,7 @@
    }
    .social-container a{
       margin-left: 5px;
+      font-size: 0.8rem;
    }
 
 }

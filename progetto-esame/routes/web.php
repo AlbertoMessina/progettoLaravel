@@ -17,18 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile' , 'UserController@index');
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/users', 'UsersController');
 });
 
+
+Route::get('/home', 'UserController@index');
+/*User Route*/
+Route::get('/profile' , 'UserController@profile');
+
+/*Auth*/ 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-/**/
-Route::get('/login','UserController@index')->name('login');
-
+Route::get('/checkUser', 'RegisterCotroller@checkUser');
 /*Exercise Route*/
 
 Route::get('/exercise','ExercisesController@index')->name('exercise.list');
@@ -38,6 +40,6 @@ Route::POST('/exercise/update','ExercisesController@update')->name('exercise.upd
 Route::post('/exercise/create' , 'ExercisesController@save')->name('exercise.save');
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+

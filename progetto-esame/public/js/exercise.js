@@ -413,7 +413,7 @@ function operationSuccessShow(){
     let span =document.querySelector('.snackbar span');
     snackbar.classList.add("operationSuccess");
     span.innerHTML = 'Operation Success';
-    // add maring
+    // add margin
     i.classList.add('fas','fa-check', 'mr-1');
   
     setTimeout(function(){snackbar.classList.remove("operationSuccess")}, 3000);

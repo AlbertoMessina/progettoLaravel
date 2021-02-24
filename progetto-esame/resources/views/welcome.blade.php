@@ -11,7 +11,6 @@
    <!--CSS IMPORT -->
    <link rel="stylesheet" href='/css/main.css'>
    <link rel="stylesheet" href='/css/social.css'>
-   <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
    <link rel="stylesheet" href='/css/welcome.css'>
    @yield('css' , "")
    <!--Javascript import -->
@@ -28,10 +27,14 @@
                   <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')><label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
-            <div id="login-container" class="log-containers" >
-               <!--href="{{route('admin.users.index')}}"-->
-               <a class="btn btn-success" id ="logInBtn" href="{{route('login')}}" ><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
+            <div class = "button-container">
+               <div id="login-container" class="log-containers" >
+                  <!--href="{{route('admin.users.index')}}"-->
+                  <a class="btn btn-success" id ="logInBtn" href="{{route('login')}}" ><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
+               </div>
+            
             </div>
+            
          </nav>
       </div>
       <!-- end nav -->
@@ -58,19 +61,12 @@
                <div class="positioning">
                   <div class="sign-up-form">
                      <!--Sign in form-->
-                     <form id="signIn" method="POST" href="">
-                        <div class="form-group">
-                           <label class="form-label" data-error="wrong" data-success="right" for="sign-name">NAME</label>
-                           <input type="text" id="sign-name" name='sign_name' class="form-control">
-                        </div>
-                        <div class="form-group">
-                           <label class="form-label" data-error="wrong" data-success="right" for="sign-surname">SURNAME</label>
-                           <input type="text" id="sign-surname" name='sign_surname' class="form-control">
-                        </div>
-                        <div class="center-centered">
+                     <div class="center-centered">
                            <input type='submit' class="btn btn-success btn-unique" value="JOIN NOW">
+                           <a class="btn btn-link" href="{{ route('register') }}">
+                                    {{ __('Are you new, join?') }}
+                           </a>
                         </div>
-                     </form>
                   </div>
                </div>
                <img src="/images/welcome1.jpg" />
@@ -94,8 +90,6 @@
          </div>
 
       </div>
-
-
    </div>
 
    <div class='blanck-space'>

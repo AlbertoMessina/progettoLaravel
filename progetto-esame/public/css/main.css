@@ -177,6 +177,7 @@ a, a:hover {
    margin-left: auto;
    flex : 6%;
 }
+
 .list-group-menu{
    overflow: inherit !important;
 }
@@ -251,6 +252,13 @@ a.navigation:hover, a.navigation:active {
    float:left;
 }
 
+/******CSS CARD *******/
+.div-card{
+   border: 1px solid #0000002a;
+   border-radius: 2px;
+   box-shadow: 0px 10px 21px #aaaaaa;
+   padding: 10px;
+}
 /******CSS UTILITY ******/
 .text-size-small{
    font-size:0.8rem;
