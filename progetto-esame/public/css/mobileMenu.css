@@ -1,21 +1,3 @@
-@media screen and (max-width:700px){
-   .mobile-menu-button{
-      display: block !important;
-   }
-
-   .mobile-menu{
-   display: flex !important;
-   flex-direction: column;
-   align-items: center;
-   width:150px;
-   height:calc(100vh -  125px);
-   position:absolute;
-   left:-150px;
-   background:rgba(0,0,0,0.95);
-   z-index: 100;
-   transition: all .7s;
-   }
-}
 
 .mobile-menu{
    display: none;
@@ -53,4 +35,22 @@
 .menu-selection{
    color:white;
    margin-left: 5px;
+}
+@media screen and (max-width:800px){
+   .mobile-menu-button{
+      display: block ;
+   }
+
+   .mobile-menu{
+   display: flex ;
+   flex-direction: column;
+   align-items: center;
+   width:150px;
+   height:calc(100vh -  125px);
+   position:absolute;
+   left:-150px;
+   background:rgba(0,0,0,0.95);
+   z-index: 300;
+   transition: all .7s;
+   }
 }

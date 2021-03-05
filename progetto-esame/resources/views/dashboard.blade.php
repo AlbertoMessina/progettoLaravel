@@ -1,15 +1,12 @@
 @extends('templates.layout')
 @section('webSection' , 'Dashboard')
 @section('css')
-<link rel="stylesheet" href="{{asset('css/userProfile.css')}}">
-<link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
+<link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
-<link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
-
 @stop
 
 @section('content')
-<div>
+<div class="dashboard">
     <h1>SUCUNU MY FRIENDS </h1>
 
 </div>

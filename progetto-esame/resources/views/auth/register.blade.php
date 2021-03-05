@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{asset('css/main.css')}}">
 <link rel="stylesheet" href="{{asset('css/social.css')}}">
 <script src="{{asset('js/componentJS/passwordStuff.js')}}" defer></script>
-<script src="{{asset('js/registration/inputValidation.js')}}" defer></script>
+<script src="{{asset('js/inputValidation/inputValidationRegister.js')}}" defer></script>
 
 @stop
 @section('home', '/')

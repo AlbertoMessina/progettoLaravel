@@ -27,17 +27,5 @@
 #registerForm label{
     font-size: 1.2rem;  
 }
-.label-input{
-    font-size: 1.2rem;
-    font-weight: 400;
-}
 
-/*hide feedback*/
-.feedback{
-    display:none;
-    position: relative;
-    top: 4px;
-    left: 2px;
-    font-size: 0.8rem;
-    color: #bf2d2d;
-}
+

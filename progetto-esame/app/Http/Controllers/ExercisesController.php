@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Exercise;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Storage;
@@ -13,8 +14,9 @@ class ExercisesController extends Controller
 {
    public function index()
    {
-
       $queryBuilder = Exercise::orderBy('id', 'desc');
+      $queryBuilder->where('custom_id','=', 0);
+      $queryBuilder->orWhere('custom_id','=', Auth::user()->id);
       $exercise = $queryBuilder->get();
       return view('exercise', ['exercise' => $exercise]);
    }
@@ -31,7 +33,7 @@ class ExercisesController extends Controller
       }
       $exercise->difficulty = $request->exercise_difficulty;
       $exercise->type = $request->exercise_type;
-      $exercise->custom_id = 1;
+      $exercise->custom_id = Auth::user()->id;
       $saved = $exercise->save();    
       if ($saved) {
          $this->processfile($exercise->id, $request);
@@ -41,8 +43,7 @@ class ExercisesController extends Controller
    }
 
    public function getRecord($id)
-   {
-      
+   {     
      /* $queryBuilder = Exercise::join('photos', 'exercises.id','=','photos.exercise_id' )
       ->where('exercises.id', $id)->select("exercises.name","exercises.description","photos.url","photos.sequence");
       $data = $queryBuilder->get();
@@ -69,7 +70,7 @@ class ExercisesController extends Controller
    }
 
    public function update(Request $request)
-   {
+   {   
       $request->all();
       $id = $request->update_id;
       $exercise = Exercise::find($id);
@@ -83,8 +84,7 @@ class ExercisesController extends Controller
             $this->removeFile($id);
             $this->processfile($id, $request);
          }
-      }  
-     
+      }     
       $res = $exercise->save();
       return response()->json(array('success' => true, 'res' => $res), 200);
    }
@@ -109,8 +109,7 @@ class ExercisesController extends Controller
          $photo->description = "asd";
          $photo->save();
          $i++;
-      }
-      
+      }     
       return true;
    }
 
@@ -124,8 +123,7 @@ class ExercisesController extends Controller
             Storage::disk($disk)->delete($img);
          }
       }
-      $queryBuilder->delete();
-      
+      $queryBuilder->delete();    
       Storage::deleteDirectory(env('IMG_EXERCISE_DIR').'/'.$id);
    }
 

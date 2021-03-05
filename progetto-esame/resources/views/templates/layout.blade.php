@@ -3,11 +3,12 @@
 
 <head>
    <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta content="width=device-width, initial-scale=1" name="viewport" />
    <meta name="csrf-token" content='{{csrf_token()}}'>
    <title>@yield('title','BigMuscle')</title>
    <script src="https://kit.fontawesome.com/267061b199.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
    <!--CSS IMPORT -->
    <link rel="stylesheet" href='/css/main.css'>
    <link rel="stylesheet" href="{{asset('css/mobileMenu.css')}}">
@@ -31,7 +32,7 @@
             </div>
             <div class="home-link">
                <div id="image-background">
-                  <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')> <label class="hide-meta">Big Muscle </label></a>
+                  <a class="navbar-brand text-bold  text-size-medium" href="/home"> <label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
             <ul class="navbar-nav ml-auto">
@@ -46,12 +47,13 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item">
+                              <div class=" dropdown">
+                                <a class="nav-link dropbtn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-content">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -62,6 +64,7 @@
                                         @csrf
                                     </form>
                                 </div>
+                              </div>
                             </li>
                         @endguest
                     </ul>
@@ -87,7 +90,7 @@
                   <a href="/exercise/" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
                </div>
                <div class="side-menu-item">
-                  <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">CLASSES</span></a>
+                  <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">WORKOUT</span></a>
                </div>
             </div>
 
@@ -99,13 +102,16 @@
                <h5>Big Muscle </h5>
             </div>
             <div class="menu-mobile-item">
+               <a href="/home" class="start-centered"><span class="fas fa-home icon"> </span><span class="menu-selection">HOME</span></a>
+            </div>
+            <div class="menu-mobile-item">
                <a href="/profile/" class="start-centered"><span class="fas fa-user icon"> </span><span class="menu-selection">PROFILE</span></a>
             </div>
             <div class="menu-mobile-item">
                <a href="/exercise/" class="start-centered"><span class="fas fa-dumbbell icon"> </span><span class="menu-selection">EXERCISE</span></a>
             </div>
             <div class="menu-mobile-item">
-               <a href="#" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">CLASSES</span></a>
+               <a href="#" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">WORKOUT</span></a>
             </div>
 
          </div>
@@ -115,9 +121,10 @@
             <!-- content su cio verranno inettati i contenuti della pagina. -->
             <div class="main-content-container">
                <div id="section-header">
-                  <div id="pageSectionName" class="py-1 pl-4 text-bold text-white">
-                     <span class="text-uppercase text-size-medium"> {{ Auth::user()->name }} @yield('arrow' , '->') @yield('webSection','Dashboard') </span>
+                  <div id="pageSectionName"  data-id = {{Auth::user()->id}}>
+                     <span> {{ Auth::user()->name }} @yield('arrow' , '->') @yield('webSection','Dashboard') </span>                 
                   </div>
+                  @yield('subMenuSection')   
                </div>
                @yield('content')
             </div>

@@ -1,6 +1,5 @@
-@media screen and (max-width:700px){
-    
-}
+
+
 
 .view{
     display: flex;
@@ -10,15 +9,15 @@
     height: 100%;
 }
 
+
 .login-container{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: calc(100vh - 145px);
     justify-content: center;
-
+    width: 50%;
+    height: calc(100vh - 145px);
+    padding:9px;
 }
-
 .login-card{
     border: 1px solid #0000002a;
     border-radius: 2px;
@@ -34,4 +33,15 @@
 #logInForm label{
 
     font-size: 1.2rem;
+}
+
+@media screen and (max-width: 800px ){
+    .login-container{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: center;
+        height: 100%;
+        padding:9px;
+    }
 }

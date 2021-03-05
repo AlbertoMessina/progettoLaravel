@@ -24,22 +24,27 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 });
 
 
-Route::get('/home', 'UserController@index');
-/*User Route*/
-Route::get('/profile' , 'UserController@profile');
-
 /*Auth*/ 
 Auth::routes();
-Route::get('/checkUser', 'RegisterCotroller@checkUser');
-/*Exercise Route*/
 
-Route::get('/exercise','ExercisesController@index')->name('exercise.list');
-Route::get('/exercise/record/{id}','ExercisesController@getRecord')->where('id','[0-9]+');
-Route::delete('/exercise/delete/{id}','ExercisesController@delete')->where('id','[0-9]+');
-Route::POST('/exercise/update','ExercisesController@update')->name('exercise.updateExercise');
-Route::post('/exercise/create' , 'ExercisesController@save')->name('exercise.save');
+//Auth middleware 
+Route::get('/checkUser/{mail}', 'UserController@findUserEmail');
+Route::group(['middleware' => 'auth'],
+    function(){
+        Route::get('/home', 'UserController@index');
+        /*User Route*/
+        Route::get('/profile' , 'UserController@profile');
+        Route::POST('/profile/update', 'UserController@update');
+
+        /*Exercise Route*/
+
+        Route::get('/exercise','ExercisesController@index')->name('exercise.list');
+        Route::get('/exercise/record/{id}','ExercisesController@getRecord')->where('id','[0-9]+');
+        Route::delete('/exercise/delete/{id}','ExercisesController@delete')->where('id','[0-9]+');
+        Route::POST('/exercise/update','ExercisesController@update')->name('exercise.updateExercise');
+        Route::post('/exercise/create' , 'ExercisesController@save')->name('exercise.save');
 
 
-
-
+    }
+);
 

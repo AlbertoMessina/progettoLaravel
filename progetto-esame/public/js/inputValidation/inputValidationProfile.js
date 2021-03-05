@@ -1,9 +1,6 @@
-//Controll on submit
+/*  Button Reference    */
+const settingBtnSubmit = document.querySelector("#profileSettingSubmit");
 
-/*  Add event listener to button    */
-const registrationBtn = document.querySelector("#registrationBtn");
-
-/*Check for each field*/
 
 /*Check for name */
 const userName = document.querySelector("#name");
@@ -13,10 +10,10 @@ function checkName() {
     let name = userName.value.trim();
     if (hasNumber(name) || string_has_spec_char(name)) {
         //not valid
-        errorValidation(userName,"#nameError",registrationBtn);
+        errorValidation(userName,"#nameError",settingBtnSubmit);
     }
     else {
-        successValidation(userName,"#nameError",registrationBtn);     
+        successValidation(userName,"#nameError",settingBtnSubmit);     
     }
 }
 
@@ -27,41 +24,10 @@ userSurname.addEventListener('change', checkSurname);
 function checkSurname() {
     let surname = userSurname.value.trim();
     if (hasNumber(surname) || string_has_spec_char(surname)) {
-        errorValidation(userSurname,"#surnameError", registrationBtn);
+        errorValidation(userSurname,"#surnameError", settingBtnSubmit);
     }
     else {
-        successValidation(userSurname,"#surnameError", registrationBtn);
-    }
-}
-
-/*Check for match password*/
-const confirmPassword = document.querySelector("#password_confirmation");
-confirmPassword.addEventListener('change', matchPassword);
-
-function matchPassword(){
-    let password = document.querySelector("#password");
-    if( checkPassword(password.value.trim(), confirmPassword.value.trim()))
-    {        
-         successValidation(confirmPassword,"#passwordError", registrationBtn);
-    }
-    else{
-        errorValidation(confirmPassword,"#passwordError",registrationBtn);
-    }
-}
-
-/*Check for password format*/
-const password = document.querySelector("#password");
-password.addEventListener('change', passwordFormat);
-
-function passwordFormat(){  
-    if( passwordValidation(password.value.trim()))
-    {    
-        successValidation(password,"#passwordFormatError",registrationBtn);
-        confirmPassword.disabled = false;
-    }
-    else{
-        errorValidation(password,"#passwordFormatError",registrationBtn);
-        confirmPassword.disabled = true;
+        successValidation(userSurname,"#surnameError", settingBtnSubmit);
     }
 }
 
@@ -72,33 +38,20 @@ age.addEventListener('change', checkAge);
 function checkAge(){
     if (futureDate(age.value)){
         errorMessageSet(age, "#ageError", "Welcome time Traveler");
-        registrationBtn.disabled = true;
+        settingBtnSubmit.disabled = true;
         return;
     }
     else{
         document.querySelector("#ageError").innerHTML="<strong> You mast have 14 to join</strong>"
         if( validateAge(age.value)){      
-            successValidation(age,"#ageError" ,registrationBtn);
+            successValidation(age,"#ageError" ,settingBtnSubmit);
        }
        else{
-           errorValidation(age,"#ageError" ,registrationBtn);
+           errorValidation(age,"#ageError" ,settingBtnSubmit);
        }
     } 
 }
 
-/*Check for email*/ 
-const email = document.querySelector("#email");
-email.addEventListener('change', checkMail);
-
-function checkMail(){
-    if(validateEmail(email.value.trim())){
-        successValidation(email, "#emailError", registrationBtn);
-    }
-    else{
-        errorValidation(email, "#emailError", registrationBtn);
-    }
-
-}
 /* VALIDATION RULES */
 
 //if the string has a number
@@ -180,19 +133,19 @@ function passwordValidation(password){
 
 function errorValidation(container, errorIdContainer, disableBtn){
     container.style.border = "1px solid red";
-    document.querySelector(errorIdContainer).style.display = "block";
+    document.querySelector(errorIdContainer).style.visibility = "visible";
     disableBtn.disabled = true;
 }
 function successValidation(container,  errorIdContainer, enableBtn){
     container.style.border = "1px solid lightgrey";
-    document.querySelector(errorIdContainer).style.display = "none";
+    document.querySelector(errorIdContainer).style.visibility = "hidden";
     enableBtn.disabled = false;
         
 }
 
 function errorMessageSet(container , errorIdContainer, message){
     container.style.border = "1px solid red";
-    document.querySelector(errorIdContainer).style.display = "block";
+    document.querySelector(errorIdContainer).style.visibility = "visible";
     document.querySelector(errorIdContainer).innerHTML="<strong> "+ message +"</strong>"
     
 }

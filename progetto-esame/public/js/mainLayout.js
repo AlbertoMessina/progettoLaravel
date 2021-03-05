@@ -75,6 +75,6 @@ function showMobileMenu(){
  }
 
  //utilities
- $('[data-toggle="tooltip"]').tooltip();
+
 
 

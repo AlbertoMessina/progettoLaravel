@@ -20,6 +20,7 @@ class CreateClientsTable extends Migration
            $table->string('surname', 50);
            $table->date('birth');
            $table->string('description', 350);
+           $table->string('url', 100)->default('none');
            $table->float('weight');
            $table->softDeletes();
            $table->timestamps();
