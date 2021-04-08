@@ -99,7 +99,7 @@
                 </div>
                 <div class="form-group-element ">
                     <label class="label-input" for="weight">{{ __('Weight') }}</label>
-                    <input type="number" id="weight"  name="weight" class="form-control  @error('weight') is-invalid @enderror" required min = "10" max = "650"> </textarea>
+                    <input type="number" id="weight"  name="weight" class="form-control  @error('weight') is-invalid @enderror" required min = "10" max = "650"> 
                     @error('weight')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

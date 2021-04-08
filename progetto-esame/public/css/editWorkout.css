@@ -1,0 +1,39 @@
+.section-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 175px);
+}
+#wizard_3{
+    display:none;
+}
+#workoutForm{
+    height: 100%;
+}
+
+/*Select*/
+.select-container{
+    display: flex;
+}
+
+.exercise-container{
+    padding-left: 25px;
+}
+#exerciseCardioSelect{
+    display: none;
+}
+#exerciseCoreSelect{
+    display: none;
+}
+#exerciseFullSelect{
+    display: none;
+}
+#exerciseUpperSelect{
+    display: none;
+}
+#exerciseLowerSelect{
+    display: none;
+}
+
+/*Select end*/

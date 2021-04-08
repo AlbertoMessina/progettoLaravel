@@ -17,6 +17,8 @@ class CreateExerciseListsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('exercise_id');
             $table->unsignedBigInteger('workout_id');
+            $table->integer('series');
+            $table->integer('repetition');
             $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('workout_id')->references('id')->on('workouts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

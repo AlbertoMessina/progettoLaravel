@@ -21,9 +21,9 @@
          <div class="profile-item">
             <div class="photo-container">
                @if($client->url != 'none')
-               <img id="user-photo" class="img-thumbnail img-fluid" src='storage/{{$client->url}}'> </img>
+               <img id="profile-photo"  class="user-photo " src='storage/{{$client->url}}'> </img>
                @else
-               <img id="user-photo" class="img-thumbnail img-fluid" src="/images/unknow.jpg"> </img>
+               <img id="profile-photo"  class="user-photo " src="/images/unknow.jpg"> </img>
                @endif
             </div>
          </div>
@@ -71,9 +71,9 @@
                      <input id="photoProfile" name="img_path" type="file" />
                   </div>
                   @if($client->url != 'none')
-                  <img id="user-photo" class="img-thumbnail img-fluid" src='storage/{{$client->url}}'> </img>
+                  <img id="setting-photo" class="user-photo" src='storage/{{$client->url}}'> </img>
                   @else
-                  <img id="user-photo" class="img-thumbnail img-fluid" src="/images/unknow.jpg"> </img>
+                  <img id="setting-photo"  class="user-photo" src="/images/unknow.jpg"> </img>
                   @endif
                </div>
             </div>

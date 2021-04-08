@@ -17,9 +17,8 @@ class CreateWorkoutsTable extends Migration
            $table->id();
            $table->unsignedBigInteger('client_id');
            $table->string('name', 100);
-           $table->string('description', 350);
+           $table->string('description', 350)->default('none');
            $table->date('publication_date');
-           $table->string('type',50);
            $table->timestamps();
            $table->softDeletes();
            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');

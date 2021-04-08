@@ -72,12 +72,12 @@ a, a:hover {
    text-transform: uppercase;
 }
 #side {
-   flex: 10%;
+   flex: 1;
    background-color: #2e2f2f;
  }
 /****** MAIN COLUMN ******/
 #main {
-  flex: 88%;
+  flex: 8;
   height: 100%;
   background-color: white;
 
@@ -170,7 +170,7 @@ a, a:hover {
    color: white;
 }
 .footer-section{
-   margin-top: 15px;
+   padding-top: 15px;
 }
 .left-footer{
    display: flex;
@@ -365,7 +365,7 @@ a.navigation:hover, a.navigation:active {
  
  /*DEFAULT LAYOUT META*/
     #main{
-       flex: 88%;
+       flex: 7;
        background-color: white;
     }
  
@@ -445,18 +445,17 @@ a.navigation:hover, a.navigation:active {
  
  
  /*Footer*/
-    .footer{
-       height:60px !important;
-    }
+   
+    
     .footer-section{
-       margin-top: 8px!important;
+      padding-top: 8px!important;
     }
     .left-footer {
        display: flex;
        width: 30%;
        flex-direction: column;
        justify-content: center;
-       margin-left: 5px;
+       padding-left: 5px;
        padding-right: 5px;
        border-right: 1px solid lightgrey;
     }
@@ -467,10 +466,16 @@ a.navigation:hover, a.navigation:active {
        flex-direction: column;
        width: 65%;
        justify-content: center;
-       margin-right: 5px;
-       margin-left: 5px;
+       padding-right: 5px;
+       padding-left: 5px;
        }
  
+ }
+ @media screen and (max-width: 500px) {
+   #main{
+      flex: 5;
+      background-color: white;
+   }
  }
     /******   END MEDIA QUERY  ******/
  

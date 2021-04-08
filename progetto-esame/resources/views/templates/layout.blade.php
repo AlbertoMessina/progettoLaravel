@@ -87,10 +87,10 @@
                   <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
                </div>
                <div class="side-menu-item">
-                  <a href="/exercise/" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
+                  <a href="{{ route('exercise.index') }}" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
                </div>
                <div class="side-menu-item">
-                  <a href="#" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">WORKOUT</span></a>
+                  <a href="{{ route('workout.index') }}" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">WORKOUT</span></a>
                </div>
             </div>
 

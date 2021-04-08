@@ -14,9 +14,9 @@ function collapseMenu(){
     if(button.classList.contains('collapsed')){
        //open menu
      
-       side.style.flex = "10%";
+       side.style.flex = "1";
        navigationMenu.style.paddingLeft = "10px";
-       main.style.flex ="85%";
+       main.style.flex ="8";
        //remove class and show elements
        for(i=0; i<collapseElement.length; i++){
          collapseElement[i].classList.remove('hide');
@@ -51,9 +51,9 @@ function collapseMenu(){
          userIcon[0].classList.add('ml-2');
       
    //resize div
-      side.style.flex = "1%";
+      side.style.flex = "1";
       navigationMenu.style.paddingLeft ="5px";
-      main.style.flex = "92%";
+      main.style.flex = "20";
    }
 }
 

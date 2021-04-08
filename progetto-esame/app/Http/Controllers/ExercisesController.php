@@ -61,6 +61,14 @@ class ExercisesController extends Controller
       return response()->json(array('success' => true, 'exercise' => $data), 200);
    }
 
+   public function getAllRecord(){
+      $queryBuilder = Exercise::orderBy('id', 'desc');
+      $queryBuilder->where('custom_id','=', 0);
+      $queryBuilder->orWhere('custom_id','=', Auth::user()->id);
+      $exercise = $queryBuilder->get();
+      return response()->json(array('succcess' => true , 'exercise' => $exercise), 200);
+   }
+
    public function delete($id)
    {
       $this->removeFile($id);

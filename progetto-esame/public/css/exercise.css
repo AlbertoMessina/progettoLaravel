@@ -1,114 +1,9 @@
-@media screen and (max-width: 700px) {
-
-
-}
-
-/* Table css */
-
 body{
    overflow:hidden;
 }
-#addLink{ 
-   float: right;
-}
-
-.container-internal{
-   display: flex;
-   justify-content: start;
-   align-items: center;
- 
-}
-
-.container-internal div{
-   
-   width: 25%;
-   padding: .20rem 1.2rem;
-}
-.container_external{
-   display: flex;
-   justify-content: space-between;
-}
-.table-container{
-  
-   height: 100%;
-   padding:10px;
-   
-}
-
-.light-border{
-       border: 1px solid #0000008c;
-}
-
-.table-container ul {
-   list-style-type: none; /* Remove bullets */
-   padding: 0; /* Remove padding */
-   margin: 0; /* Remove margins */
-   overflow: auto;
-   height: calc(100vh - 240px);
- }
- 
-.table-container li {
-   border: 1px solid rgb(105, 105, 105); /* Add a thin border to each list item */
-   margin-top: -1px; /* Prevent double borders */
-   background-color: #f6f6f6; /* Add a grey background color */
-  
- }
-
-.table-header{
-   display: flex;
-   width:100%;
-   justify-content: space-between;
-   align-items: center;
-
-   border-bottom: 1px solid #0000008c;
-   background-color: lightgrey;
-   font-weight: bold;
-}
-
-
 .exercise-difficulty{
    padding: .25rem 1.7rem !important;
 }
-.table-header div{
-   padding: .20rem 1.2rem;
-   width: 25%;
-}
-
-.trash-exercise{
-   color: red;
-   font-weight: bold;
-}
-
-.edit-execise{
-   color: green;
-   font-weight: bold;
-}
-
-.show-exercise{
-   color: #03a9f4;
-   font-weight: bold;
-}
-
-.add-exercise{
-   color:  white;
-   font-weight: bold;
-}
-
-.button-container{
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-}
-
-.button-container a{
-   padding: 5px;
-}
-.img-exercise{
-   width: 420px;
-   height: 460px;
-}
-
-
 /*Carousel*/
 .carousel-show-container{
    display:flex;
@@ -121,7 +16,11 @@ body{
    max-width: 500px;
    max-height: 500px;
 }
-
+.img-exercise{
+   width: 420px;
+   height: 460px;
+}
+/*GENERIC FORM CSS*/
 
 .form-label{
    width: 100%;
@@ -135,7 +34,6 @@ body{
 .form-label span{
    background:#fff;
    padding: 0  5px;
-
 }
 
 .radio-button-container{
@@ -144,7 +42,6 @@ body{
    align-items: center;
    width: 75%;
    margin: auto;
-
 }
 
 .multiple-img-upload{
@@ -178,8 +75,15 @@ body{
       background:rgb(226, 226, 226);
 }
 
+@media screen and (max-width: 700px) {
+   .exercise-difficulty{
+      padding: .25rem 1.2rem!important;
+   }
+}
 
-
-
-/**** Modal css ****/
-
+@media screen and (max-width: 360px) {  
+   .exercise-difficulty{
+      padding: .25rem 1.2rem!important;
+   }
+  
+}

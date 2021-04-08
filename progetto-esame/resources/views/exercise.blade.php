@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{asset('css/scrollbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
+<link rel="stylesheet" href="{{asset('css/components/table.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/filePreview.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
 <!--Javascript import -->
@@ -28,15 +29,15 @@
          DIFFICULTY
       </div>
       <div>
-         <a class="btn btn-secondary" id="addLink" data-toggle="tooltip" data-placement="left" title="Add new" role="button"><span class="fas fa-plus add-exercise"> </span></a>
+         <a class="btn btn-secondary" id="addLink" role="button"><span class="fas fa-plus add-exercise"> </span></a>
       </div>
 
    </div>
-   <ul class="light-border" id='exerciseTable'>
+   <ul class="table-body" id='exerciseTable'>
 
       @foreach ($exercise as $exercise)
       <li id='li_{{$loop -> index}}'>
-         <div class="container-internal">
+         <div class="table-item">
             <div id='li_{{$loop -> index}}_name' class="exercise-name" data-id='{{$exercise->id}}' data-name='{{$exercise->name}}'>
                {{$exercise->name}}
             </div>
@@ -48,11 +49,11 @@
             </div>
             <div class="button-container">
 
-               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-exercise icon-table' data-toggle="tooltip" data-placement="top" title="Show"></i></a>
+               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-exercise icon-table' ></i></a>
                @if($exercise->custom_id != 0)
 
-               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-execise icon-table' data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
-               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-exercise icon-table' data-toggle="tooltip" data-placement="top" title="Delete"></i></a>
+               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-execise icon-table'></i></a>
+               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-exercise icon-table'></i></a>
 
                @endif
             </div>

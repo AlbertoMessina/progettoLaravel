@@ -3,12 +3,10 @@
 @slot('modalId' , 'showExerciseModal')
 @slot('rightTitle' , "")
 <div class="info-container">
-   <h6 class="info-label"><span id= "exerciseTypeShow">TYPE</span><h6>
- 
+   <label class="info-label"><span id= "exerciseTypeShow">TYPE</span></label>
 </div>
 
 <div class = "carousel-show-container">
-
    <div id="carouselShowExercise" class="carousel slide carousel-show-exercise" data-ride="carousel">
      <ol class="carousel-indicators carousel-indicators-exercise">
 
@@ -28,7 +26,7 @@
 
 </div>
 <div class="info-container">
-   <h6 class="info-label"><span>INFO</span></h6>
+   <label class="info-label"><span>INFO</span></label>
    <div id="showInfo">
      <div id="infoText">
 

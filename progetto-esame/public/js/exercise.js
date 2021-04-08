@@ -13,7 +13,7 @@ function showNewExercise(){
      /*FORM RESET */
      document.querySelector('#exerciseForm').reset();
      document.querySelector('#imgThumbnailPreview').innerHTML= "";
-    newExerciseModal.style.display = "block";
+     newExerciseModal.style.display = "block";
 };
 
 /*  Add event listener to form  */ 
@@ -72,7 +72,7 @@ function recordCreation(event){
                       
             let newElem = document.createElement("li");
             newElem.setAttribute('id', 'li_'+newId );
-                newElem.innerHTML = '<div class="container-internal">'+
+                newElem.innerHTML = '<div class="table-item">'+
                 '<div id ="li_'+ newId+'_name"'+'class ="exercise-name"  data-id='+id+ ' data-name = "'+name+'">'+
                  name +
                 '</div>' +
@@ -84,13 +84,13 @@ function recordCreation(event){
                 '</div>' +
                 '<div  class ="button-container">' +
                 '<a class="btn  show" role = "button" data-li-reference ="li_'+newId+'">' +
-                '<i class="far fa-eye show-exercise icon-table" data-toggle="tooltip" data-placement="top" title="Show" >' +
+                '<i class="far fa-eye show-exercise icon-table" >' +
                 '</i>' + '</a>' +
                 '<a class="btn  edit" role"button" data-li-reference ="li_'+newId+'">' +
-                '<i class="far fa-edit edit-execise icon-table" data-toggle="tooltip" data-placement="top" title="Edit" >'+
+                '<i class="far fa-edit edit-execise icon-table"  >'+
                 '</i>' + '</a>' +
                 '<a class="btn  delete"  role="button" data-li-reference ="li_'+newId+'">' +
-                '<i class="fas fa-trash trash-exercise icon-table" data-toggle="tooltip" data-placement="top" title="Delete">' +
+                '<i class="fas fa-trash trash-exercise icon-table" >' +
                 '</i>' + '</a>'
                 +'</div>'+
             '</div >';
@@ -143,7 +143,7 @@ for(let i = 0 ; i < deleteBtns.length; i++){
 }
 
 /*  Get deleteExerciseModal  */
-const deleteExerciseModal = document.querySelector("#deleteExeciseModal")
+const deleteExerciseModal = document.querySelector("#deleteExeciseModal");
 
 /*  Show deleteModal   */
 function showDeleteExercise(){
@@ -201,7 +201,7 @@ for(let i = 0 ; i < updateBtns.length; i++){
 }
 
 /*  Get updateExerciseModal  */
-const updateExerciseModal = document.querySelector("#updateExeciseModal")
+const updateExerciseModal = document.querySelector("#updateExeciseModal");
 
 /*  Show updateModal   */
 function showUpdateExercise(){   
@@ -249,7 +249,7 @@ function showUpdateExercise(){
                 }
             }  
             setTimeout(function(){updateExerciseModal.style.display = "block"; }, 200);
-            
+    
         }     
     };
    xhttp.open('GET', 'exercise/record/'+ id , true );
@@ -426,18 +426,7 @@ function operationFailedShow(){
     document.querySelector('.snackbar span').innerHTML = 'Operation Failed';
     setTimeout(function(){snackbar.classList.remove("operationFailed")}, 3000);
 }
-
-//MODAL HANDLE
-
-//close modal
 function closeModal(button){
     button.parentNode.parentNode.parentNode.style.display="none";
 }
 
-
-// When user clicks anywhere outside of the modalCompanies, close it
-window.addEventListener("click", function(event) {
-    if (event.target == newExerciseModal) {
-        newExerciseModal.style.display = "none";       
-    }
-})

@@ -1,8 +1,6 @@
 <x-genericModal class="new-exercise-modal">
   @slot('modalTitle' , 'New Exercise')
   @slot('modalId' , 'newExeciseModal')
-
-
   <form id="exerciseForm" method="POST" enctype="multipart/form-data">
 
     <div class="form-group-element ">

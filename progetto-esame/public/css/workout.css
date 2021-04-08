@@ -1,0 +1,26 @@
+
+/*Select*/
+.select-container{
+    display: flex;
+}
+
+.exercise-container{
+    padding-left: 25px;
+}
+#exerciseCardioSelect{
+    display: none;
+}
+#exerciseCoreSelect{
+    display: none;
+}
+#exerciseFullSelect{
+    display: none;
+}
+#exerciseUpperSelect{
+    display: none;
+}
+#exerciseLowerSelect{
+    display: none;
+}
+
+/*Select end*/
