@@ -1,4 +1,10 @@
-
+#exerciseUpperList{
+    display: hidden;
+}
+#workoutFormContainer{
+    display: flex;
+    flex-direction: column;
+}
 /*Select*/
 .select-container{
     display: flex;
@@ -7,20 +13,53 @@
 .exercise-container{
     padding-left: 25px;
 }
-#exerciseCardioSelect{
-    display: none;
-}
-#exerciseCoreSelect{
-    display: none;
-}
-#exerciseFullSelect{
-    display: none;
-}
-#exerciseUpperSelect{
-    display: none;
-}
-#exerciseLowerSelect{
-    display: none;
-}
 
 /*Select end*/
+
+.right-element{
+    padding-left:1.5em;
+}
+
+/*Show Exercise*/
+#showHeader{
+    display: flex;
+    flex-direction:row;
+    padding-bottom:1rem;
+    padding-left: 1.2rem;
+    padding-top: 1rem;
+}
+#showHeader span{
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex: 33%;
+}
+
+#exerciseWorkoutList{
+    list-style-type: none;
+    padding-left: 1.2rem;
+    padding-bottom:0.5rem;
+}
+.exercise-list-elem{
+    display: flex;
+    flex-direction: row;
+    padding-bottom:0.5rem;
+   
+}
+.exercise-list-elem div{
+    flex: 33%;
+}
+.info-label{
+    width: 100%;
+    text-align:center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.info-label span{
+      background:#fff;
+      padding: 0  10px;
+}
+#showInfo{
+    padding: 0.5rem;
+}

@@ -9,8 +9,12 @@
 <link rel="stylesheet" href="{{asset('css/workout.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
 <!--Javascript import -->
-<script src="{{asset('js/workout.js')}}" defer></script>
+<script src="{{asset('js/componentJS/snackbar.js')}}" defer></script>
+<!--Input validation-->
+<script src="{{asset('js/inputValidation/validationRules.js')}}" defer></script>
+<script src="{{asset('js/inputValidation/inputValidationWorkouts.js')}}" defer></script>
 
+<script src="{{asset('js/workout.js')}}" defer></script>
 @stop
 
 
@@ -22,7 +26,7 @@
          NAME
       </div>
       <div>
-        DATE
+         DATE
       </div>
       <div>
          <a class="btn btn-secondary" id="addLink" role="button"><span class="fas fa-plus add-workout"> </span></a>
@@ -41,9 +45,11 @@
                {{$workout->publication_date}}
             </div>
             <div class="button-container">
-               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-workout icon-table' ></i></a>
-               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-workout icon-table'></i></a>
-               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-workout icon-table'></i></a>
+               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-icon icon-table'></i></a>
+               @if($workout->publication_date >= $localDate)
+               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-icon icon-table'></i></a>
+               @endif
+               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-icon icon-table'></i></a>
             </div>
          </div>
       </li>
@@ -61,6 +67,6 @@
 <!--delete Modal-->
 @include('/modalWindows/workoutModal/deleteWorkout')
 <!--show -->
-@include('/modalWindows/exerciseModal/showExercise')
+@include('/modalWindows/workoutModal/showWorkout')
 
 @endsection

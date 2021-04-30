@@ -32,7 +32,7 @@
             </div>
             <div class="home-link">
                <div id="image-background">
-                  <a class="navbar-brand text-bold  text-size-medium" href="/home"> <label class="hide-meta">Big Muscle </label></a>
+                  <a class="navbar-brand text-bold  text-size-medium" href="/dashboard"> <label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
             <ul class="navbar-nav ml-auto">
@@ -81,16 +81,16 @@
             </div>
             <div id="navigation-menu">
             <div class="side-menu-item">
-                  <a href="/home" class="side-menu-link"><i class="fas fa-home icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">HOME</span></a>
+                  <a href="{{route('dashboard.index')}}" class="side-menu-link"><i class="fas fa-home icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">HOME</span></a>
                </div>
                <div class="side-menu-item">
                   <a href="/profile/" class="side-menu-link"><i class="fas fa-user icon pt-1"> </i><span class="hide-meta ml-2 collapseElement text-size-small">PROFILE</span></a>
                </div>
                <div class="side-menu-item">
-                  <a href="{{ route('exercise.index') }}" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
+                  <a href="{{route('exercise.index') }}" class="side-menu-link"><i class="fas fa-dumbbell icon pt-1"> </i><span class="hide-meta ml-1 collapseElement text-size-small">EXERCISE</span></a>
                </div>
                <div class="side-menu-item">
-                  <a href="{{ route('workout.index') }}" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">WORKOUT</span></a>
+                  <a href="{{route('workout.index') }}" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">WORKOUT</span></a>
                </div>
             </div>
 
@@ -111,7 +111,7 @@
                <a href="/exercise/" class="start-centered"><span class="fas fa-dumbbell icon"> </span><span class="menu-selection">EXERCISE</span></a>
             </div>
             <div class="menu-mobile-item">
-               <a href="#" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">WORKOUT</span></a>
+               <a href="{{route('workout.index') }}" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">WORKOUT</span></a>
             </div>
 
          </div>

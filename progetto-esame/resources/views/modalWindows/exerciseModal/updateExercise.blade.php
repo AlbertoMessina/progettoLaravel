@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="form-group-element ">
-      <label class="form-label" data-error="wrong" data-success="right" for="loadImg"><span>LoadImage</span></label>
+      <label class="form-label" data-error="wrong" data-success="right" for="img_path[]"><span>LoadImage</span></label>
       <div class="multiple-img-upload">
         <input type="file" id="updateImgs" name="img_path[]" class="form-control validate" multiple />
         <div style='padding:14px; margin:auto' ;>
@@ -55,7 +55,7 @@
       <img id="update-miniature-img"> </img>
     </div>
     <div class="form-group-element">
-      <label class="form-label" data-error="wrong" data-success="right" for="form8"><span>Exercise Info</span></label>
+      <label class="form-label" data-error="wrong" data-success="right" for="update_info"><span>Exercise Info</span></label>
       <textarea type="text" id="updateInfo" name="update_info" class="md-textarea form-control" rows="4"></textarea>
     </div>
     <div class="center-centered">

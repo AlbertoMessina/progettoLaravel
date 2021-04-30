@@ -31,9 +31,8 @@ Auth::routes();
 Route::get('/checkUser/{mail}', 'UserController@findUserEmail');
 Route::group(['middleware' => 'auth'],
     function(){
-        Route::get('/home', 'UserController@index');
         /*User Route*/
-        Route::get('/profile' , 'UserController@profile');
+        Route::get('/profile' , 'UserController@index');
         Route::POST('/profile/update', 'UserController@update');
 
         /*Exercise Route*/
@@ -48,10 +47,18 @@ Route::group(['middleware' => 'auth'],
         /*Workout route*/
         
         Route::get('/workout', 'WorkoutController@index')->name('workout.index');
-        Route::get('/workout/{id}', 'WorkoutController@indexUpdate');
+        Route::get('/workout/{id}', 'WorkoutController@show')->where('id','[0-9]+');;
+        Route::get('/workout/record/{id}', 'WorkoutController@getRecord')->where('id','[0-9]+');;
         Route::POST('/workout/create', 'WorkoutController@create');
+        Route::POST('/workout/randomGenerate', 'WorkoutController@createRandom');
+        Route::POST('/workout/update/{id}' , 'WorkoutController@update')->where('id','[0-9]+');
         Route::delete('/workout/delete/{id}','WorkoutController@destroy')->where('id','[0-9]+');
+    
+        /*Dashboard*/
+
+        Route::get('/dashboard', 'dashboardController@index')->name('dashboard.index');
 
     }
+    
 );
 

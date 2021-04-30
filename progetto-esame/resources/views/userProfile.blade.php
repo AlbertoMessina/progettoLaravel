@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
 <script src="{{asset('js/userProfile.js')}}" defer></script>
+<!--Input validation-->
+<script src="{{asset('js/inputValidation/validationRules.js')}}" defer></script>
 <script src="{{asset('js/inputValidation/inputValidationProfile.js')}}" defer></script>
 @stop
 @section('subMenuSection')

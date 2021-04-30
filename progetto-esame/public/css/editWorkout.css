@@ -5,11 +5,35 @@
     align-items: center;
     height: calc(100vh - 175px);
 }
-#wizard_3{
-    display:none;
+
+.workout-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1.2 rem;
+    
+
+}
+.workout-container div{
+    flex: 50%;
+}
+#description-container{
+    padding:0.5rem;
+}
+
+#table-container{
+ padding-left: 1rem;
 }
 #workoutForm{
     height: 100%;
+}
+#workoutFormContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#series{
+    width: 50%;
 }
 
 /*Select*/
@@ -17,23 +41,32 @@
     display: flex;
 }
 
-.exercise-container{
-    padding-left: 25px;
-}
-#exerciseCardioSelect{
-    display: none;
-}
-#exerciseCoreSelect{
-    display: none;
-}
-#exerciseFullSelect{
-    display: none;
-}
-#exerciseUpperSelect{
-    display: none;
-}
-#exerciseLowerSelect{
-    display: none;
+.exercise-container-column{
+display: flex;
+align-items: center;
+flex-direction: row;
 }
 
+
 /*Select end*/
+.right-element{
+    padding-left:1.5em;
+}
+
+/*Text option*/
+
+.form-label{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/*Modal Adjustment*/
+.modal-content{
+width:40%;
+}
+
+/*Table adjustment*/
+.table-body{
+    height:calc(100vh - 290px);
+    border:none;
+}

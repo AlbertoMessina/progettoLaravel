@@ -12,11 +12,6 @@ class UserController extends Controller
 {
    public function index()
    {
-      return view('dashboard');
-   }
-
-   public function profile()
-   {
       $id = Auth::user()->id;
       $queryBuilder = Client::where('user_id', $id);
       $client = $queryBuilder->get();

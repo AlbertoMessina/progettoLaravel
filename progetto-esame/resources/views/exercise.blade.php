@@ -49,11 +49,11 @@
             </div>
             <div class="button-container">
 
-               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-exercise icon-table' ></i></a>
+               <a class="btn  show " role="button" data-li-reference='li_{{$loop -> index}}'><i class='far fa-eye show-icon icon-table' ></i></a>
                @if($exercise->custom_id != 0)
 
-               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-execise icon-table'></i></a>
-               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-exercise icon-table'></i></a>
+               <a class="btn  edit" data-li-reference='li_{{$loop -> index}}' role="button"><i class='far fa-edit edit-icon icon-table'></i></a>
+               <a class="btn  delete" role="button" data-li-reference='li_{{$loop -> index}}'><i class='fas fa-trash trash-icon icon-table'></i></a>
 
                @endif
             </div>

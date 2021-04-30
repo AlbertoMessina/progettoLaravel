@@ -61,17 +61,17 @@
     padding: 5px;
  }
 
- .trash-exercise{
+ .trash-icon{
     color: red;
     font-weight: bold;
  }
  
- .edit-execise{
+ .edit-icon{
     color: green;
     font-weight: bold;
  }
  
- .show-exercise{
+ .show-icon{
     color: #03a9f4;
     font-weight: bold;
  }
