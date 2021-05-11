@@ -52,11 +52,16 @@ Route::group(['middleware' => 'auth'],
         Route::POST('/workout/create', 'WorkoutController@create');
         Route::POST('/workout/randomGenerate', 'WorkoutController@createRandom');
         Route::POST('/workout/update/{id}' , 'WorkoutController@update')->where('id','[0-9]+');
+        Route::POST('/workout/updateVisibility/{id}','WorkoutController@updateVisibility')->where('id','[0-9]+');
         Route::delete('/workout/delete/{id}','WorkoutController@destroy')->where('id','[0-9]+');
     
         /*Dashboard*/
 
         Route::get('/dashboard', 'dashboardController@index')->name('dashboard.index');
+
+        /*network*/
+        Route::get('/publicWorkouts', 'NetworkController@index')->name('network.index');
+        Route::get('/publicWorkouts/{id}','NetworkController@getPublicResource')->where('id','[0-9]+');
 
     }
     

@@ -1,6 +1,7 @@
 <x-genericModal>
   @slot('modalTitle' , 'Delete Exercise')
   @slot('modalId' , 'deleteExeciseModal')
+  @slot('modalClass' , 'small-modal')
 
 
 

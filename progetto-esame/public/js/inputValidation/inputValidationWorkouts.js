@@ -28,13 +28,11 @@ function checkDate() {
     if (!pastDate(publicationDate.value)) {
         successValidation(publicationDate, "#dateError", btnSubmit);
         dateCheck = true;
-
     }
     else {
         errorValidation(publicationDate, "#dateError", btnSubmit);
         dateCheck = false;
     }
-
 }
 
 function inputCheck(e){
@@ -42,8 +40,10 @@ function inputCheck(e){
     checkName();
     checkDate();
     if(!(nameCheck && dateCheck)){
-        alert('Input not valid');
+        errorValidationOnlyShow('#workoutCreateError');
         return(false);
+    }else{
+        successValidationOnlyShow('#workoutCreateError');
     }
     return true;
 }

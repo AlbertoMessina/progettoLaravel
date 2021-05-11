@@ -1,6 +1,7 @@
 <x-showModal class="showWorkoutModal" >
 @slot('modalTitle' , 'Workout Show')
 @slot('modalId' , 'showWorkoutModal')
+@slot('modalClass' , 'large-modal')
 @slot('rightTitle' , "")
 <div id="showHeader">
     <span>

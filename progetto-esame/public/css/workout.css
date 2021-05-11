@@ -24,9 +24,8 @@
 #showHeader{
     display: flex;
     flex-direction:row;
-    padding-bottom:1rem;
-    padding-left: 1.2rem;
-    padding-top: 1rem;
+    padding-bottom:10px;
+    padding-left: 10px;
 }
 #showHeader span{
     font-size: 1.2rem;
@@ -36,30 +35,38 @@
 
 #exerciseWorkoutList{
     list-style-type: none;
-    padding-left: 1.2rem;
-    padding-bottom:0.5rem;
+    padding-left: 10px;
+    padding-bottom:5px;
 }
 .exercise-list-elem{
     display: flex;
     flex-direction: row;
-    padding-bottom:0.5rem;
+    padding-bottom:5px;
    
 }
 .exercise-list-elem div{
     flex: 33%;
 }
-.info-label{
-    width: 100%;
-    text-align:center;
-    border-bottom: 1px solid #000;
-    line-height: 0.1em;
-    margin: 10px 0 20px;
-}
 
-.info-label span{
-      background:#fff;
-      padding: 0  10px;
-}
 #showInfo{
     padding: 0.5rem;
+}
+
+/*Share workout modal*/
+
+  /*Share Icon*/
+  .share-icon-public{
+
+    color: cadetblue;
+
+  }
+
+  .share-icon-private{
+
+    color: black;
+
+  }
+  /*Mobile*/
+@media screen and (max-width: 480px) {
+
 }

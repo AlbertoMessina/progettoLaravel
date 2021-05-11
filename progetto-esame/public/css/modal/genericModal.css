@@ -28,7 +28,35 @@
     animation-name: animatetop;
     animation-duration: 0.4s
   }
+
+  .modal-header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 2px 16px;
+    background-color: rgba(46, 46, 46, 0.781);
+    color: white;
+    font-size: 1.2rem;
+  }
   
+  .modal-body {
+    padding: 2px 16px;
+  }
+
+  /*SHOW-MODAL CSS*/
+.show-left-title{
+  font-size: 1.2rem;
+  float:left;
+}
+  
+.small-modal{
+  width:50%;
+}
+
+.large-modal{
+  width:90%;
+}
+
   /* Add Animation */
   @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
@@ -55,16 +83,27 @@
     cursor: pointer;
   }
   
-  .modal-header {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 2px 16px;
-    background-color: rgba(46, 46, 46, 0.781);
-    color: white;
+
+
+/*Mobile*/
+@media screen and (max-width: 480px) {
+ .show-modal > .modal-body{
+    padding: 0px 4px;
   }
-  
-  .modal-body {
-    padding: 2px 16px;
+  .small-modal{
+    width:90%;
   }
- 
+  .small-modal > .modal-body{
+    padding: 8px 12px;
+  }
+  #showHeader span{
+    font-size: 0.9rem;
+  }
+
+  .exercise-list-elem div{
+    font-size: 0.8rem;
+  }
+  .show-left-title,.show-right-title{
+    font-size: 1rem;
+  }
+} 

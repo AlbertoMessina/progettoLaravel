@@ -92,6 +92,9 @@
                <div class="side-menu-item">
                   <a href="{{route('workout.index') }}" class="side-menu-link"><i class="fas fa-chalkboard-teacher icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">WORKOUT</span></a>
                </div>
+               <div class="side-menu-item">
+                  <a href="{{route('network.index') }}" class="side-menu-link"><i class="fas fa-network-wired icon pt-1 "> </i><span class="hide-meta ml-2 collapseElement text-size-small">NETWORK</span></a>
+               </div>
             </div>
 
          </div>
@@ -102,7 +105,7 @@
                <h5>Big Muscle </h5>
             </div>
             <div class="menu-mobile-item">
-               <a href="/home" class="start-centered"><span class="fas fa-home icon"> </span><span class="menu-selection">HOME</span></a>
+               <a href="/dashboard" class="start-centered"><span class="fas fa-home icon"> </span><span class="menu-selection">HOME</span></a>
             </div>
             <div class="menu-mobile-item">
                <a href="/profile/" class="start-centered"><span class="fas fa-user icon"> </span><span class="menu-selection">PROFILE</span></a>
@@ -112,6 +115,9 @@
             </div>
             <div class="menu-mobile-item">
                <a href="{{route('workout.index') }}" class="start-centered"><span class="fas fa-chalkboard-teacher icon"> </span><span class="menu-selection">WORKOUT</span></a>
+            </div>
+            <div class="menu-mobile-item">
+               <a  href="{{route('network.index') }}" class="start-centered"><span class="fas fa-network-wired icon"> </span><span class="menu-selection">NETWORK</span></a>
             </div>
 
          </div>

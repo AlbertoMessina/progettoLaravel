@@ -4,10 +4,14 @@
 <link rel="stylesheet" href="{{asset('css/userProfile.css')}}">
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
-<script src="{{asset('js/userProfile.js')}}" defer></script>
+<!--Javascript import -->
+<script src="{{asset('js/componentJS/snackbar.js')}}" defer></script>
+
 <!--Input validation-->
 <script src="{{asset('js/inputValidation/validationRules.js')}}" defer></script>
 <script src="{{asset('js/inputValidation/inputValidationProfile.js')}}" defer></script>
+
+<script src="{{asset('js/userProfile.js')}}" defer></script>
 @stop
 @section('subMenuSection')
 <div class="sub-menu">
@@ -23,9 +27,9 @@
          <div class="profile-item">
             <div class="photo-container">
                @if($client->url != 'none')
-               <img id="profile-photo"  class="user-photo " src='storage/{{$client->url}}'> </img>
+               <img id="profile-photo" class="user-photo " src='storage/{{$client->url}}'> </img>
                @else
-               <img id="profile-photo"  class="user-photo " src="/images/unknow.jpg"> </img>
+               <img id="profile-photo" class="user-photo " src="/images/unknow.jpg"> </img>
                @endif
             </div>
          </div>
@@ -75,7 +79,7 @@
                   @if($client->url != 'none')
                   <img id="setting-photo" class="user-photo" src='storage/{{$client->url}}'> </img>
                   @else
-                  <img id="setting-photo"  class="user-photo" src="/images/unknow.jpg"> </img>
+                  <img id="setting-photo" class="user-photo" src="/images/unknow.jpg"> </img>
                   @endif
                </div>
             </div>
@@ -122,6 +126,9 @@
                   <div>
                      <label class="label-input" for="weight">{{ __('Weight') }}</label>
                      <input type="number" id="weight" name="weight" class="form-control  @error('weight') is-invalid @enderror" placeholder='{{ $client->weight}}' value='{{ $client->weight}}' required min="10" max="650"> </textarea>
+                     <div class="feedback" id="weightError">
+                        <strong>Weight mix 10 - max 650 </strong>
+                     </div>
                      @error('weight')
                      <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -143,7 +150,10 @@
          <div class="form-group-element ">
 
          </div>
-         <div class="setting-btn-container">
+         <div class="submit-container">
+            <div class="feedback" id="submitError">
+               <strong> Check for input error</strong>
+            </div>
             <button id="profileSettingSubmit" class="btn btn-primary">
                {{ __('Update') }}
             </button>
@@ -152,7 +162,7 @@
    </div>
    @endforeach
 </div>
-
+<div id="snackbar" class="snackbar"><i></i><span>Operation snackbar</span></div>
 
 @stop
 

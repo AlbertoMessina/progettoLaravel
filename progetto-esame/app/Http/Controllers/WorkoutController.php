@@ -37,11 +37,10 @@ class WorkoutController extends Controller
     public function create(Request $request)
     {
         $request->all();
-        $id =  Auth::user()->id;
         $workout = new Workout();
         $workout->name = $request->name;
         $workout->publication_date = $request->publication_date;
-        $workout->client_id = $id;
+        $workout->client_id =  Auth::user()->id;
         $res = $workout->save();
         return response()->json(array('success' => true, 'workout' => $workout), 200);
     }
@@ -72,7 +71,7 @@ class WorkoutController extends Controller
         return response()->json(array('success' => false), 500);
     }
 
-    /**
+    /**updateVisibilty
      * Display the specified resource.
      *
      * @param  int  $id
@@ -148,12 +147,21 @@ class WorkoutController extends Controller
      */
     public function destroy($id)
     {
-
         $exercises = Exercise_list::where("workout_id", $id)->delete();
         $res =  Workout::where('id', $id)->delete();
         return $res;
     }
-    public function destroyExercise($request)
+    public function updateVisibility($id)
     {
+        $workout=  WORKOUT::find($id);
+        if($workout->public === 1){
+            //SET PUBLIC = FALSE
+            $workout->public = 0;
+        }else{
+            //SET PUBLIC = TRUE
+            $workout->public = 1;
+        }
+        $save = $workout->save();
+        return ($save);
     }
 }

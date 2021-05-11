@@ -56,33 +56,6 @@
    font-size: 1.2em;
    padding-left: 5px;
 }
-/*CSS sub menu */
-.sub-menu{
-   display: block;
-   margin-left: 10px;
-}
-.sub-menu-btn{
-   border: none;
-   background: rgb(180, 180, 180);
-   font-size: 1rem;
-   transition-duration: 0.4s;
-}
-
-.sub-menu-btn:hover {
-   background-color: #e7e5e5; 
-   
- }
-
-.sub-menu-btn:focus {
-   outline: none;
-}
-
-.active-item{
-   position: relative;
-   top: 2px;
-   background: white;
-}
-
 
 /*CSS  setting profile*/
 #profileSettingSection{
@@ -145,13 +118,13 @@
    display:block;
    padding:0px!important;
 }
-@media screen and (max-width: 700px) {
+/*Mobile*/
+@media screen and (max-width: 480px) {
    /**/
    .profile-section-container{
       display:block;
       width:100%;
-      overflow: auto;
-      height: calc(100vh - 155px);
+      height: 100%;
    }
    /*CSS profile*/
    .profile-container{

@@ -49,9 +49,13 @@ class dashBoardController extends Controller
         }
         $queryBuilder = EXERCISE::where('custom_id', Auth::user()->id);
         $personalExerciseNumber = $queryBuilder->count();
-
-        $queryBuilder->selectRaw('type, count(type) maxCount')->groupBy('type')->orderBy('maxCount' ,'desc');
-        $favoriteExercise= $queryBuilder->first()->type;
+        if($personalExerciseNumber > 0){
+            $queryBuilder->selectRaw('type, count(type) maxCount')->groupBy('type')->orderBy('maxCount' ,'desc');
+            $favoriteExercise= $queryBuilder->first()->type;
+        }
+        else{
+            $favoriteExercise = "No Exercise";
+        }
 
         $user_stats = [
             'totalWorkout' => $totalWorkouts,

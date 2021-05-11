@@ -111,7 +111,7 @@ a, a:hover {
       position: absolute;
       right:0;
       background-color: #f9f9f9;
-      border-radius:  0.8rem;
+      border-radius:  0.3rem;
       min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
@@ -129,7 +129,7 @@ a, a:hover {
     .dropdown-content a:hover {
        font-weight: bold;
        background-color: #cfcfcf;
-       border-radius: 1rem;
+       border-radius: 0.3rem;
       }
     
     /* Show the dropdown menu on hover */
@@ -140,6 +140,34 @@ a, a:hover {
     }
     
   
+/*CSS sub menu */
+.sub-menu{
+   display: block;
+   margin-left: 10px;
+}
+.sub-menu-btn{
+   border: none;
+   background: rgb(180, 180, 180);
+   font-size: 1rem;
+   transition-duration: 0.4s;
+}
+
+.sub-menu-btn:hover {
+   background-color: #e7e5e5; 
+   
+ }
+
+.sub-menu-btn:focus {
+   outline: none;
+}
+
+.active-item{
+   position: relative;
+   top: 2px;
+   background: white;
+}
+
+
 /*CSS FOR FORM */
 
 /*hide feedback*/
@@ -147,8 +175,6 @@ a, a:hover {
    display:block;
    visibility: hidden;
    position: relative;
-   top: 4px;
-   left: 2px;
    font-size: 0.8rem;
    color: #bf2d2d;
 }
@@ -158,6 +184,22 @@ a, a:hover {
    font-weight: 400;
 }
 
+.submit-container{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+/*Radio btn css*/
+.radio-option{
+   display: flex;
+   align-items: center;
+}
+
+.radio-option label{
+   margin-top: 5px;
+}
 /*END CSS for Form*/
 /****** FOoTER ******/
 .footer{
@@ -177,8 +219,7 @@ a, a:hover {
    flex-direction: column;
    justify-content: center;
    width: 25%;
-   margin-left: 20px;
-   padding-right: 30px;
+
    border-right: 1px solid lightgrey;
 }
 .left-footer p {
@@ -255,22 +296,7 @@ a.navigation:hover, a.navigation:active {
    display:none;
 }
 
-
-/*TOOLTIP css*/
-.tooltip-inner {
-    background-color: #79a6d2;
-}
-/*END TOOLTIP css*/
-
 /*CSS For Modal Window*/
-
-.modal-header-text{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-
 .infoContainer{
    margin-top: 5px;
 }
@@ -283,10 +309,7 @@ a.navigation:hover, a.navigation:active {
    margin-bottom: 1.4em;
    margin-top: 1.2em;
  }
-/*SHOW-MODAL CSS*/
-.show-left-title{
-   float:left;
-}
+
 
 /******CSS CARD *******/
 .div-card{
@@ -342,6 +365,20 @@ a.navigation:hover, a.navigation:active {
 
 .show{
    display: initial;
+}
+
+/*Label css*/
+.info-label{
+   width: 100%;
+   text-align:center;
+   border-bottom: 1px solid #000;
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+}
+
+.info-label span{
+     background:#fff;
+     padding: 0  10px;
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
@@ -415,7 +452,7 @@ a.navigation:hover, a.navigation:active {
     right: -77;
     position: absolute;
     background-color: #f9f9f9;
-    border-radius: 1rem;
+    border-radius: 0.3rem;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -433,13 +470,13 @@ a.navigation:hover, a.navigation:active {
   .dropdown-content a:hover {
     font-weight: bold;
     background-color: #cfcfcf;
-    border-radius: 0.8rem;
+    border-radius: 0.3rem;
     }
   
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {
     display: block;
-    border-radius: 1rem;
+    border-radius: 0.4rem;
   }
   
  
@@ -455,8 +492,7 @@ a.navigation:hover, a.navigation:active {
        width: 30%;
        flex-direction: column;
        justify-content: center;
-       padding-left: 5px;
-       padding-right: 5px;
+
        border-right: 1px solid lightgrey;
     }
  
@@ -466,15 +502,24 @@ a.navigation:hover, a.navigation:active {
        flex-direction: column;
        width: 65%;
        justify-content: center;
-       padding-right: 5px;
-       padding-left: 5px;
+     
        }
  
  }
- @media screen and (max-width: 500px) {
+
+/*Mobile*/
+@media screen and (max-width: 480px) {
    #main{
       flex: 5;
       background-color: white;
+   }
+   .icon-table{
+      font-size: 15px;
+   }
+
+   .form-group-element{
+      margin-bottom: 0.8rem;
+      margin-top: .5rem;
    }
  }
     /******   END MEDIA QUERY  ******/

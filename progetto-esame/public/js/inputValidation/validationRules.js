@@ -59,10 +59,12 @@ function futureDate(userinput){
 }
 
 function pastDate(userinput){
-    let dob = new Date(userinput);
-    let currentDate = new Date();
+    let user_input_date = new Date(userinput);
+    let user_date = user_input_date.getFullYear()+'-'+(user_input_date.getMonth()+1)+'-'+user_input_date.getDate();
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     let validation = false;
-    if(Date.parse(dob) < Date.parse(currentDate) ){
+    if(Date.parse(date) > Date.parse(user_date) ){
         validation = true;
     }
     return validation;
@@ -96,6 +98,18 @@ function successValidation(container,  errorIdContainer, enableBtn){
     enableBtn.disabled = false;
         
 }
+
+function errorValidationOnlyShow(errorIdContainer){
+    document.querySelector(errorIdContainer).style.visibility = "visible";
+   
+}
+
+function successValidationOnlyShow(errorIdContainer, enableBtn){
+    document.querySelector(errorIdContainer).style.visibility = "hidden";
+   
+}
+
+
 
 function errorMessageSet(container , errorIdContainer, message){
     container.style.border = "1px solid red";

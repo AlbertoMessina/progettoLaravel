@@ -1,11 +1,11 @@
 <!-- The Modal -->
-<div id="{{ $modalId }}" class="modal">
+<div id="{{ $modalId }}" class="modal ">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content {{$modalClass}}" >
     <div class="modal-header modal-header-text">
 
-      <h4 class="modal-title font-weight-bold">{{ $modalTitle }}</h4>
+      <label class="modal-title font-weight-bold">{{ $modalTitle }}</label>
       <span class="close" onclick="closeModal(this)">&times;</span>
     </div>
     <div class="modal-body">

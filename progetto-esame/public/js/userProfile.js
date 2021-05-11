@@ -48,7 +48,11 @@ function showSetting() {
 
 
 const submitBtn = document.querySelector('#profileSettingSubmit');
-submitBtn.addEventListener('click', profileSettingUpdate);
+submitBtn.addEventListener('click', function (event) {
+    if (inputCheck(event)) {
+        profileSettingUpdate(event);
+    }
+});
 
 function profileSettingUpdate(event) {
     event.preventDefault();
@@ -72,9 +76,11 @@ function profileSettingUpdate(event) {
             }
             if (response.status >= 400 && response.status < 499) {
                 alert("Richiesta errata");
+                operationFailedShow();
             }
             if (response.status >= 500 && response.status < 599) {
                 alert("Errore sul server");
+                operationFailedShow();
             }
         }).then(data => {
             console.log(data);
@@ -88,13 +94,16 @@ function profileSettingUpdate(event) {
             document.querySelector("#weight-label").innerHTML = client['weight'];
             document.querySelector("#description-area").innerHTML = client['description'];
 
-
             //SET in setting
             document.querySelector("#name").value = client['name'];
-            document.querySelector("#surname").value = client['surname'];
+            document.querySelector("#name").placeholder = client['name'];
+            document.querySelector("#surname").value = "";
+            document.querySelector("#surname").placeholder = client['surname'];
             document.querySelector("#birth").value = client['birth'];
             document.querySelector("#weight").value = client['weight'];
             document.querySelector("#description-area").innerHTML = client['description'];
+
+            document.querySelector("#description-area").placeholder = client['description'];
             document.querySelector("#description-area").value = client['description'];
 
             //SET photo
@@ -105,7 +114,12 @@ function profileSettingUpdate(event) {
                     div.src = url;
                 }
             });
-        }).catch(error => console.log("Si è verificato un errore!"));
+            operationSuccessShow();
+            location.reload();
+        }).catch(error => {
+            console.log("Si è verificato un errore!");
+            operationFailedShow();
+        });
 }
 const photo = document.querySelector('#photoProfile');
 if (window.File && window.FileList && window.FileReader) {
@@ -120,7 +134,7 @@ function filePreview(event, idElement) {
     let files = event.target.files; //FileList object
     let output = document.querySelector(idElement);
     output.innerHTML = "";
-  
+
     for (let i = 0; i < files.length; i++) {
         let file = files[i];
 
@@ -133,7 +147,7 @@ function filePreview(event, idElement) {
         picReader.addEventListener("load", function (event) {
 
             let picSrc = event.target.result;
-            output.src= picSrc;
+            output.src = picSrc;
 
         });
         //Read the image

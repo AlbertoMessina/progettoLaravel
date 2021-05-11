@@ -41,7 +41,7 @@
                     REP
                 </div>
                 <div>
-                    <a class="btn btn-secondary" id="addLink" role="button"><span class="fas fa-plus add-exercise"> </span></a>
+                    <a class="btn btn-secondary add-btn" id="addLink" role="button"><span class="fas fa-plus add-exercise"> </span></a>
                 </div>
             </div>
             <ul class="table-body" id='workoutTable' data-id='{{$workout->id}}'>

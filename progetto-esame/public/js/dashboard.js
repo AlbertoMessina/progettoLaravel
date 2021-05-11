@@ -5,8 +5,6 @@ const randomGeneratorBtn = document.querySelector('#randomGeneratorBtn');
 randomGeneratorBtn.addEventListener('click', showGeneratedWorkout);
 
 function showGeneratedWorkout() {
-
-    
     document.querySelector('#exerciseWorkoutList').innerHTML = "";
     //radio button value
     let type = "";
@@ -26,7 +24,8 @@ function showGeneratedWorkout() {
         }
     }
     if ((type == "") || (difficulty == "")) {
-        alert('Errore inserimento');
+
+        errorValidationOnlyShow('#inputError');
 
     }
     else {
@@ -56,7 +55,7 @@ function showGeneratedWorkout() {
                 });
                 /*End*/
                 //Modal RESET
-              
+
                 let principalExercise = Object.values(exerciseList).filter(exercise => exercise.type == type);
                 let complementaryExercise = [];
                 let workout = "";
@@ -66,6 +65,8 @@ function showGeneratedWorkout() {
                 else {
                     complementaryExercise = Object.values(exerciseList).filter(exercise => exercise.type == "core");
                 }
+
+                
                 for (let i = 0; i < 5; i++) {
                     if (!isOdd(i)) {
 
@@ -89,8 +90,8 @@ function showGeneratedWorkout() {
                     }
                 }
             }).catch(error => console.log("Si è verificato un errore!"));
-            setTimeout(function(){ document.querySelector('#showWorkoutModal').style.display = "block"; }, 400);
-        
+        setTimeout(function () { document.querySelector('#showWorkoutModal').style.display = "block"; }, 500);
+
     }
 }
 function createElement(name, series, rep, exercise_id) {

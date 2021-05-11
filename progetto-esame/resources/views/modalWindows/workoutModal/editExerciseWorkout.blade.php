@@ -1,6 +1,7 @@
 <x-genericModal class="edit-workout-modal">
     @slot('modalTitle' , 'Edit exercise')
     @slot('modalId' , 'editExerciseModal')
+    @slot('modalClass' , 'small-modal')
     <div id="workoutFormContainer">
         <form id="editWrkoutForm" method="POST" enctype="multipart/form-data">
             <div class="form-group-element ">
@@ -8,7 +9,7 @@
                     <div class="form-group-element">
                         <label class="form-label"><span>Exercise Type</span></label>
                         <div>
-                            <select id="editTypeSelect" style="width:200px" required>
+                            <select id="editTypeSelect" class="type-select" required>
                                 <option value="0"> Select type: </option>
                                 <option value="cardio">Cardio</option>
                                 <option value="core">Core</option>
@@ -20,15 +21,15 @@
                     </div>
                     <div class="form-group-element right-element">
                         <label class="form-label"><span>Exercise </span></label>
-                        <div class="select-list" style="width:200px">
-                            <select id="editExerciseSelect" style="width:200px">
+                        <div class="select-list">
+                            <select id="editExerciseSelect" class="exercise-select">
                             </select>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="form-group-element exercise-container-column">
-                        <div style="width:200px">
+                        <div class="series-div">
                             <label class="form-label" for="series">{{ __('Series') }}</label>
                             <input type="number" id="editSeries" name="series" class="form-control" required min="1" max="200">
                         </div>

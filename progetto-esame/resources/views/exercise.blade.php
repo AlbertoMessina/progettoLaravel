@@ -2,16 +2,18 @@
 @section('webSection' , 'Exercise')
 @section('home', '/dashboard')
 @section('css')
-<link rel="stylesheet" href="{{asset('css/exercise.css')}}">
 <link rel="stylesheet" href="{{asset('css/scrollbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
 <link rel="stylesheet" href="{{asset('css/components/table.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/filePreview.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
+<link rel="stylesheet" href="{{asset('css/exercise.css')}}">
 <!--Javascript import -->
 <script src="{{asset('js/exercise.js')}}" defer></script>
 <script src="{{asset('js/componentJS/filePreview.js')}}" defer></script>
+
+
 @stop
 
 @section('content')
@@ -29,7 +31,7 @@
          DIFFICULTY
       </div>
       <div>
-         <a class="btn btn-secondary" id="addLink" role="button"><span class="fas fa-plus add-exercise"> </span></a>
+         <a class="btn btn-secondary add-btn" id="addLink" role="button"><span class="fas fa-plus add-exercise"> </span></a>
       </div>
 
    </div>

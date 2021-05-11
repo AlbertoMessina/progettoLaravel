@@ -1,10 +1,12 @@
 @extends('templates.layout')
 @section('webSection' , 'Dashboard')
 @section('css')
-<link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
+<link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
 <script src="{{asset('js/dashboard.js')}}" defer></script>
+<script src="{{asset('js/inputValidation/validationRules.js')}}" defer></script>
+
 @stop
 
 @section('content')
@@ -22,6 +24,16 @@
                 <h4>{{$workout['workout']}}</h4>
             </div>
             <ul class="exerciseWorkoutList">
+                <li class="exercise-list-header">
+                    <div>EXERCISE
+                    </div>
+                    <div>
+                        SERIES
+                    </div>
+                    <div>
+                        REP
+                    </div>
+                </li>
                 @foreach($workout['exercises'] as $exercise)
                 <li class="exercise-list-elem">
                     <div class="exercise-name">
@@ -46,7 +58,6 @@
             <div id="userStatHeader">
                 <label class="info-label"> <span>User Stat</span> </label>
             </div>
-           
             <div id="userStatBody">
                 <div class="stats-container">
                     <div>
@@ -61,18 +72,20 @@
                         <label class="title-label">Personal exercises : </label> <label class="personal-exercise-label stat-label">{{$userStats['personalExerciseNumber']}}</label>
                     </div>
                     <div>
-                        <label class="title-label">Favorite personal exercise : </label> <label class="favorite-exercise-label stat-label">{{$userStats['favoriteExercise']}}</label>
+                        <label class="title-label">Favorite exercise : </label> <label class="favorite-exercise-label stat-label">{{$userStats['favoriteExercise']}}</label>
                     </div>
                 </div>
 
             </div>
-            
+
         </div>
         <div class="random-generator">
             <div id="randomGeneratorHeader">
                 <label class="info-label"> <span>RANDOM GENERATOR</span> </label>
             </div>
-
+            <div class="feedback" id="inputError">
+                <strong>Please select all option</strong>
+            </div>
             <div id="typeRadio">
                 <div class="radio-option">
                     <input type="radio" id="lowerBody" name="type" value="lowerBody">
@@ -95,18 +108,20 @@
                     <label for="cardio"> Cardio </label>
                 </div>
 
-
-
-
             </div>
             <div id="difficultyRadio">
-                <input type="radio" id="easy" name="difficulty" value="1">
-                <label>Easy </label>
-                <input type="radio" id="medium" name="difficulty" value="2">
-                <label>medium </label>
-                <input type="radio" id="hard" name="difficulty" value="3">
-                <label>Hard </label>
-
+                <div class="radio-option">
+                    <input type="radio" id="easy" name="difficulty" value="1">
+                    <label>Easy </label>
+                </div>
+                <div class="radio-option" >
+                    <input type="radio" id="medium" name="difficulty" value="2">
+                    <label>medium </label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="hard" name="difficulty" value="3">
+                    <label>Hard </label>
+                </div>
             </div>
 
             <button id="randomGeneratorBtn" class="btn btn-success">Random</button>

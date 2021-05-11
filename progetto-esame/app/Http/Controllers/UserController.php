@@ -43,9 +43,10 @@ class UserController extends Controller
       $client->weight = $request->weight;
       $client->description = $request->description;
       $res = $client->save();
-      if($res){
-         $this->removeFile($id);
-         $this->processFile($id, $request , $client);
+      if ($res) {
+         //Check if path it's
+
+         $this->processFile($id, $request, $client);
       }
       return response()->json(array('success' => true, 'res' => $res, 'client' => $client));
    }
@@ -56,11 +57,13 @@ class UserController extends Controller
       if (!$request->hasFile('img_path')) {
          return false;
       }
+
       $file = $request->file('img_path');
 
       if (!$file->isValid()) {
          return false;
       }
+      $this->removeFile($id);
       $fileName = '/' . $id . '.' . $file->extension();
       $file->storeAs(env('IMG_USER_DIR'), $fileName, 'public');
       $client->url = env('IMG_USER_DIR') . $fileName;
@@ -75,11 +78,11 @@ class UserController extends Controller
       $disk = config('filesystems.default');
       $queryBuilder = Client::where('user_id', $id);
       $client = $queryBuilder->get()->first();
-   
+
       $img = $client->url;
-         if ($img && Storage::disk($disk)->exists($img)) {
-            Storage::disk($disk)->delete($img);
-         }
+      if ($img && Storage::disk($disk)->exists($img)) {
+         Storage::disk($disk)->delete($img);
+      }
       Storage::deleteDirectory(env('IMG_USER_DIR') . '/' . $id);
    }
 }

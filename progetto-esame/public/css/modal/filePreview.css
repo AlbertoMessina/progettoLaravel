@@ -1,9 +1,9 @@
 .IMGthumbnail{
-    width:168px;
-    height:220px;
+    width:100%;
+    height:100%;
     margin:auto;
-  background-color: #ececec;
-  padding:2px;
+    background-color: #ececec;
+    padding:2px;
 }
 
 .IMGthumbnail img{
@@ -12,13 +12,18 @@
 }
 
 .imgThumbContainer{
-  width: 180px;
-  height:240px;
+  width: 168px;
+  height:180px;
   
   margin:4px;
   border: solid;
   display: inline-block;
   
+}
+.img-thumbnail-preview{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 

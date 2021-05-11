@@ -15,6 +15,7 @@
     align-items: center;
     border-bottom: 1px solid #0000008c;
     background-color: lightgrey;
+    border-radius: .3rem .3rem 0px 0px;
     font-weight: bold;
  }
  
@@ -29,7 +30,7 @@
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margins */
     overflow: auto;
-    height: calc(100vh - 240px);
+    height: calc(100vh - 237px);
     border: 1px solid #0000008c;
  }
  
@@ -80,10 +81,18 @@
     color:  white;
     font-weight: bold;
  }
+ .add-btn{
+   font-size: 0.9rem;
+ }
+ 
 
- @media screen and (max-width: 700px) {
+  /*Mobile*/
+  @media screen and (max-width: 480px) {
     .table-container{
         width: 100%;
+     }
+     .table-header {
+       font-size: 0.85rem; 
      }
      .table-body{
         display:block ;
@@ -105,11 +114,11 @@
      .button-container a{
         padding: 2px;
      }
-
+     .add-btn{
+      font-size: 0.6rem;
+    }
+   }
      @media screen and (max-width: 360px) {
-        .table-container{
-            width: 92%;
-         }
          .table-item div{  
             width: 25%;
             font-size: 0.8rem;
