@@ -24,7 +24,7 @@
   /* */
   #network-div{
       width: 100%;
-      height: calc(100vh - 211px);
+      height: calc(100vh - 185px);
   }
   .header-label{
     height: 10%;
@@ -136,7 +136,10 @@
   font-size: 1.2rem;
   font-weight: 450;
 }
-
+.user-container{
+  display: flex;
+  flex-direction: column;
+}
 /**show modal style*/
 .workout-div{
   display: none;
@@ -190,4 +193,45 @@
   cursor: not-allowed;
   opacity: 0.5;
   text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {  
+
+  #network-div{
+    min-height: calc(100vh - 210px);
+    height: 100%;
+    
+  }
+
+  .user-card { 
+    margin: 5px;
+    width: 150px;
+    height: 200px;
+  } 
+.user-public-body,.user-follower-body {
+  justify-content: center;
+  overflow-y: hidden;
+  min-height: calc(100vh - 211px);
+  }
+  .user-name{
+    font-size: 1rem;
+  }
+  .user-name-div {  
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: absolute;
+    top: 150px;
+    left: 0;   
+    height: 25%;  
+    
+  }
+
+  .show-left-title , .show-right-title{
+    font-size: 0.8rem;
+  }
+  #showHeader span {
+    font-size: 0.9rem;
+}
+
 }

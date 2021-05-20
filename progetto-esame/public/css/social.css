@@ -1,5 +1,6 @@
 .social-container{
    display: flex;
+   flex-direction: column;
    height: 50px;
    padding-top:10px;
    justify-content: center;
@@ -8,7 +9,6 @@
 
    font-size: 0.8rem;
 }
-
 .social-container > .fa {
   padding: 10px;
   width: 50px;
@@ -17,6 +17,10 @@
   margin: 2px 1px;
 }
 
+.social-link{
+  display: flex;
+  justify-content: center; 
+}
 .fa:hover {
     opacity: 0.7;
 }
@@ -39,10 +43,18 @@
   background: #125688;
   color: white;
 }
+.social-link > .fa {
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 1px;
+}
 /*Mobile*/
 @media screen and (max-width: 480px) {
 
-   .fa {
+   .social-link > .fa {
      padding: 5px;
      width:20px;
      height: 20px;
@@ -51,10 +63,12 @@
      margin: 2px 1px;
    }
    .social-container{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    display: flex;
+    height: 65px;
+    flex-wrap: wrap;
+    justify-content: center;
    }
+
    .social-container a{
       font-size: 10px;
    }

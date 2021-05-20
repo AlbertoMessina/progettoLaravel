@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Workout;
-use App\Models\Clients;
+use App\Models\Follower;
+use App\Models\Client;
+
 class NetworkController extends Controller
 {
     /**
@@ -15,10 +18,23 @@ class NetworkController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $queryBuilder = Workout::join('clients', 'clients.user_id', '=', 'workouts.client_id')->select('clients.user_id','clients.name','clients.surname','clients.url');
-        $queryBuilder->where('workouts.public', '1' )->where('workouts.client_id', '!=' ,$id)->groupBy('clients.user_id');
+        $queryBuilder = Workout::join('clients', 'clients.user_id', '=', 'workouts.client_id')->select('clients.user_id', 'clients.name', 'clients.surname', 'clients.url');
+        $queryBuilder->where('workouts.public', '1')->where('workouts.client_id', '!=', $id)->groupBy('clients.user_id');
+        $queryBuilder->whereNotIn('workouts.client_id', function ($query) {
+            $id = Auth::user()->id;
+            $query->select('follower_id')
+                ->from('followers')
+                ->where('user_id', $id);
+        });
         $publicUsers = $queryBuilder->get();
-        return view('network' ,  ['publicUsers' => $publicUsers]);
+        
+        $queryBuilder = CLIENT::join('followers', 'followers.follower_id', '=', 'clients.user_id')->join('workouts', 'workouts.client_id', '=' , 'followers.follower_id');
+        $queryBuilder->select('clients.user_id', 'clients.name', 'clients.surname', 'clients.url');
+        $queryBuilder->where('workouts.public', '1')->where('followers.user_id', $id);
+        $queryBuilder->groupBy('clients.user_id');
+  
+        $follwerUsers = $queryBuilder->get();
+        return view('network',  ['publicUsers' => $publicUsers, 'follwerUsers' => $follwerUsers]);
     }
 
     /**
@@ -87,10 +103,27 @@ class NetworkController extends Controller
         //
     }
 
-    public function getPublicResource($id){
+    public function getPublicResource($id)
+    {
         $queryBuilder = WORKOUT::WHERE('client_id', $id)->WHERE('public', '1');
         $workouts = $queryBuilder->get();
-        return response()->json(array('success' => true , 'workouts' => $workouts), 200);
-       
+        return response()->json(array('success' => true, 'workouts' => $workouts), 200);
+    }
+    public function newFollower($id)
+    {
+        $user_id =  Auth::user()->id;
+        $follower_id = $id;
+
+        $follower = new follower();
+        $follower->follower_id = $follower_id;
+        $follower->user_id = $user_id;
+        $res = $follower->save();
+        return response()->json(array('success' => true, 'res' => $res), 200);
+    }
+
+    public function unfollow($id){
+        $queryBuilder = FOLLOWER::where('user_id', AUTH::user()->id)->where('follower_id', $id);
+        $res = $queryBuilder->delete();
+        return response()->json(array('success' => true, 'res' => $res), 200);
     }
 }

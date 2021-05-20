@@ -21,9 +21,7 @@
 
       </ul>
     </div>
-    <div class="submit-container">
-      <input type='submit' id="confirmFollow" class="btn btn-success btn-unique" value="FOLLOW">
-    </div>
+   
 
   </div>
   <div class="workout-div">

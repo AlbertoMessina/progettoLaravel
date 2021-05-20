@@ -62,9 +62,11 @@
                   <div class="sign-up-form">
                      <!--Sign in form-->
                      <div class="center-centered">
-                           <input type='submit' class="btn btn-success btn-unique" value="JOIN NOW">
-                           <a class="btn btn-link" href="{{ route('register') }}">
-                                    {{ __('Are you new, join?') }}
+                           <a>
+                              <button  type='submit' class="btn btn-success btn-unique" href="{{ route('register') }}"  value="JOIN NOW"></button>
+                           </a>
+                           <a class="btn btn-link" href="{{ route('login') }}">
+                                    {{ __('Have an account? LOG IN') }}
                            </a>
                         </div>
                   </div>

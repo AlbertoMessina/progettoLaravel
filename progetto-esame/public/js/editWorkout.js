@@ -192,6 +192,7 @@ function addExercise(event) {
         referenceNode.parentNode.insertBefore(newElem, referenceNode);    // referenceNode.nextSibling
     }
     //add event listner
+    document.querySelector('#li_' + newId).querySelector(".edit").addEventListener('click', showEditExercise);
     document.querySelector('#li_' + newId).querySelector(".copy").addEventListener('click', copyExercise);
     document.querySelector('#li_' + newId).querySelector(".delete").addEventListener('click', deleteExercise);
     newWorkoutModal.style.display = "none";

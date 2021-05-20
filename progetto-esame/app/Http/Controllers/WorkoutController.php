@@ -18,7 +18,7 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-        $queryBuilder = Workout::orderBy('id', 'desc');
+        $queryBuilder = Workout::orderBy('publication_date', 'desc');
         $queryBuilder->where('client_id', '=', Auth::user()->id);
         $workouts = $queryBuilder->get();
         $localDate = Carbon::now();

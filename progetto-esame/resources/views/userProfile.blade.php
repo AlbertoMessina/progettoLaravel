@@ -16,7 +16,7 @@
 @section('subMenuSection')
 <div class="sub-menu">
    <button id="profileBtn" class="sub-menu-btn active-item"> PROFILE </button>
-   <button id="settingBtn" class="sub-menu-btn">SETTING </button>
+   <button id="settingBtn" class="sub-menu-btn">SETTINGS </button>
 </div>
 @stop
 @section('content')

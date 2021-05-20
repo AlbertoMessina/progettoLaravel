@@ -103,6 +103,6 @@ body{
 
    /*Modal Adjusment*/
    .show-left-title,.show-right-title{
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
 }

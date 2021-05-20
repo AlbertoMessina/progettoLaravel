@@ -1,12 +1,13 @@
 @extends('templates.layout')
 @section('webSection' , 'NetWork')
 @section('css')
-<link rel="stylesheet" href="{{asset('css/network.css')}}">
+
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/menu.css')}}">
 <link rel="stylesheet" href="{{asset('css/snackbar.css')}}">
 <link rel="stylesheet" href="{{asset('css/components/table.css')}}">
 <link rel="stylesheet" href="{{asset('css/modal/genericModal.css')}}">
+<link rel="stylesheet" href="{{asset('css/network.css')}}">
 <!--Javascript import -->
 <script src="{{asset('js/network.js')}}" defer></script>
 <script src="{{asset('js/componentJS/snackbar.js')}}" defer></script>
@@ -21,12 +22,13 @@
 @section('content')
 
 <div id="utility-bars">
-    <div class="search-div">
+  <!--  <div class="search-div">
         <form class="search" action="">
             <input type="text" placeholder="Search.." name="search">
             <button type="search-submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
+-->
 </div>
 <div id="network-div">
     <div class="user-follower-container">
@@ -34,14 +36,22 @@
             <label class="info-label"> <span>FOLLOW USERS</span> </label>
         </div>
         <div class="user-follower-body">
-            <div class="user-card">
-                <div class="layer">
-
+            @foreach($follwerUsers as $user)
+            <div class="user-container">
+                <div id="followerUsers_{{$user->user_id}}" class="user-card" style="background-image : url(storage/{{$user->url}});">
+                    <a class="user-card-link" data-id="{{$user->user_id}}">
+                        <div class="layer">
+                        </div>
+                        <div class="user-name-div">
+                            <label class="user-name" data-name='{{$user->name}}' data-surname='{{$user->surname}}'> {{$user->name}} {{$user->surname}}</label>
+                        </div>
+                    </a>
                 </div>
-                <div class="user-name-div">
-                    <label class="user-name"> Gianni Pigliatelli </label>
+                <div class="submit-container">
+                    <input type='submit' class="btn btn-primary confirm-unfollow" data-id="{{$user->user_id}}" value="UNFOLLOW">
                 </div>
             </div>
+            @endforeach
 
         </div>
     </div>
@@ -51,18 +61,21 @@
         </div>
         <div class="user-public-body">
             @foreach($publicUsers as $user)
+            <div class="user-container">
+                <div id="publicUser_{{$user->user_id}}" class="user-card" style="background-image : url(storage/{{$user->url}});">
+                    <a class="user-card-link" data-id="{{$user->user_id}}">
+                        <div class="layer">
+                        </div>
+                        <div class="user-name-div">
+                            <label class="user-name" data-name='{{$user->name}}' data-surname='{{$user->surname}}'> {{$user->name}} {{$user->surname}}</label>
+                        </div>
+                    </a>
 
-            <div class="user-card" style="background-image : url(storage/{{$user->url}});">
-                <a class="user-card-link" data-id="{{$user->user_id}}">
-                    <div class="layer">
-
-                    </div>
-                    <div class="user-name-div">
-                        <label class="user-name" data-name='{{$user->name}}' data-surname='{{$user->surname}}' > {{$user->name}}  {{$user->surname}}</label>
-                    </div>
-                </a>
+                </div>
+                <div class="submit-container">
+                    <input type='submit' class="btn btn-success btn-unique confirm-follow"  data-id="{{$user->user_id}}" value="FOLLOW">
+                </div>
             </div>
-
             @endforeach
 
         </div>

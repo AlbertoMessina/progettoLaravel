@@ -185,7 +185,7 @@ html, body {
    }
    .welcome-card-presentation img {
        max-width: 100%;
-       height: calc(100vh - 200px) !important;
+       height: calc(100vh - 200px) ;
        min-height: 300px;
    }
    .presentation-title{
@@ -283,9 +283,18 @@ html, body {
 
 /*Modal LogIn*/
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width:480px) {
    .positioning-presentation{
-      top: 40px;
+      top: 130px;
    }
+
+   .welcome-card-presentation img {
+      max-width: 100%;
+      height: 320px;
+      
+  }
+  .positioning{
+     width: 70%;
+  }
 
 }

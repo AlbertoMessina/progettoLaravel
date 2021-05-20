@@ -13,7 +13,7 @@
 <div class="dashboard">
     <div class="workout-show">
         <div class="workout-show-header">
-            <label class="info-label "> <span>Allenamenti del giorno</span> </label>
+            <label class="info-label "> <span>Daily Workouts</span> </label>
         </div>
 
 

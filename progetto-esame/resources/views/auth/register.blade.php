@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="{{asset('css/social.css')}}">
 <script src="{{asset('js/componentJS/passwordStuff.js')}}" defer></script>
 <!--Input validation-->
-<script src="{{asset('js/inputValidation/validationRules.js')}}" defer></script>
-<script src="{{asset('js/inputValidation/inputValidationRegister.js')}}" defer></script>
+<!--<script src="{{asset('js/inputValidation/validationRules.js')}}" defer></script>
+<script src="{{asset('js/inputValidation/inputValidationRegister.js')}}" defer></script>-->
 
 @stop
 @section('home', '/')

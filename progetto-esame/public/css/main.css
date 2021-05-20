@@ -58,6 +58,10 @@ a, a:hover {
     background-color: #6d6a6a;
     height: 30px;
 }
+.home-link{
+   height:45px;
+   width:120px;
+}
 
 #pageSectionName {
    display: block;

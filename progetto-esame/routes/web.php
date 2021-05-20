@@ -62,6 +62,8 @@ Route::group(['middleware' => 'auth'],
         /*network*/
         Route::get('/publicWorkouts', 'NetworkController@index')->name('network.index');
         Route::get('/publicWorkouts/{id}','NetworkController@getPublicResource')->where('id','[0-9]+');
+        Route::POST('/publicWorkouts/newFollower/{id}', 'NetworkController@newFollower')->where('id', '[0-9]+');
+        Route::POST('/publicWorkouts/unfollow/{id}', 'NetworkController@unfollow')->where('id', '[0-9]+');
 
     }
     

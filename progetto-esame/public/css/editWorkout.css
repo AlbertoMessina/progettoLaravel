@@ -71,7 +71,38 @@ flex-direction: row;
     height:calc(100vh - 290px);
     border:none;
 }
+@media screen  and (max-width: 768px)
+{
+    .section-content{
+        height:100%;
+        padding:10px;
+        padding-left:5px;
+     }
 
+     .table-body{
+        height:100%;
+        padding: 0px 5px;
+        padding-top: 5px;
+    }
+    .workout-container{
+        flex-direction:column;
+    }
+    .type-select{
+        width:150px
+    }
+    .series-div{
+        width:100px;
+    }
+    .exercise-select{
+        width:125px;
+    }
+    #series{
+        width:100%;
+    }
+    .small-modal{
+        width:60%;      
+    } 
+}
   /*Mobile*/
   @media screen and (max-width: 480px) {
     .section-content{
@@ -109,37 +140,13 @@ flex-direction: row;
         width: 75%;
         padding-right:15px;
     }
+
+/*Text option*/
+
+.form-label{
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
-@media screen  and (max-width: 768px)
-{
-    .section-content{
-        height:100%;
-        padding:10px;
-        padding-left:5px;
-     }
-
-     .table-body{
-        height:100%;
-        padding: 0px 5px;
-        padding-top: 5px;
-    }
-    .workout-container{
-        flex-direction:column;
-    }
-    .type-select{
-        width:150px
-    }
-    .series-div{
-        width:100px;
-    }
-    .exercise-select{
-        width:125px;
-    }
-    #series{
-        width:100%;
-    }
-    .small-modal{
-        width:60%;      
-    } 
 }
+
