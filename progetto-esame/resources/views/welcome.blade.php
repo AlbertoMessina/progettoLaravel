@@ -27,14 +27,14 @@
                   <a class="navbar-brand text-bold  text-size-medium" href=@yield('home','/')><label class="hide-meta">Big Muscle </label></a>
                </div>
             </div>
-            <div class = "button-container">
-               <div id="login-container" class="log-containers" >
+            <div class="button-container">
+               <div id="login-container" class="log-containers">
                   <!--href="{{route('admin.users.index')}}"-->
-                  <a class="btn btn-success" id ="logInBtn" href="{{route('login')}}" ><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
+                  <a class="btn btn-success" id="logInBtn" href="{{route('login')}}"><label class="hide-meta text-size-small label-link text-white pr-2">Log In</label><span class="fas fa-sign-in-alt label-link"></span></a>
                </div>
-            
+
             </div>
-            
+
          </nav>
       </div>
       <!-- end nav -->
@@ -62,13 +62,10 @@
                   <div class="sign-up-form">
                      <!--Sign in form-->
                      <div class="center-centered">
-                           <a>
-                              <button  type='submit' class="btn btn-success btn-unique" href="{{ route('register') }}"  value="JOIN NOW"></button>
-                           </a>
-                           <a class="btn btn-link" href="{{ route('login') }}">
-                                    {{ __('Have an account? LOG IN') }}
-                           </a>
-                        </div>
+                        <a href="{{ route('register') }}">
+                           <button type='submit' class="btn btn-success btn-unique" value="JOIN NOW"> REGISTER</button>
+                        </a>
+                     </div>
                   </div>
                </div>
                <img src="/images/welcome1.jpg" />
